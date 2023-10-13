@@ -54,7 +54,7 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    width: 200px;
+    width: 250px;
     height: 100%;
     background-color: #333;
     color: white;
@@ -69,11 +69,11 @@ body {
   }
   
   #sideNav ul li {
-    padding: 4px;  /* Reduced padding */
-    text-align: center;
+    padding: 2px;  /* Reduced padding */
   }
   
   #sideNav ul li a:hover {
+    background-color: transparent;  /* No background */
     color: #326DE6;  /* Text turns blue on hover */
   }
   
@@ -99,5 +99,26 @@ body {
     border: none;
     width: 50%;  /* Not full width */
     margin: auto;  /* Centered */
+    font-family: 'Ubuntu', sans-serif;
+    padding-left: 15px;
+  }
+  
+  #searchBar::placeholder {
+    color: #525252;  /* Black */
+    font-family: 'Ubuntu', sans-serif;
+    padding-left: 10px;
+  }
+
+  #k8s-logo {
+    height: 1.0em;  /* Adjust the size to match the header text */
+    vertical-align: middle;  /* Align with the middle of the text */
+    margin-right: 10px;  /* Add some space between the logo and the text */
+  }
+  
+  .nested {
+    display: none;
+  }
+  .active .nested {
+    display: block;
   }
   
