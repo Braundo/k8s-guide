@@ -29,6 +29,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    border: none;  /* Remove border */
+    color: #ffffff;  /* Make icons white */
+    font-size: 24px;  /* Increase icon size */
   }
   .circular-button span {
     display: inline-block;
