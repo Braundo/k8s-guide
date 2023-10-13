@@ -7,6 +7,7 @@ body {
   body.dark-mode {
     background-color: #424242;
     color: #E0E0E0;
+    --accent-color: #326DE6;
   }
   
   body.light-mode {
@@ -20,7 +21,7 @@ body {
     width: 50px;
     height: 50px;
     position: fixed;
-    background-color: #1976D2;
+    background-color: var(--accent-color);
     color: white;
     text-align: center;
     vertical-align: middle;
@@ -47,5 +48,21 @@ body {
     background-color: #333;
     color: white;
     padding: 20px;
+  }
+  
+  #sideNav ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  #sideNav ul li {
+    padding: 8px;
+    text-align: center;
+  }
+  
+  #sideNav ul li a {
+    color: #E0E0E0;
+    text-decoration: none;
+    display: block;
   }
   
