@@ -79,3 +79,11 @@ body {
     display: block;
   }
   
+  .circular-button:hover {
+    background-color: #4a8df8;  /* Lighter blue */
+  }
+  
+  .circular-button:active {
+    transform: scale(0.95);  /* Depress a little */
+  }
+  
