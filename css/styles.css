@@ -9,7 +9,6 @@ body {
   body.dark-mode {
     background-color: #424242;
     color: #E0E0E0;
-    --accent-color: #326DE6;
   }
   
   body.light-mode {
@@ -23,8 +22,7 @@ body {
     width: 50px;
     height: 50px;
     position: fixed;
-    background-color: var(--accent-color);
-    color: white;
+    background-color: #326DE6;
     text-align: center;
     vertical-align: middle;
     line-height: 50px;
