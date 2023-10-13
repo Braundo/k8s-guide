@@ -21,29 +21,187 @@
 </center>
   </header>
   <br>
-
+<div id="resizable-sidebar">
   <div id="sidebar">
     <div class="sidebar-item">
       <div class="sidebar-header" onclick="toggleCollapse('section1')">
         <span class="triangle">&#9654;</span> <!-- Triangle character -->
-        Section 1
+        Architecture
       </div>
       <ul id="section1" class="sidebar-content">
-        <li>Item 1.1</li>
-        <li>Item 1.2</li>
+        <li>Cloud Controller Manager</li>
+        <li>Container Runtime Interface (CRI)</li>
+        <li>Controllers</li>
+        <li>Garbage Collection</li>
+        <li>Leases</li>
+        <li>Mixed Version Proxy</li>
+        <li>Node Communication</li>
+        <li>Nodes</li>
+        <li>cgroup v2</li>
       </ul>
     </div>
     <div class="sidebar-item">
       <div class="sidebar-header" onclick="toggleCollapse('section2')">
         <span class="triangle">&#9654;</span> <!-- Triangle character -->
-        Section 2
+        Cluster Administration
       </div>
       <ul id="section2" class="sidebar-content">
-        <li>Item 2.1</li>
-        <li>Item 2.2</li>
+        <li>API Priority</li>
+        <li>Certificates</li>
+        <li>Cluster Networking</li>
+        <li>Installing Addons</li>
+        <li>Logging Architecture</li>
+        <li>Managing Resources</li>
+        <li>Metrics for K8s</li>
+        <li>Proxies in Kubernetes</li>
+        <li>System Logs</li>
+        <li>Traces for K8s</li>
       </ul>
     </div>
+    <div class="sidebar-item">
+        <div class="sidebar-header" onclick="toggleCollapse('section3')">
+          <span class="triangle">&#9654;</span> <!-- Triangle character -->
+          Configuration
+        </div>
+        <ul id="section3" class="sidebar-content">
+          <li>Best Practices</li>
+          <li>ConfigMaps</li>
+          <li>Organizing Cluster Access</li>
+          <li>Resource Management</li>
+          <li>Secretss</li>
+        </ul>
+      </div>
+      <div class="sidebar-item">
+        <div class="sidebar-header" onclick="toggleCollapse('section4')">
+          <span class="triangle">&#9654;</span> <!-- Triangle character -->
+          Containers
+        </div>
+        <ul id="section4" class="sidebar-content">
+          <li>Container Environment</li>
+          <li>Container Lifecycle Hooks</li>
+          <li>Images</li>
+          <li>Runtime Class</li>
+        </ul>
+      </div>
+      <div class="sidebar-item">
+        <div class="sidebar-header" onclick="toggleCollapse('section5')">
+          <span class="triangle">&#9654;</span> <!-- Triangle character -->
+          Pods
+        </div>
+        <ul id="section5" class="sidebar-content">
+          <li>Disruptions</li>
+          <li>Downward API</li>
+          <li>Ephemeral Containers</li>
+          <li>Init Containers</li>
+          <li>Pod Lifecycle</li>
+          <li>QoS Classes</li>
+          <li>User Namespaces</li>
+        </ul>
+      </div>
+      <div class="sidebar-item">
+        <div class="sidebar-header" onclick="toggleCollapse('section6')">
+          <span class="triangle">&#9654;</span> <!-- Triangle character -->
+          Policies
+        </div>
+        <ul id="section6" class="sidebar-content">
+          <li>Limit Ranges</li>
+          <li>Node Resource Managers</li>
+          <li>Process ID Limits & Reservations</li>
+          <li>Resource Quotas</li>
+        </ul>
+      </div>
+      <div class="sidebar-item">
+        <div class="sidebar-header" onclick="toggleCollapse('section7')">
+          <span class="triangle">&#9654;</span> <!-- Triangle character -->
+          Scheduling
+        </div>
+        <ul id="section7" class="sidebar-content">
+          <li>API-initiated Eviction</li>
+          <li>Assigning Pods to Nodes</li>
+          <li>Dynamic Resource Allocation</li>
+          <li>Kubernetes Scheduler</li>
+          <li>Node-Pressure Eviction</li>
+          <li>Pod Overhead</li>
+          <li>Pod Priority and Preemption</li>
+          <li>Pod Scheduling Readiness</li>
+          <li>Pod Topology Spread Constraints</li>
+          <li>Resource Bin Packing</li>
+          <li>Scheduler Performance Tuning</li>
+          <li>Scheduling Framework</li>
+          <li>Taints and Tolerations</li>
+        </ul>
+      </div>
+      <div class="sidebar-item">
+        <div class="sidebar-header" onclick="toggleCollapse('section8')">
+          <span class="triangle">&#9654;</span> <!-- Triangle character -->
+          Security
+        </div>
+        <ul id="section8" class="sidebar-content">
+          <li>Controlling Access to K8s API</li>
+          <li>Hardening Guide - Auth Mechanisms</li>
+          <li>K8s API Server Bypass</li>
+          <li>K8s Secrets Good Pratices</li>
+          <li>Multi-tenancy</li>
+          <li>Cloud Native Security</li>
+          <li>Pod Security Admission</li>
+          <li>RBAC Good Practices</li>
+          <li>Security Checklist</li>
+          <li>Service Accounts</li>
+        </ul>
+      </div>
+      <div class="sidebar-item">
+        <div class="sidebar-header" onclick="toggleCollapse('section9')">
+          <span class="triangle">&#9654;</span> <!-- Triangle character -->
+          Services & Networking
+        </div>
+        <ul id="section9" class="sidebar-content">
+          <li>DNS</li>
+          <li>Endpoint Slices</li>
+          <li>IPv4/IPv6</li>
+          <li>Ingress</li>
+          <li>Network Policies</li>
+          <li>Services</li>
+          <li>Service Networking</li>
+          <li>Topology-Aware Routing</li>
+        </ul>
+      </div>
+      <div class="sidebar-item">
+        <div class="sidebar-header" onclick="toggleCollapse('section10')">
+          <span class="triangle">&#9654;</span> <!-- Triangle character -->
+          Storage
+        </div>
+        <ul id="section10" class="sidebar-content">
+          <li>CSI Volume Cloning</li>
+          <li>Dynamic Volume Provisioning</li>
+          <li>Ephemeral Volumes</li>
+          <li>Node-Specific Volume Limits</li>
+          <li>Persistent Volumes</li>
+          <li>Projected Volumes</li>
+          <li>Storage Capacity</li>
+          <li>Storage Classes</li>
+          <li>Volume Health Monitoring</li>
+          <li>Volume Snapshot Classes</li>
+          <li>Volume Snapshots</li>
+          <li>Volumes</li>
+        </ul>
+      </div>
+      <div class="sidebar-item">
+        <div class="sidebar-header" onclick="toggleCollapse('section11')">
+          <span class="triangle">&#9654;</span> <!-- Triangle character -->
+          Workloads
+        </div>
+        <ul id="section11" class="sidebar-content">
+          <li>DaemonSets</li>
+          <li>Deployments</li>
+          <li>Jobs</li>
+          <li>ReplicaSet</li>
+          <li>ReplicationController</li>
+          <li>Workload Resources</li>
+        </ul>
+      </div>
   </div>
+  <div id="resize-handle"></div>
+</div>
   
   
 

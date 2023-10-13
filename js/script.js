@@ -36,10 +36,31 @@ function toggleCollapse(id) {
     
     if (element.style.display === "none" || element.style.display === "") {
       element.style.display = "block";
-      triangle.style.transform = "rotate(90deg)"; // Rotate triangle
+      triangle.style.transform = "rotate(90deg)";
+      triangle.dataset.state = "down";
     } else {
       element.style.display = "none";
-      triangle.style.transform = "rotate(0deg)"; // Reset rotation
+      triangle.style.transform = "rotate(0deg)";
+      triangle.dataset.state = "right";
     }
   }
-  
+
+  let isResizing = false;
+const handle = document.getElementById('resize-handle');
+const sidebar = document.getElementById('resizable-sidebar');
+
+handle.addEventListener('mousedown', (e) => {
+  isResizing = true;
+  document.addEventListener('mousemove', handleMouseMove);
+  document.addEventListener('mouseup', () => {
+    isResizing = false;
+    document.removeEventListener('mousemove', handleMouseMove);
+  });
+});
+
+function handleMouseMove(e) {
+  if (isResizing) {
+    const newWidth = e.clientX;
+    sidebar.style.width = `${newWidth}px`;
+  }
+}
