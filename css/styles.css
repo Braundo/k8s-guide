@@ -69,9 +69,14 @@ body {
   }
   
   #sideNav ul li {
-    padding: 8px;
+    padding: 4px;  /* Reduced padding */
     text-align: center;
   }
+  
+  #sideNav ul li a:hover {
+    color: #326DE6;  /* Text turns blue on hover */
+  }
+  
   
   #sideNav ul li a {
     color: #E0E0E0;
@@ -85,5 +90,14 @@ body {
   
   .circular-button:active {
     transform: scale(0.95);  /* Depress a little */
+  }
+  
+  #searchBar {
+    border-radius: 25px;  /* Pill shape */
+    background: #cccccc;
+    color: #000000;
+    border: none;
+    width: 50%;  /* Not full width */
+    margin: auto;  /* Centered */
   }
   
