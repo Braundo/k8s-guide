@@ -1,0 +1,51 @@
+/* Ubuntu Font */
+body {
+    font-family: 'Ubuntu', sans-serif;
+  }
+  
+  /* Material UI Colors */
+  body.dark-mode {
+    background-color: #424242;
+    color: #E0E0E0;
+  }
+  
+  body.light-mode {
+    background-color: #FAFAFA;
+    color: #212121;
+  }
+  
+  /* Circular Buttons */
+  .circular-button {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    background-color: #1976D2;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 50px;
+  }
+  
+  .bottom-right {
+    bottom: 20px;
+    right: 20px;
+  }
+  
+  .bottom-left {
+    bottom: 20px;
+    left: 20px;
+  }
+  
+  /* Side Navigation */
+  #sideNav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100%;
+    background-color: #333;
+    color: white;
+    padding: 20px;
+  }
+  
