@@ -18,4 +18,8 @@ document.addEventListener("DOMContentLoaded", function() {
   
     // TODO: Add search functionality
   });
+
+// Default to dark mode
+document.body.classList.add("dark-mode");
+
   
