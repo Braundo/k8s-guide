@@ -1,7 +1,9 @@
 /* Ubuntu Font */
 body {
     font-family: 'Ubuntu', sans-serif;
+    margin-left: 220px;
   }
+
   
   /* Material UI Colors */
   body.dark-mode {
@@ -26,6 +28,11 @@ body {
     text-align: center;
     vertical-align: middle;
     line-height: 50px;
+  }
+  .circular-button span {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
   }
   
   .bottom-right {
