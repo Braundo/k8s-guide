@@ -18,12 +18,6 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    // Make sidebar sections collapsible
-    const collapsibles = document.querySelectorAll('.collapsible .toggle');
-  collapsibles.forEach((toggle) => {
-    toggle.addEventListener('click', function() {
-      this.parentElement.classList.toggle('active');
-  
   
     // Scroll to top
     scrollTopButton.addEventListener("click", function() {
@@ -36,4 +30,16 @@ document.addEventListener("DOMContentLoaded", function() {
 // Default to dark mode
 document.body.classList.add("dark-mode");
 
+function toggleCollapse(id) {
+    const element = document.getElementById(id);
+    const triangle = element.previousElementSibling.querySelector('.triangle');
+    
+    if (element.style.display === "none" || element.style.display === "") {
+      element.style.display = "block";
+      triangle.style.transform = "rotate(90deg)"; // Rotate triangle
+    } else {
+      element.style.display = "none";
+      triangle.style.transform = "rotate(0deg)"; // Reset rotation
+    }
+  }
   

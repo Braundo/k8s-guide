@@ -22,40 +22,29 @@
   </header>
   <br>
 
-  <nav id="sideNav">
-    <ul>
-      <li class="collapsible">
-        <a href="#" class="toggle">Architecture</a>
-        <ul class="nested">
-          <li><a href="#cloud-controller-manager">Cloud Controller Manager</a></li>
-          <li><a href="#container-runtime-interface">Container Runtime Interface (CRI)</a></li>
-          <li><a href="#controllers">Controllers</a></li>
-          <li><a href="#garbage-collection">Garbage Collection</a></li>
-          <li><a href="#leases">Leases</a></li>
-          <li><a href="#mixed-version-proxy">Mixed Version Proxy</a></li>
-          <li><a href="#node-communication">Node Communication</a></li>
-          <li><a href="#nodes">Nodes</a></li>
-          <li><a href="#cgroup-v2">cgroup v2</a></li>
-        </ul>
-      </li>
-      <li class="collapsible">
-        <a href="#" class="toggle">Cluster Administration</a>
-        <ul class="nested">
-          <li><a href="#api-priority-and-fairness">API Priority and Fairness</a></li>
-          <li><a href="#certificates">Certificates</a></li>
-          <li><a href="#cluster-networking">Cluster Networking</a></li>
-          <li><a href="#installing-addons">Installing Addons</a></li>
-          <li><a href="#logging-architecture">Logging Architecture</a></li>
-          <li><a href="#managing-resources">Managing Resources</a></li>
-          <li><a href="#metrics-for-k8s-system-components">Metrics For K8s System Components</a></li>
-          <li><a href="#proxies-in-kubernetes">Proxies in Kubernetes</a></li>
-          <li><a href="#system-logs">System Logs</a></li>
-          <li><a href="#traces-for-k8s-system-components">Traces for K8s System Components</a></li>
-        </ul>
-      </li>
-      <!-- ... (continue for each top-level section and its sub-sections) ... -->
-    </ul>
-  </nav>
+  <div id="sidebar">
+    <div class="sidebar-item">
+      <div class="sidebar-header" onclick="toggleCollapse('section1')">
+        <span class="triangle">&#9654;</span> <!-- Triangle character -->
+        Section 1
+      </div>
+      <ul id="section1" class="sidebar-content">
+        <li>Item 1.1</li>
+        <li>Item 1.2</li>
+      </ul>
+    </div>
+    <div class="sidebar-item">
+      <div class="sidebar-header" onclick="toggleCollapse('section2')">
+        <span class="triangle">&#9654;</span> <!-- Triangle character -->
+        Section 2
+      </div>
+      <ul id="section2" class="sidebar-content">
+        <li>Item 2.1</li>
+        <li>Item 2.2</li>
+      </ul>
+    </div>
+  </div>
+  
   
 
   <main><br>

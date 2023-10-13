@@ -50,40 +50,50 @@ body {
   }
   
   /* Side Navigation */
-  #sideNav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 250px;
-    height: 100%;
-    background-color: #333;
-    color: white;
-    padding: 20px;
-    overflow-y: auto;
+  #sidebar {
+    width: 200px;
+    height: 100%; /* Take up the full height of the viewport */
+    position: fixed; /* Fix position */
+    top: 0; /* Align to the top */
+    left: 0; /* Align to the left */
+    overflow-y: auto; /* Add scroll if content overflows */
+    background-color: #363636; /* Optional background color */
+  }
+  
+  .sidebar-item {
+    border-bottom: none;
+  }
+  
+  .sidebar-header {
+    cursor: pointer;
+    margin-top: 10px;
+    padding: 5px;
+    background-color: #363636;
+    font-weight: bold;
+  }
+  
+  .triangle {
+    display: inline-block;
+    transition: transform 0.3s ease;
+    font-size: 12px; /* Smaller font size for the triangle */
+  }
+  
+  .sidebar-content li {
+    padding-left: 35px; /* Indentation for sub-items */
   }
   
   
-  #sideNav ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  #sideNav ul li {
-    padding: 2px;  /* Reduced padding */
-  }
-  
-  #sideNav ul li a:hover {
-    background-color: transparent;  /* No background */
-    color: #326DE6;  /* Text turns blue on hover */
+  .sidebar-content {
+    display: none;
+    list-style: none;
+    padding-left: 40px; /* Indentation */
+    margin-top: 0;  /* Remove top margin */
+    margin-bottom: 0;  /* Remove bottom margin */
   }
   
   
-  #sideNav ul li a {
-    color: #E0E0E0;
-    text-decoration: none;
-    display: block;
-  }
   
+  /* Circle button style */
   .circular-button:hover {
     background-color: #4a8df8;  /* Lighter blue */
   }
@@ -113,12 +123,5 @@ body {
     height: 1.0em;  /* Adjust the size to match the header text */
     vertical-align: middle;  /* Align with the middle of the text */
     margin-right: 10px;  /* Add some space between the logo and the text */
-  }
-  
-  .nested {
-    display: none;
-  }
-  .active .nested {
-    display: block;
   }
   
