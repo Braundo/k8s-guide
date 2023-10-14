@@ -1,0 +1,181 @@
+<div id="resizable-sidebar">
+    <div id="sidebar">
+      <div class="sidebar-item">
+        <div class="sidebar-header" onclick="toggleCollapse('section1')">
+          <span class="triangle">&#9654;</span> <!-- Triangle character -->
+          Architecture
+        </div>
+        <ul id="section1" class="sidebar-content">
+          <li><a href="/docs/architecture/cloud-controller-manager.html">Cloud Controller Manager</a></li>
+          <li><a href="/docs/architecture/container-runtime-interface.html">Container Runtime Interface (CRI)</a></li>
+          <li><a href="/docs/architecture/controllers.html">Controllers</a></li>
+          <li><a href="/docs/architecture/garbage-collection.html">Garbage Collection</a></li>
+          <li><a href="/docs/architecture/leases.html">Leases</a></li>
+          <li><a href="/docs/architecture/mixed-version-proxy.html">Mixed Version Proxy</a></li>
+          <li><a href="/docs/architecture/node-communication.html">Node Communication</a></li>
+          <li><a href="/docs/architecture/nodes.html">Nodes</a></li>
+          <li><a href="/docs/architecture/cgroup-v2.html">cgroup v2</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-item">
+        <div class="sidebar-header" onclick="toggleCollapse('section2')">
+          <span class="triangle">&#9654;</span> <!-- Triangle character -->
+          Cluster Administration
+        </div>
+        <ul id="section2" class="sidebar-content">
+          <li><a href="/docs/cluster-administration/api-priority-fairness.html">API Priority</a></li>
+          <li><a href="/docs/cluster-administration/certificates.html">Certificates</a></li>
+          <li><a href="/docs/cluster-administration/cluster-networking.html">Cluster Networking</a></li>
+          <li><a href="/docs/cluster-administration/installing-addons.html">Installing Addons</a></li>
+          <li><a href="/docs/cluster-administration/logging-architecture.html">Logging Architecture</a></li>
+          <li><a href="/docs/cluster-administration/managing-resources.html">Managing Resources</a></li>
+          <li><a href="/docs/cluster-administration/metrics-for-k8s-system-components.html">Metrics for K8s</a></li>
+          <li><a href="/docs/cluster-administration/proxies-in-kubernetes.html">Proxies in Kubernetes</a></li>
+          <li><a href="/docs/cluster-administration/system-logs.html">System Logs</a></li>
+          <li><a href="/docs/cluster-administration/traces-for-k8s-system-components.html">Traces for K8s</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-item">
+          <div class="sidebar-header" onclick="toggleCollapse('section3')">
+            <span class="triangle">&#9654;</span> <!-- Triangle character -->
+            Configuration
+          </div>
+          <ul id="section3" class="sidebar-content">
+            <li><a href="/docs/">Best Practices</a></li>
+            <li><a href="/docs/">ConfigMaps</a></li>
+            <li><a href="/docs/">Organizing Cluster Access</a></li>
+            <li><a href="/docs/">Resource Management</a></li>
+            <li><a href="/docs/">Secretss</a></li>
+          </ul>
+        </div>
+        <div class="sidebar-item">
+          <div class="sidebar-header" onclick="toggleCollapse('section4')">
+            <span class="triangle">&#9654;</span> <!-- Triangle character -->
+            Containers
+          </div>
+          <ul id="section4" class="sidebar-content">
+            <li><a href="/docs/">Container Environment</a></li>
+            <li><a href="/docs/">Container Lifecycle Hooks</a></li>
+            <li><a href="/docs/">Images</a></li>
+            <li><a href="/docs/">Runtime Class</a></li>
+          </ul>
+        </div>
+        <div class="sidebar-item">
+          <div class="sidebar-header" onclick="toggleCollapse('section5')">
+            <span class="triangle">&#9654;</span> <!-- Triangle character -->
+            Pods
+          </div>
+          <ul id="section5" class="sidebar-content">
+            <li><a href="/docs/">Disruptions</a></li>
+            <li><a href="/docs/">Downward API</a></li>
+            <li><a href="/docs/">Ephemeral Containers</a></li>
+            <li><a href="/docs/">Init Containers</a></li>
+            <li><a href="/docs/">Pod Lifecycle</a></li>
+            <li><a href="/docs/">QoS Classes</a></li>
+            <li><a href="/docs/">User Namespaces</a></li>
+          </ul>
+        </div>
+        <div class="sidebar-item">
+          <div class="sidebar-header" onclick="toggleCollapse('section6')">
+            <span class="triangle">&#9654;</span> <!-- Triangle character -->
+            Policies
+          </div>
+          <ul id="section6" class="sidebar-content">
+            <li><a href="/docs/">Limit Ranges</a></li>
+            <li><a href="/docs/">Node Resource Managers</a></li>
+            <li><a href="/docs/">Process ID Limits & Reservations</a></li>
+            <li><a href="/docs/">Resource Quotas</a></li>
+          </ul>
+        </div>
+        <div class="sidebar-item">
+          <div class="sidebar-header" onclick="toggleCollapse('section7')">
+            <span class="triangle">&#9654;</span> <!-- Triangle character -->
+            Scheduling
+          </div>
+          <ul id="section7" class="sidebar-content">
+            <li><a href="/docs/">API-initiated Eviction</a></li>
+            <li><a href="/docs/">Assigning Pods to Nodes</a></li>
+            <li><a href="/docs/">Dynamic Resource Allocation</a></li>
+            <li><a href="/docs/">Kubernetes Scheduler</a></li>
+            <li><a href="/docs/">Node-Pressure Eviction</a></li>
+            <li><a href="/docs/">Pod Overhead</a></li>
+            <li><a href="/docs/">Pod Priority and Preemption</a></li>
+            <li><a href="/docs/">Pod Scheduling Readiness</a></li>
+            <li><a href="/docs/">Pod Topology Spread Constraints</a></li>
+            <li><a href="/docs/">Resource Bin Packing</a></li>
+            <li><a href="/docs/">Scheduler Performance Tuning</a></li>
+            <li><a href="/docs/">Scheduling Framework</a></li>
+            <li><a href="/docs/">Taints and Tolerations</a></li>
+          </ul>
+        </div>
+        <div class="sidebar-item">
+          <div class="sidebar-header" onclick="toggleCollapse('section8')">
+            <span class="triangle">&#9654;</span> <!-- Triangle character -->
+            Security
+          </div>
+          <ul id="section8" class="sidebar-content">
+            <li><a href="/docs/">Controlling Access to K8s API</a></li>
+            <li><a href="/docs/">Hardening Guide - Auth Mechanisms</a></li>
+            <li><a href="/docs/">K8s API Server Bypass</a></li>
+            <li><a href="/docs/">K8s Secrets Good Pratices</a></li>
+            <li><a href="/docs/">Multi-tenancy</a></li>
+            <li><a href="/docs/">Cloud Native Security</a></li>
+            <li><a href="/docs/">Pod Security Admission</a></li>
+            <li><a href="/docs/">RBAC Good Practices</a></li>
+            <li><a href="/docs/">Security Checklist</a></li>
+            <li><a href="/docs/">Service Accounts</a></li>
+          </ul>
+        </div>
+        <div class="sidebar-item">
+          <div class="sidebar-header" onclick="toggleCollapse('section9')">
+            <span class="triangle">&#9654;</span> <!-- Triangle character -->
+            Services & Networking
+          </div>
+          <ul id="section9" class="sidebar-content">
+            <li><a href="/docs/">DNS</a></li>
+            <li><a href="/docs/">Endpoint Slices</a></li>
+            <li><a href="/docs/">IPv4/IPv6</a></li>
+            <li><a href="/docs/">Ingress</a></li>
+            <li><a href="/docs/">Network Policies</a></li>
+            <li><a href="/docs/">Services</a></li>
+            <li><a href="/docs/">Service Networking</a></li>
+            <li><a href="/docs/">Topology-Aware Routing</a></li>
+          </ul>
+        </div>
+        <div class="sidebar-item">
+          <div class="sidebar-header" onclick="toggleCollapse('section10')">
+            <span class="triangle">&#9654;</span> <!-- Triangle character -->
+            Storage
+          </div>
+          <ul id="section10" class="sidebar-content">
+            <li><a href="/docs/">CSI Volume Cloning</a></li>
+            <li><a href="/docs/">Dynamic Volume Provisioning</a></li>
+            <li><a href="/docs/">Ephemeral Volumes</a></li>
+            <li><a href="/docs/">Node-Specific Volume Limits</a></li>
+            <li><a href="/docs/">Persistent Volumes</a></li>
+            <li><a href="/docs/">Projected Volumes</a></li>
+            <li><a href="/docs/">Storage Capacity</a></li>
+            <li><a href="/docs/">Storage Classes</a></li>
+            <li><a href="/docs/">Volume Health Monitoring</a></li>
+            <li><a href="/docs/">Volume Snapshot Classes</a></li>
+            <li><a href="/docs/">Volume Snapshots</a></li>
+            <li><a href="/docs/">Volumes</a></li>
+          </ul>
+        </div>
+        <div class="sidebar-item">
+          <div class="sidebar-header" onclick="toggleCollapse('section11')">
+            <span class="triangle">&#9654;</span> <!-- Triangle character -->
+            Workloads
+          </div>
+          <ul id="section11" class="sidebar-content">
+            <li><a href="/docs/">DaemonSets</a></li>
+            <li><a href="/docs/">Deployments</a></li>
+            <li><a href="/docs/">Jobs</a></li>
+            <li><a href="/docs/">ReplicaSet</a></li>
+            <li><a href="/docs/">ReplicationController</a></li>
+            <li><a href="/docs/">Workload Resources</a></li>
+          </ul>
+        </div>
+    </div>
+    <div id="resize-handle"></div>
+  </div>

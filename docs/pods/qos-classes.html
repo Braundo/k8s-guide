@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PAGE TITLE</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body class="dark-mode">
+  <header><center>
+    <h1><img src="../../assets/logo.png" alt="Kubernetes Logo" id="k8s-logo">
+        K8s Guide
+    </h1>
+    <h6><i>TLDR for official Kubernetes documentation</i></h6>
+    <br>
+<div style="text-align: center;">
+    <input type="text" id="searchBar" placeholder="Search...">
+</div>
+</center>
+  </header>
+  <br>
+  <h3>PAGE TITLE</h3>
+
+  
+  <div id="sidebar-placeholder"></div>  
+
+  <main><br>
+    Placeholder content
+  </main>
+
+  <button id="darkModeToggle" class="circular-button bottom-right">
+    ☀
+  </button>
+
+  <button id="scrollTop" class="circular-button bottom-left">
+    &#9650;
+  </button>
+<script>
+  $(document).ready(function() {
+    $("#sidebar-placeholder").load("/path/to/sidebar.html");
+  });
+</script>
+
+  <script src="../../js/script.js"></script>
+  <script>
+    $(document).ready(function() {
+      $("#sidebar-placeholder").load("/sidebar.html");
+    });
+  </script>
+  
+</body>
+</html>
