@@ -1,7 +1,8 @@
 /* Ubuntu Font */
 body {
     font-family: 'Ubuntu', sans-serif;
-    margin-left: 250px;
+    margin-left: 300px;
+    font-size: 18px;
   }
 
   
@@ -51,7 +52,7 @@ body {
   
   /* Side Navigation */
   #sidebar {
-    width: 230px;
+    width: 280px;
     height: 100%; /* Take up the full height of the viewport */
     position: fixed; /* Fix position */
     top: 0; /* Align to the top */
@@ -164,5 +165,9 @@ body {
     position: absolute;
     top: 0;
     right: 0;
+  }
+  
+  ul + h5 {
+    margin-top: 50px !important;
   }
   
