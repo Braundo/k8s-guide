@@ -91,22 +91,6 @@ nav section h2 {
   font-weight: normal; /* Set font weight to normal */
 }
 
-nav section h2:before {
-  content: "▶";
-  position: absolute;
-  left: 10px; /* Adjusted to move triangles right */
-  transition: transform 0.3s;
-  font-size: 12px; /* Reduced font size to make triangles smaller */
-}
-
-nav section h2.expanded:before {
-  transform: rotate(90deg);
-}
-
-nav section h2.expanded:hover:before {
-  transform: rotate(75deg); /* Slight rotation to the right on hover */
-}
-
 nav section h2:hover {
   color: #326de6;
 }
@@ -116,9 +100,14 @@ nav section h2:hover:before {
 }
 
 nav section ul {
-  list-style-type: none;
+  list-style-type: disc;
+  margin-left: 50px;
   padding-left: 20px;
   display: none;
+}
+
+nav section ul li {
+  margin-bottom: 1px; /* Space between bullet points */
 }
 
 nav section ul li a {
@@ -206,6 +195,11 @@ nav section:first-of-type {
   transition: opacity 0.3s;
 }
 
+/* Hamburger Menu Container */
+#hamburger-container {
+  display: none; /* Hide by default */
+}
+
 /* Mobile Styles */
 @media (max-width: 768px) {
   /* Hide sidebar initially on mobile */
@@ -213,27 +207,49 @@ nav section:first-of-type {
     transform: translateX(-100%);
   }
 
+  /* Adjust header font size */
+  header h1 {
+    font-size: 1.5em; /* Adjust as necessary */
+  }
+
   /* Show hamburger menu on mobile */
   #hamburger-menu {
     display: block;
+  }
+  /* Show hamburger menu container on mobile */
+  #hamburger-container {
+    display: block;
+    text-align: center; /* Center the hamburger menu */
+    padding-top: 90px; /* Space below the header */
   }
 
   /* Sidebar visible state on mobile */
   nav#sidebar.open {
     transform: translateX(0);
   }
+
+  /* Adjust header font size */
+  header h1 {
+    font-size: 1.5em; /* Adjust as necessary */
+  }
+}
+
+.material-icons {
+  font-size: 24px; /* Adjust size as necessary */
+  vertical-align: middle; /* Align with text */
 }
 
 /* Mobile Menu */
 #mobile-menu {
   position: fixed;
-  padding-top: 80px;
+  padding-top: 120px;
   top: 60px; /* Adjusted to accommodate fixed header */
   left: 0;
   width: 100%;
   background-color: #363636;
   color: #ffffff;
   display: none; /* Hidden by default */
+  max-height: 100vh;
   overflow-y: auto;
   z-index: 999; /* Ensure it's on top of other elements but below the hamburger menu */
 }
@@ -258,25 +274,6 @@ nav section h2,
   font-weight: normal; /* Set font weight to normal */
 }
 
-nav section h2:before,
-#mobile-menu section h2:before {
-  content: "▶";
-  position: absolute;
-  left: 10px; /* Adjusted to move triangles right */
-  transition: transform 0.3s;
-  font-size: 12px; /* Reduced font size to make triangles smaller */
-}
-
-nav section h2.expanded:before,
-#mobile-menu section h2.expanded:before {
-  transform: rotate(90deg);
-}
-
-nav section h2.expanded:hover:before,
-#mobile-menu section h2.expanded:hover:before {
-  transform: rotate(75deg); /* Slight rotation to the right on hover */
-}
-
 nav section h2:hover,
 #mobile-menu section h2:hover {
   color: #326de6;
@@ -284,7 +281,8 @@ nav section h2:hover,
 
 nav section ul,
 #mobile-menu section ul {
-  list-style-type: none;
+  list-style-type: disc;
+  margin-left: 50px;
   padding-left: 20px;
   display: none;
 }

@@ -5,9 +5,9 @@ function toggleSection(header) {
   const isExpanded = list.style.display === "block";
   list.style.display = isExpanded ? "none" : "block";
   if (isExpanded) {
-    header.classList.remove("expanded");
+    header.querySelector(".material-icons").textContent = "chevron_right";
   } else {
-    header.classList.add("expanded");
+    header.querySelector(".material-icons").textContent = "expand_more";
   }
 }
 
@@ -16,7 +16,9 @@ function toggleMode() {
   const body = document.body;
   const modeToggleBtn = document.getElementById("mode-toggle");
   const isDarkMode = body.classList.toggle("light-mode");
-  modeToggleBtn.innerHTML = isDarkMode ? "☾" : "☀";
+  modeToggleBtn.innerHTML = isDarkMode
+    ? '<span class="material-icons">nights_stay</span>'
+    : '<span class="material-icons">wb_sunny</span>';
 }
 
 // Function to handle search input
