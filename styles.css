@@ -74,7 +74,7 @@ nav {
   padding-top: 80px;
   top: 0;
   left: 0;
-  width: 250px;
+  width: 300px;
   height: 100%;
   background-color: #363636;
   color: #ffffff;
@@ -215,14 +215,33 @@ nav section:first-of-type {
     overflow-y: auto;
   }
 
+  /* Header */
+  header {
+    justify-content: left;
+    padding-left: 0px;
+  }
+
+  .header-content {
+    justify-content: flex-start;
+    text-align: left;
+  }
+
   /* Adjust header font size */
   header h1 {
     font-size: 1.5em; /* Adjust as necessary */
+    margin-left: 0px;
   }
 
   /* Show hamburger menu on mobile */
   #hamburger-menu {
     display: block;
+  }
+
+  #search-input {
+    border-radius: 50px;
+    padding: 10px;
+    width: 100px;
+    border: 1px solid #ccc;
   }
 
   /* Show hamburger menu container on mobile */
