@@ -20,6 +20,14 @@ html {
   height: 100%;
 }
 
+main {
+  padding: 20px;
+  margin-left: 300px;
+  margin-top: 175px;
+  position: relative;
+  z-index: 1;
+}
+
 /* Dark Mode */
 body.dark-mode {
   background-color: #424242;
@@ -47,6 +55,20 @@ header {
   z-index: 1000;
 }
 
+/* Adjust header font size */
+header h1 {
+  font-size: 4em; /* Adjust as necessary */
+  margin-left: 0px;
+}
+
+/* Adjust header font size */
+header h3 {
+  font-size: 1.5em; /* Adjust as necessary */
+  margin-left: 0px;
+  font-style: italic;
+  font-weight: 350;
+}
+
 .header-content {
   display: flex;
   flex-direction: column;
@@ -72,7 +94,7 @@ header {
 /* Sidebar */
 nav {
   position: fixed;
-  padding-top: 80px;
+  padding-top: 100px;
   top: 0;
   left: 0;
   width: 300px;
@@ -146,6 +168,7 @@ nav section:first-of-type {
   width: 50px; /* Set width */
   height: 50px; /* Set height */
   font-size: 24px; /* Adjust icon size */
+  z-index: 1;
 }
 
 /* Scroll-to-Top Button */
@@ -162,6 +185,7 @@ nav section:first-of-type {
   width: 50px; /* Set width */
   height: 50px; /* Set height */
   font-size: 24px; /* Adjust icon size */
+  z-index: 1;
 }
 
 /* Hamburger Menu Button */
@@ -238,6 +262,14 @@ nav section:first-of-type {
     margin-left: 0px;
     font-style: italic;
     font-weight: 425;
+  }
+
+  main {
+    padding: 50px;
+    margin-left: 25px;
+    margin-top: 10px;
+    position: relative;
+    z-index: 1;
   }
 
   /* Show hamburger menu on mobile */
@@ -333,4 +365,15 @@ nav section ul li a,
   height: 50px; /* Adjust as needed */
   width: auto; /* Maintain aspect ratio */
   margin-right: 20px; /* Space between logo and title */
+}
+
+/* Desktop Styles */
+@media (min-width: 769px) {
+  nav h2 {
+    font-size: 20px !important; /* Adjust this value to your preference */
+  }
+
+  nav li {
+    font-size: 16px; /* Adjust this value to your preference */
+  }
 }

@@ -9,46 +9,126 @@
       href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
       rel="stylesheet"
     />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
   </head>
   <body class="dark-mode" onload="loadSidebar()">
     <!-- Header -->
     <header>
       <div class="header-content">
-        <a href="../../index.html">
-          <img src="../../assets/logo.png" alt="Logo" id="logo" />
-        </a>
-        <h1>K8s Guide</h1>
-      </div>
-      <!-- Search Bar -->
-      <div id="search-container">
-        <input
-          type="text"
-          id="search-input"
-          placeholder="Search..."
-          oninput="searchFunction()"
-        />
-        <div id="search-dropdown" class="dropdown-content"></div>
-      </div>
+        <div class="title-and-subheader">
+            <div class="title-container">
+                <a href="index.html">
+                    <img src="../../assets/logo.png" alt="Logo" id="logo" />
+                </a>
+                <h1>K8s Guide</h1>
+            </div>
+            <h3 class="sub-header">Your TLDR guide to Kubernetes documentation</h3>
+        </div>
     </header>
-
     <div id="hamburger-container">
       <button id="hamburger-menu">☰</button>
     </div>
 
     <!-- Sidebar -->
     <nav id="sidebar"></nav>
-
     <!-- Main Content -->
     <main>
-      <!-- Your subpage content goes here -->
+      <h1>Nodes</h1>
+      <br><br>
+      <h3>What are nodes?</h3>
+
+- Worker machines in a Kubernetes cluster.
+- Run containerized applications managed by the Control Plane.
+- Equipped with a Kubelet agent that communicates with the master components.
+
+<h3>Node Management</h3>
+
+- Nodes are managed by master components, primarily the Control Plane.
+- Operations include adding nodes, updating node software, and decommissioning nodes.
+
+<h3>Node Name Uniqueness</h3>
+
+- Each node must have a unique identifier within the cluster.
+- Ensures accurate scheduling and task allocation.
+
+<h3>Self-registration of Nodes</h3>
+
+- Nodes can automatically register themselves upon joining the cluster.
+- Facilitates dynamic scaling and resource allocation.
+
+<h3>Manual Node Administration</h3>
+
+- Admins can manually add or remove nodes using the Kubernetes API or CLI tools.
+- Useful for fine-grained control over the cluster.
+
+<h3>Node Status</h3>
+
+- Provides detailed information about the node, including IP addresses, conditions (Ready, OutOfDisk, etc.), and resource capacity.
+- Updated periodically by the node's Kubelet.
+
+<h3>Node Heartbeats</h3>
+
+- Regular signals sent from the Kubelet to the master to indicate the node's health.
+- Failure to send a heartbeat within a certain time leads to node eviction.
+
+<h3>Node Controller</h3>
+
+- A Control Plane component responsible for monitoring nodes.
+- Handles node failures and triggers pod evictions if necessary.
+
+<h3>Rate Limits on Eviction</h3>
+
+- Configurable settings that control the speed at which pods are evicted from unhealthy nodes.
+- Helps to avoid overwhelming the remaining healthy nodes.
+
+<h3>Resource Capacity Tracking</h3>
+
+- Nodes report available resources like CPU, memory, and storage for better scheduling.
+- Helps the scheduler in placing pods where resources are available.
+
+<h3>Node Topology</h3>
+
+- Information about the physical or virtual layout of nodes in terms of regions, zones, and other cloud-provider specific metadata.
+- Used for optimizing workload distribution and high availability.
+
+<h3>Graceful Node Shutdown</h3>
+
+- A process that safely evicts pods before shutting down or rebooting a node.
+- Ensures minimal impact on running applications and services.
+
+<h3>Pod Priority based Graceful Node Shutdown</h3>
+
+- During a graceful shutdown, pods with higher priority are evicted last.
+- Ensures that critical applications continue to run for as long as possible.
+
+<h3>Non-graceful Node Shutdown Handling
+
+- In cases of abrupt failures, all pods are immediately terminated.
+- Risks include data loss and potential service disruption.
+
+<h3>Swap Memory Management
+
+- Kubernetes allows for the enabling or disabling of swap memory usage on nodes.
+- Swap usage can impact application performance and pod scheduling decisions.
     </main>
-
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
     <!-- Dark/Light Mode Toggle -->
-    <button id="mode-toggle" onclick="toggleMode()"></button>
-
+    <button id="mode-toggle" onclick="toggleMode()">
+      <span class="material-icons">brightness_7</span>
+    </button>
     <!-- Scroll-to-Top Button -->
-    <button id="scroll-top" onclick="scrollToTop()">▲</button>
+    <button id="scroll-top" onclick="scrollToTop()">
+      <span class="material-icons">arrow_upward</span>
+    </button>
 
+    <!-- Mobile Menu -->
+    <div id="mobile-menu"></div>
     <script src="../../script.js"></script>
   </body>
 </html>
