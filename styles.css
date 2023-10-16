@@ -156,7 +156,7 @@ nav section:first-of-type {
 
 /* Dark/Light Mode Toggle */
 #mode-toggle {
-  position: fixed;
+  position: absolute;
   bottom: 20px;
   right: 20px;
   background-color: #326de6;
@@ -188,6 +188,12 @@ nav section:first-of-type {
   z-index: 1;
 }
 
+#mode-toggle {
+  bottom: auto;
+  top: 150px; /* Adjust this value to position the toggle under the header */
+  right: 20px;
+}
+
 /* Hamburger Menu Button */
 #hamburger-menu {
   position: relative;
@@ -201,7 +207,7 @@ nav section:first-of-type {
   cursor: pointer;
   display: none; /* Hide by default */
   font-size: 24px; /* Adjust size of hamburger icon */
-  z-index: 1000; /* Ensure it's on top of other elements */
+  z-index: 999; /* Ensure it's on top of other elements */
   width: 50px; /* Set a fixed width */
   height: 50px; /* Set a fixed height */
   align-items: center; /* Center the icon */
@@ -243,11 +249,13 @@ nav section:first-of-type {
   header {
     justify-content: left;
     padding-left: 0px;
+    z-index: 1000;
   }
 
   .header-content {
     justify-content: flex-start;
     text-align: left;
+    z-index: 1000;
   }
 
   /* Adjust header font size */
@@ -265,8 +273,8 @@ nav section:first-of-type {
   }
 
   main {
-    padding: 50px;
-    margin-left: 25px;
+    padding: 25px;
+    margin-left: 0px;
     margin-top: 10px;
     position: relative;
     z-index: 1;
@@ -290,6 +298,13 @@ nav section:first-of-type {
   }
 }
 
+#scroll-top {
+  left: 50%; /* Centers the left edge of the button to the middle of the page */
+  transform: translateX(
+    -50%
+  ); /* Shifts the button back to center it completely */
+}
+
 .material-icons {
   font-size: 24px; /* Adjust size as necessary */
   vertical-align: middle; /* Align with text */
@@ -307,7 +322,7 @@ nav section:first-of-type {
   display: none; /* Hidden by default */
   max-height: 70vh;
   overflow-y: scroll;
-  z-index: 999; /* Ensure it's on top of other elements but below the hamburger menu */
+  z-index: 998; /* Ensure it's on top of other elements but below the hamburger menu */
 }
 
 #mobile-menu.open {
