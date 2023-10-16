@@ -38,7 +38,7 @@
     <main>
 <h1>Controllers</h1>
 
-<h3>Control Loop</h3>
+<br><br><h3>Control Loop</h3>
 <li>A non-terminating loop that regulates the state of a system.</li>
 <li>Example: A thermostat in a room that adjusts the temperature to reach the desired state.</li>
 
@@ -46,23 +46,23 @@
 <li>Tracks at least one Kubernetes resource type.</li>
 <li>Responsible for making the current state align with the desired state specified in the resource's `spec` field.</li>
 
-<h3>Control via API Server</h3>
+<br><br><h3>Control via API Server</h3>
 <li>Controllers interact with the cluster API server to manage state.</li>
 <li>Example: The Job controller creates or removes Pods via the API server to complete a task.</li>
 
-<h3>Direct Control</h3>
+<br><br><h3>Direct Control</h3>
 <li>Some controllers interact with external systems to achieve the desired state.</li>
 <li>Example: A controller that scales the number of nodes in a cluster by interacting with cloud provider APIs.</li>
 
-<h3>Desired vs. Current State</h3>
+<br><br><h3>Desired vs. Current State</h3>
 <li>Kubernetes aims for a cloud-native approach, handling constant change.</li>
 <li>Controllers work to bring the current state closer to the desired state, even if the cluster is never in a stable state.</li>
 
-<h3>Design Principles</h3>
+<br><br><h3>Design Principles</h3>
 <li>Kubernetes uses multiple controllers for different aspects of cluster state.</li>
 <li>Allows for resilience, as one controller can take over if another fails.</li>
 
-<h3>Ways of Running Controllers</h3>
+<br><br><h3>Ways of Running Controllers</h3>
 <li>Built-in controllers run inside the kube-controller-manager.</li>
 <li>Custom controllers can run either inside or outside the Kubernetes cluster.</li>
     </main>
