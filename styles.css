@@ -274,7 +274,7 @@ nav section:first-of-type {
   color: #ffffff;
   display: none; /* Hidden by default */
   max-height: 100vh;
-  overflow-y: auto;
+  overflow-y: scroll;
   z-index: 999; /* Ensure it's on top of other elements but below the hamburger menu */
 }
 
