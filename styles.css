@@ -341,7 +341,7 @@ nav section h2,
   padding-left: 40px; /* Adjusted padding-left to move text and triangles to the right */
   cursor: pointer;
   position: relative;
-  font-size: 14px; /* Reduced font size */
+  font-size: 18px; /* Reduced font size */
   font-weight: normal; /* Set font weight to normal */
 }
 
