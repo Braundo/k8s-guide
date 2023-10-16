@@ -67,3 +67,27 @@ if (hamburgerMenu) {
 
 // Load sidebar on page load
 window.onload = loadSidebar;
+
+let lastScrollTop = 0;
+
+// Function to show or hide the scroll button
+function toggleScrollButton(scrollingUp) {
+  const scrollTopBtn = document.getElementById("scroll-top");
+  if (scrollingUp) {
+    scrollTopBtn.classList.remove("hidden");
+  } else {
+    scrollTopBtn.classList.add("hidden");
+  }
+}
+
+// Listen for scroll events
+window.addEventListener("scroll", () => {
+  // Get the current scroll position
+  const st = window.pageYOffset || document.documentElement.scrollTop;
+  // Determine if scrolling up or down
+  const scrollingUp = st < lastScrollTop;
+  // Update the last scroll position
+  lastScrollTop = st <= 0 ? 0 : st;
+  // Toggle the scroll button based on scroll direction
+  toggleScrollButton(scrollingUp);
+});
