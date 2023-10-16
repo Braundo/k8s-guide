@@ -17,30 +17,8 @@ function toggleMode() {
   const modeToggleBtn = document.getElementById("mode-toggle");
   const isDarkMode = body.classList.toggle("light-mode");
   modeToggleBtn.innerHTML = isDarkMode
-    ? '<span class="material-icons">nights_stay</span>'
-    : '<span class="material-icons">wb_sunny</span>';
-}
-
-// Function to handle search input
-function searchFunction() {
-  const input = document.getElementById("search-input");
-  const filter = input.value.toLowerCase();
-  const dropdown = document.getElementById("search-dropdown");
-  dropdown.innerHTML = ""; // Clear previous search results
-  if (!filter) {
-    dropdown.style.display = "none";
-    return;
-  }
-  // For simplicity, search is done on the section headers in the sidebar
-  const sections = document.querySelectorAll("#sidebar section h2");
-  sections.forEach((section) => {
-    if (section.innerText.toLowerCase().includes(filter)) {
-      const item = document.createElement("div");
-      item.innerText = section.innerText;
-      dropdown.appendChild(item);
-    }
-  });
-  dropdown.style.display = "block";
+    ? '<span class="material-icons">nightlight</span>'
+    : '<span class="material-icons">brightness_7</span>';
 }
 
 // Function to scroll to the top of the page

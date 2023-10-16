@@ -47,25 +47,26 @@ header {
   z-index: 1000;
 }
 
-/* Search Bar */
-#search-container {
-  position: relative;
+.header-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-#search-input {
-  border-radius: 50px;
-  padding: 10px;
-  width: 200px;
-  border: 1px solid #ccc;
+.title-and-subheader {
+  text-align: center;
+  width: 100%;
 }
 
-#search-dropdown {
-  position: absolute;
-  width: 200px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: #f9f9f9;
-  display: none;
+.title-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.sub-header {
+  margin-top: 20px; /* Adjust as needed */
 }
 
 /* Sidebar */
@@ -232,23 +233,23 @@ nav section:first-of-type {
     margin-left: 0px;
   }
 
+  /* Adjust header font size */
+  header h3 {
+    font-size: 1em; /* Adjust as necessary */
+    margin-left: 0px;
+    font-style: italic;
+  }
+
   /* Show hamburger menu on mobile */
   #hamburger-menu {
     display: block;
-  }
-
-  #search-input {
-    border-radius: 50px;
-    padding: 10px;
-    width: 100px;
-    border: 1px solid #ccc;
   }
 
   /* Show hamburger menu container on mobile */
   #hamburger-container {
     display: block;
     text-align: center; /* Center the hamburger menu */
-    padding-top: 90px; /* Space below the header */
+    padding-top: 120px; /* Space below the header */
   }
 
   /* Sidebar visible state on mobile */
@@ -265,7 +266,7 @@ nav section:first-of-type {
 /* Mobile Menu */
 #mobile-menu {
   position: fixed;
-  padding-top: 120px;
+  padding-top: 140px;
   top: 60px; /* Adjusted to accommodate fixed header */
   left: 0;
   width: 100%;
