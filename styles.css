@@ -80,7 +80,6 @@ nav {
   background-color: #363636;
   color: #ffffff;
   overflow-y: auto;
-  padding-top: 60px; /* Adjusted to accommodate fixed header */
   transition: transform 0.3s;
 }
 
@@ -273,7 +272,7 @@ nav section:first-of-type {
   background-color: #363636;
   color: #ffffff;
   display: none; /* Hidden by default */
-  max-height: 100vh;
+  max-height: 70vh;
   overflow-y: scroll;
   z-index: 999; /* Ensure it's on top of other elements but below the hamburger menu */
 }
