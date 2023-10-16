@@ -1,53 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Kubernetes Guide</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link rel="stylesheet" href="css/styles.css">
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PAGE TITLE HERE</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
-<body class="dark-mode">
-  <header><center>
-    <h1>
-        <img src="assets/logo.png" alt="Kubernetes Logo" id="k8s-logo">
-        K8s Guide
-    </h1>
-    <h6><i>TLDR for official Kubernetes documentation</i></h6>
-    <br>
-<div style="text-align: center;">
-    <input type="text" id="searchBar" placeholder="Search...">
-</div>
-</center>
-  </header>
-  <br>
-  <div id="sidebar-placeholder"></div>
-  
-  
+<body class="dark-mode" onload="loadSidebar()">
+    <!-- Header -->
+    <header>
+        <h1>PAGE TITLE HERE</h1>
+        <!-- Search Bar -->
+        <div id="search-container">
+            <input type="text" id="search-input" placeholder="Search..." oninput="searchFunction()">
+            <div id="search-dropdown" class="dropdown-content"></div>
+        </div>
+    </header>
 
-  <main><br>
-    This is a work in progress! Content to be added soon!
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    Test!
-  </main>
+    <button id="hamburger-menu">☰</button>
 
-  <button id="darkModeToggle" class="circular-button bottom-right">
-    ☀
-  </button>
+    
 
-  <button id="scrollTop" class="circular-button bottom-left">
-    &#9650;
-  </button>
 
-  <script src="js/script.js"></script>
-  <script>
-    $(document).ready(function() {
-      $("#sidebar-placeholder").load("/sidebar.html");
-    });
-  </script>
+    <!-- Sidebar -->
+    <nav id="sidebar"></nav>
+    <!-- Main Content -->
+    <main>
+        <!-- Your content goes here -->
+    </main>
+    <!-- Dark/Light Mode Toggle -->
+    <button id="mode-toggle" onclick="toggleMode()">☀</button>
+    <!-- Scroll-to-Top Button -->
+    <button id="scroll-top" onclick="scrollToTop()">⇪</button>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu"></div>
+    <script src="script.js"></script>
 </body>
 </html>

@@ -1,0 +1,290 @@
+/* Ubuntu Font */
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: 'Ubuntu', sans-serif;
+    transition: background-color 0.3s;
+}
+
+/* Dark Mode */
+body.dark-mode {
+    background-color: #424242;
+    color: #ffffff;
+}
+
+/* Light Mode */
+body.light-mode {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* Header */
+header {
+    text-align: center;
+    padding: 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    background-color: #363636;
+    color: #ffffff;
+    z-index: 1000;
+}
+
+/* Search Bar */
+#search-container {
+    position: relative;
+}
+
+#search-input {
+    border-radius: 50px;
+    padding: 10px;
+    width: 200px;
+    border: 1px solid #ccc;
+}
+
+#search-dropdown {
+    position: absolute;
+    width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    display: none;
+}
+
+/* Sidebar */
+nav {
+    position: fixed;
+    padding-top: 80px;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #363636;
+    color: #ffffff;
+    overflow-y: auto;
+    padding-top: 60px;  /* Adjusted to accommodate fixed header */
+    transition: transform 0.3s;
+}
+
+/* Sidebar Sections and Links */
+nav section {
+    margin-bottom: 10px;
+}
+
+nav section h2 {
+    padding: 10px;
+    padding-left: 40px;  /* Adjusted padding-left to move text and triangles to the right */
+    cursor: pointer;
+    position: relative;
+    font-size: 14px;  /* Reduced font size */
+    font-weight: normal;  /* Set font weight to normal */
+}
+
+nav section h2:before {
+    content: '▶';
+    position: absolute;
+    left: 10px;  /* Adjusted to move triangles right */
+    transition: transform 0.3s;
+    font-size: 12px;  /* Reduced font size to make triangles smaller */
+}
+
+nav section h2.expanded:before {
+    transform: rotate(90deg);
+}
+
+nav section h2.expanded:hover:before {
+    transform: rotate(75deg);  /* Slight rotation to the right on hover */
+}
+
+
+
+nav section h2:hover {
+    color: #326DE6;
+}
+
+nav section h2:hover:before {
+    transform: rotate(30deg);
+}
+
+
+nav section ul {
+    list-style-type: none;
+    padding-left: 20px;
+    display: none;
+}
+
+nav section ul li a {
+    text-decoration: none;
+    color: inherit;
+    padding: 10px;
+    display: block;
+}
+
+nav section ul li a:hover {
+    color: #326DE6;
+}
+
+/* Add margin to the first section to push it down below the header */
+nav section:first-of-type {
+    margin-top: 50px;  /* Adjust this value as necessary */
+}
+
+/* Dark/Light Mode Toggle */
+#mode-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #326DE6;
+    color: #ffffff;
+    border-radius: 50%;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    width: 50px;  /* Set width */
+    height: 50px;  /* Set height */
+    font-size: 24px;  /* Adjust icon size */
+}
+
+/* Scroll-to-Top Button */
+#scroll-top {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: #326DE6;
+    color: #ffffff;
+    border-radius: 50%;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    width: 50px;  /* Set width */
+    height: 50px;  /* Set height */
+    font-size: 24px;  /* Adjust icon size */
+}
+
+/* Hamburger Menu Button */
+#hamburger-menu {
+    position: relative;
+    top: 20px;
+    left: 20px;
+    background-color: #326DE6;
+    color: #ffffff;
+    border-radius: 50%;
+    border: none;
+    padding: 0px;
+    cursor: pointer;
+    display: none;  /* Hide by default */
+    font-size: 24px;  /* Adjust size of hamburger icon */
+    z-index: 1000;  /* Ensure it's on top of other elements */
+    width: 50px;  /* Set a fixed width */
+    height: 50px;  /* Set a fixed height */
+    align-items: center;  /* Center the icon */
+    justify-content: center;  /* Center the icon */
+    transition: background-color 0.8s;
+}
+
+/* Styles for X icon */
+#hamburger-menu.x::before {
+    content: "✕";  /* X character */
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+/* Styles for hamburger icon */
+#hamburger-menu::before {
+    content: "☰";  /* Hamburger character */
+    position: absolute;
+    opacity: 1;
+    transition: opacity 0.3s;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    /* Hide sidebar initially on mobile */
+    nav#sidebar {
+        transform: translateX(-100%);
+    }
+
+    /* Show hamburger menu on mobile */
+    #hamburger-menu {
+        display: block;
+    }
+
+    /* Sidebar visible state on mobile */
+    nav#sidebar.open {
+        transform: translateX(0);
+    }
+}
+
+/* Mobile Menu */
+#mobile-menu {
+    position: fixed;
+    padding-top: 80px;
+    top: 60px;  /* Adjusted to accommodate fixed header */
+    left: 0;
+    width: 100%;
+    background-color: #363636;
+    color: #ffffff;
+    display: none;  /* Hidden by default */
+    overflow-y: auto;
+    z-index: 999;  /* Ensure it's on top of other elements but below the hamburger menu */
+}
+
+#mobile-menu.open {
+    display: block;  /* Show when open class is added */
+}
+
+/* Sidebar and Mobile Menu Sections and Links */
+nav section, #mobile-menu section {
+    margin-bottom: 10px;
+}
+
+nav section h2, #mobile-menu section h2 {
+    padding: 10px;
+    padding-left: 40px;  /* Adjusted padding-left to move text and triangles to the right */
+    cursor: pointer;
+    position: relative;
+    font-size: 14px;  /* Reduced font size */
+    font-weight: normal;  /* Set font weight to normal */
+}
+
+nav section h2:before, #mobile-menu section h2:before {
+    content: '▶';
+    position: absolute;
+    left: 10px;  /* Adjusted to move triangles right */
+    transition: transform 0.3s;
+    font-size: 12px;  /* Reduced font size to make triangles smaller */
+}
+
+nav section h2.expanded:before, #mobile-menu section h2.expanded:before {
+    transform: rotate(90deg);
+}
+
+nav section h2.expanded:hover:before, #mobile-menu section h2.expanded:hover:before {
+    transform: rotate(75deg);  /* Slight rotation to the right on hover */
+}
+
+nav section h2:hover, #mobile-menu section h2:hover {
+    color: #326DE6;
+}
+
+nav section ul, #mobile-menu section ul {
+    list-style-type: none;
+    padding-left: 20px;
+    display: none;
+}
+
+nav section ul li a, #mobile-menu section ul li a {
+    text-decoration: none;
+    color: inherit;
+    padding: 10px;
+    display: block;
+}

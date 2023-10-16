@@ -1,194 +1,28 @@
-<div id="resizable-sidebar">
-    <div id="sidebar">
-      <div class="sidebar-item">
-        <div class="sidebar-header" onclick="toggleCollapse('section1')">
-          <span class="triangle">&#9654;</span> <!-- Triangle character -->
-          Architecture
-        </div>
-        <ul id="section1" class="sidebar-content">
-          <li><a href="/docs/architecture/cloud-controller-manager.html">Cloud Controller Manager</a></li>
-          <li><a href="/docs/architecture/container-runtime-interface.html">Container Runtime Interface (CRI)</a></li>
-          <li><a href="/docs/architecture/controllers.html">Controllers</a></li>
-          <li><a href="/docs/architecture/garbage-collection.html">Garbage Collection</a></li>
-          <li><a href="/docs/architecture/leases.html">Leases</a></li>
-          <li><a href="/docs/architecture/mixed-version-proxy.html">Mixed Version Proxy</a></li>
-          <li><a href="/docs/architecture/node-communication.html">Node Communication</a></li>
-          <li><a href="/docs/architecture/nodes.html">Nodes</a></li>
-          <li><a href="/docs/architecture/cgroup-v2.html">cgroup v2</a></li>
-        </ul>
-      </div>
-      <div class="sidebar-item">
-        <div class="sidebar-header" onclick="toggleCollapse('section2')">
-          <span class="triangle">&#9654;</span> <!-- Triangle character -->
-          Cluster Administration
-        </div>
-        <ul id="section2" class="sidebar-content">
-          <li><a href="/docs/cluster-administration/api-priority-fairness.html">API Priority</a></li>
-          <li><a href="/docs/cluster-administration/certificates.html">Certificates</a></li>
-          <li><a href="/docs/cluster-administration/cluster-networking.html">Cluster Networking</a></li>
-          <li><a href="/docs/cluster-administration/installing-addons.html">Installing Addons</a></li>
-          <li><a href="/docs/cluster-administration/logging-architecture.html">Logging Architecture</a></li>
-          <li><a href="/docs/cluster-administration/managing-resources.html">Managing Resources</a></li>
-          <li><a href="/docs/cluster-administration/metrics-for-k8s-system-components.html">Metrics for K8s</a></li>
-          <li><a href="/docs/cluster-administration/proxies-in-kubernetes.html">Proxies in Kubernetes</a></li>
-          <li><a href="/docs/cluster-administration/system-logs.html">System Logs</a></li>
-          <li><a href="/docs/cluster-administration/traces-for-k8s-system-components.html">Traces for K8s</a></li>
-        </ul>
-      </div>
-      <div class="sidebar-item">
-          <div class="sidebar-header" onclick="toggleCollapse('section3')">
-            <span class="triangle">&#9654;</span> <!-- Triangle character -->
-            Configuration
-          </div>
-          <ul id="section3" class="sidebar-content">
-            <li><a href="/docs/configuration/configuration-best-practices.html">Best Practices</a></li>
-            <li><a href="/docs/configuration/configmaps.html">ConfigMaps</a></li>
-            <li><a href="/docs/configuration/organizing-cluster-access.html">Organizing Cluster Access</a></li>
-            <li><a href="/docs/configuration/resource-management.html">Resource Management</a></li>
-            <li><a href="/docs/configuration/secrets.html">Secretss</a></li>
-          </ul>
-        </div>
-        <div class="sidebar-item">
-          <div class="sidebar-header" onclick="toggleCollapse('section4')">
-            <span class="triangle">&#9654;</span> <!-- Triangle character -->
-            Containers
-          </div>
-          <ul id="section4" class="sidebar-content">
-            <li><a href="/docs/containers/container-environment.html">Container Environment</a></li>
-            <li><a href="/docs/containers/container-lifecycle-hooks.html">Container Lifecycle Hooks</a></li>
-            <li><a href="/docs/containers/images.html">Images</a></li>
-            <li><a href="/docs/containers/runtime-class.html">Runtime Class</a></li>
-          </ul>
-        </div>
-        <div class="sidebar-item">
-          <div class="sidebar-header" onclick="toggleCollapse('section5')">
-            <span class="triangle">&#9654;</span> <!-- Triangle character -->
-            Pods
-          </div>
-          <ul id="section5" class="sidebar-content">
-            <li><a href="/docs/pods/disruptions.html">Disruptions</a></li>
-            <li><a href="/docs/pods/downward-api.html">Downward API</a></li>
-            <li><a href="/docs/pods/ephemeral-containers.html">Ephemeral Containers</a></li>
-            <li><a href="/docs/pods/init-containers.html">Init Containers</a></li>
-            <li><a href="/docs/pods/pod-lifecycle.html">Pod Lifecycle</a></li>
-            <li><a href="/docs/pods/qos-classes.html">QoS Classes</a></li>
-            <li><a href="/docs/pods/user-namespaces.html">User Namespaces</a></li>
-          </ul>
-        </div>
-        <div class="sidebar-item">
-          <div class="sidebar-header" onclick="toggleCollapse('section6')">
-            <span class="triangle">&#9654;</span> <!-- Triangle character -->
-            Policies
-          </div>
-          <ul id="section6" class="sidebar-content">
-            <li><a href="/docs/policies/limit-ranges.html">Limit Ranges</a></li>
-            <li><a href="/docs/policies/node-resource-managers.html">Node Resource Managers</a></li>
-            <li><a href="/docs/policies/process-id-limits-and-reservations.html">Process ID Limits & Reservations</a></li>
-            <li><a href="/docs/policies/resource-quotas.html">Resource Quotas</a></li>
-          </ul>
-        </div>
-        <div class="sidebar-item">
-          <div class="sidebar-header" onclick="toggleCollapse('section7')">
-            <span class="triangle">&#9654;</span> <!-- Triangle character -->
-            Scheduling
-          </div>
-          <ul id="section7" class="sidebar-content">
-            <li><a href="/docs/scheduling-preemption-eviction/api-initiated-eviction.html">API-initiated Eviction</a></li>
-            <li><a href="/docs/scheduling-preemption-eviction/assigning-pods-to-nodes.html">Assigning Pods to Nodes</a></li>
-            <li><a href="/docs/scheduling-preemption-eviction/dynamic-resource-allocation.html">Dynamic Resource Allocation</a></li>
-            <li><a href="/docs/scheduling-preemption-eviction/kubernetes-scheduler.html">Kubernetes Scheduler</a></li>
-            <li><a href="/docs/scheduling-preemption-eviction/node-pressure-eviction.html">Node-Pressure Eviction</a></li>
-            <li><a href="/docs/scheduling-preemption-eviction/pod-overhead.html">Pod Overhead</a></li>
-            <li><a href="/docs/scheduling-preemption-eviction/pod-priority-and-preemption.html">Pod Priority and Preemption</a></li>
-            <li><a href="/docs/scheduling-preemption-eviction/pod-scheduling-readiness.html">Pod Scheduling Readiness</a></li>
-            <li><a href="/docs/scheduling-preemption-eviction/pod-topology-spread-constraints.html">Pod Topology Spread Constraints</a></li>
-            <li><a href="/docs/scheduling-preemption-eviction/resource-bin-packing.html">Resource Bin Packing</a></li>
-            <li><a href="/docs/scheduling-preemption-eviction/scheduler-performance-tuning.html">Scheduler Performance Tuning</a></li>
-            <li><a href="/docs/scheduling-preemption-eviction/scheduling-framework.html">Scheduling Framework</a></li>
-            <li><a href="/docs/scheduling-preemption-eviction/taints-and-tolerations.html">Taints and Tolerations</a></li>
-          </ul>
-        </div>
-        <div class="sidebar-item">
-          <div class="sidebar-header" onclick="toggleCollapse('section8')">
-            <span class="triangle">&#9654;</span> <!-- Triangle character -->
-            Security
-          </div>
-          <ul id="section8" class="sidebar-content">
-            <li><a href="/docs/security/controlling-access-to-kubernetes-api.html">Controlling Access to K8s API</a></li>
-            <li><a href="/docs/security/hardening-guide-auth-mechanisms.html">Hardening Guide - Auth Mechanisms</a></li>
-            <li><a href="/docs/security/kubernetes-api-server-bypass-risks.html">K8s API Server Bypass</a></li>
-            <li><a href="/docs/security/kubernetes-secrets-good-practices.html">K8s Secrets Good Pratices</a></li>
-            <li><a href="/docs/security/multi-tenancy.html">Multi-tenancy</a></li>
-            <li><a href="/docs/security/overview-of-cloud-native-security.html">Cloud Native Security</a></li>
-            <li><a href="/docs/security/pod-security-admission.html">Pod Security Admission</a></li>
-            <li><a href="/docs/security/rbac-good-practices.html">RBAC Good Practices</a></li>
-            <li><a href="/docs/security/security-checklist.html">Security Checklist</a></li>
-            <li><a href="/docs/security/service-accounts.html">Service Accounts</a></li>
-          </ul>
-        </div>
-        <div class="sidebar-item">
-          <div class="sidebar-header" onclick="toggleCollapse('section9')">
-            <span class="triangle">&#9654;</span> <!-- Triangle character -->
-            Services & Networking
-          </div>
-          <ul id="section9" class="sidebar-content">
-            <li><a href="/docs/services-lb-networking/dns.html">DNS</a></li>
-            <li><a href="/docs/services-lb-networking/endpoint-slices.html">Endpoint Slices</a></li>
-            <li><a href="/docs/services-lb-networking/ipv4-ipv6.html">IPv4/IPv6</a></li>
-            <li><a href="/docs/services-lb-networking/ingress.html">Ingress</a></li>
-            <li><a href="/docs/services-lb-networking/network-policies.html">Network Policies</a></li>
-            <li><a href="/docs/services-lb-networking/service.html">Services</a></li>
-            <li><a href="/docs/services-lb-networking/service-networking.html">Service Networking</a></li>
-            <li><a href="/docs/services-lb-networking/topology-aware-routing.html">Topology-Aware Routing</a></li>
-          </ul>
-        </div>
-        <div class="sidebar-item">
-          <div class="sidebar-header" onclick="toggleCollapse('section10')">
-            <span class="triangle">&#9654;</span> <!-- Triangle character -->
-            Storage
-          </div>
-          <ul id="section10" class="sidebar-content">
-            <li><a href="/docs/storage/csi-volume-cloning.html">CSI Volume Cloning</a></li>
-            <li><a href="/docs/storage/dynamic-volume-provisioning.html">Dynamic Volume Provisioning</a></li>
-            <li><a href="/docs/storage/ephemeral-volumes.html">Ephemeral Volumes</a></li>
-            <li><a href="/docs/storage/node-specific-volume-limits.html">Node-Specific Volume Limits</a></li>
-            <li><a href="/docs/storage/persistent-volumes.html">Persistent Volumes</a></li>
-            <li><a href="/docs/storage/projected-volumes.html">Projected Volumes</a></li>
-            <li><a href="/docs/storage/storage-capacity.html">Storage Capacity</a></li>
-            <li><a href="/docs/storage/storage-classes.html">Storage Classes</a></li>
-            <li><a href="/docs/storage/volume-health-monitoring.html">Volume Health Monitoring</a></li>
-            <li><a href="/docs/storage/volume-snapshot-classes.html">Volume Snapshot Classes</a></li>
-            <li><a href="/docs/storage/volume-snapshots.html">Volume Snapshots</a></li>
-            <li><a href="/docs/storage/volumes.html">Volumes</a></li>
-          </ul>
-        </div>
-        <div class="sidebar-item">
-          <div class="sidebar-header" onclick="toggleCollapse('section11')">
-            <span class="triangle">&#9654;</span> <!-- Triangle character -->
-            Workloads
-          </div>
-          <ul id="section11" class="sidebar-content">
-            <li><a href="/docs/workloads/daemonsets.html">DaemonSets</a></li>
-            <li><a href="/docs/workloads/deployments.html">Deployments</a></li>
-            <li><a href="/docs/workloads/jobs.html">Jobs</a></li>
-            <li><a href="/docs/workloads/replicaset.html">ReplicaSet</a></li>
-            <li><a href="/docs/workloads/replicationcontroller.html">ReplicationController</a></li>
-            <li><a href="/docs/workloads/workload-resources.html">Workload Resources</a></li>
-          </ul>
-        </div>
-    </div>
-    <div id="resize-handle"></div>
-  </div>
+<section>
+    <h2 onclick="toggleSection(this)">Section 1</h2>
+    <ul>
+        <li><a href="#">Link 1.1</a></li>
+        <li><a href="#">Link 1.2</a></li>
+        <li><a href="#">Link 1.3</a></li>
+    </ul>
+</section>
 
+<section>
+    <h2 onclick="toggleSection(this)">Section 2</h2>
+    <ul>
+        <li><a href="#">Link 2.1</a></li>
+        <li><a href="#">Link 2.2</a></li>
+        <li><a href="#">Link 2.3</a></li>
+    </ul>
+</section>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Repeat similar sections up to Section 11 -->
 
-<!-- Include the sidebar management script -->
-<script src="/sidebar-management.js"></script>
-
-<!-- Script to toggle sidebar sections -->
-<script>
-  function toggleSidebarSection(sectionId) {
-    toggleCollapse(sectionId);
-  }
-</script>
+<section>
+    <h2 onclick="toggleSection(this)">Section 11</h2>
+    <ul>
+        <li><a href="#">Link 11.1</a></li>
+        <li><a href="#">Link 11.2</a></li>
+        <li><a href="#">Link 11.3</a></li>
+    </ul>
+</section>
