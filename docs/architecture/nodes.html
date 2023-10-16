@@ -1,130 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Nodes</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link rel="stylesheet" href="../../css/styles.css">
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-</head>
-<body class="dark-mode">
-  <header><center>
-    <h1><img src="../../assets/logo.png" alt="Kubernetes Logo" id="k8s-logo">
-        K8s Guide
-    </h1>
-    <h6><i>TLDR for official Kubernetes documentation</i></h6>
-    <br>
-<div style="text-align: center;">
-    <input type="text" id="searchBar" placeholder="Search...">
-</div>
-</center>
-  </header>
-  <br>
-  <center><h3>Nodes</h3></center>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nodes</title>
+    <link rel="stylesheet" href="../../styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="dark-mode" onload="loadSidebar()">
+    <!-- Header -->
+    <header>
+      <div class="header-content">
+        <a href="../../index.html">
+          <img src="../../assets/logo.png" alt="Logo" id="logo" />
+        </a>
+        <h1>K8s Guide</h1>
+      </div>
+      <!-- Search Bar -->
+      <div id="search-container">
+        <input
+          type="text"
+          id="search-input"
+          placeholder="Search..."
+          oninput="searchFunction()"
+        />
+        <div id="search-dropdown" class="dropdown-content"></div>
+      </div>
+    </header>
 
-  
-  <div id="sidebar-placeholder"></div>  
+    <button id="hamburger-menu" onclick="toggleSidebar()">☰</button>
 
-  <main><br>
+    <!-- Sidebar -->
+    <nav id="sidebar"></nav>
 
-<br><br><h5>What are nodes?</h5>
+    <!-- Main Content -->
+    <main>
+      <!-- Your subpage content goes here -->
+    </main>
 
-<li>Worker machines in a Kubernetes cluster.
-<li>Run containerized applications managed by the Control Plane.
-<li>Equipped with a Kubelet agent that communicates with the master components.
+    <!-- Dark/Light Mode Toggle -->
+    <button id="mode-toggle" onclick="toggleMode()">☀</button>
 
-<br><br><h5>Node Management</h5>
+    <!-- Scroll-to-Top Button -->
+    <button id="scroll-top" onclick="scrollToTop()">▲</button>
 
-<li>Nodes are managed by master components, primarily the Control Plane.
-<li>Operations include adding nodes, updating node software, and decommissioning nodes.
-
-<br><br><h5>Node Name Uniqueness</h5>
-
-<li>Each node must have a unique identifier within the cluster.
-<li>Ensures accurate scheduling and task allocation.
-
-<br><br><h5>Self-registration of Nodes</h5>
-
-<li>Nodes can automatically register themselves upon joining the cluster.
-<li>Facilitates dynamic scaling and resource allocation.
-
-<br><br><h5>Manual Node Administration</h5>
-
-<li>Admins can manually add or remove nodes using the Kubernetes API or CLI tools.
-<li>Useful for fine-grained control over the cluster.
-
-<br><br><h5>Node Status</h5>
-
-<li>Provides detailed information about the node, including IP addresses, conditions (Ready, OutOfDisk, etc.), and resource capacity.
-<li>Updated periodically by the node's Kubelet.
-
-<br><br><h5>Node Heartbeats</h5>
-
-<li>Regular signals sent from the Kubelet to the master to indicate the node's health.
-<li>Failure to send a heartbeat within a certain time leads to node eviction.
-
-<br><br><h5>Node Controller</h5>
-
-<li>A Control Plane component responsible for monitoring nodes.
-<li>Handles node failures and triggers pod evictions if necessary.
-
-<br><br><h5>Rate Limits on Eviction</h5>
-
-<li>Configurable settings that control the speed at which pods are evicted from unhealthy nodes.
-<li>Helps to avoid overwhelming the remaining healthy nodes.
-
-<br><br><h5>Resource Capacity Tracking</h5>
-
-<li>Nodes report available resources like CPU, memory, and storage for better scheduling.
-<li>Helps the scheduler in placing pods where resources are available.
-
-<br><br><h5>Node Topology</h5>
-
-<li>Information about the physical or virtual layout of nodes in terms of regions, zones, and other cloud-provider specific metadata.
-<li>Used for optimizing workload distribution and high availability.
-
-<br><br><h5>Graceful Node Shutdown</h5>
-
-<li>A process that safely evicts pods before shutting down or rebooting a node.
-<li>Ensures minimal impact on running applications and services.
-
-<br><br><h5>Pod Priority based Graceful Node Shutdown</h5>
-
-<li>During a graceful shutdown, pods with higher priority are evicted last.
-<li>Ensures that critical applications continue to run for as long as possible.
-
-<br><br><h5>Non-graceful Node Shutdown Handling</h5>
-
-<li>In cases of abrupt failures, all pods are immediately terminated.
-<li>Risks include data loss and potential service disruption.
-
-<br><br><h5>Swap Memory Management</h5>
-
-<li>Kubernetes allows for the enabling or disabling of swap memory usage on nodes.
-<li>Swap usage can impact application performance and pod scheduling decisions.
-<br><br>
-  </main>
-
-  <button id="darkModeToggle" class="circular-button bottom-right">
-    ☀
-  </button>
-
-  <button id="scrollTop" class="circular-button bottom-left">
-    &#9650;
-  </button>
-<script>
-  $(document).ready(function() {
-    $("#sidebar-placeholder").load("/path/to/sidebar.html");
-  });
-</script>
-
-  <script src="../../js/script.js"></script>
-  <script>
-    $(document).ready(function() {
-      $("#sidebar-placeholder").load("/sidebar.html");
-    });
-  </script>
-  
-</body>
+    <script src="../../script.js"></script>
+  </body>
 </html>
