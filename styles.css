@@ -12,6 +12,12 @@
 body {
   font-family: "Ubuntu", sans-serif;
   transition: background-color 0.3s;
+  height: 100%;
+}
+
+/* HTML */
+html {
+  height: 100%;
 }
 
 /* Dark Mode */
@@ -204,7 +210,9 @@ nav section:first-of-type {
 @media (max-width: 768px) {
   /* Hide sidebar initially on mobile */
   nav#sidebar {
+    height: calc(100vh - 60px); /* assuming 60px is the height of your header */
     transform: translateX(-100%);
+    overflow-y: auto;
   }
 
   /* Adjust header font size */
@@ -216,6 +224,7 @@ nav section:first-of-type {
   #hamburger-menu {
     display: block;
   }
+
   /* Show hamburger menu container on mobile */
   #hamburger-container {
     display: block;
@@ -226,11 +235,6 @@ nav section:first-of-type {
   /* Sidebar visible state on mobile */
   nav#sidebar.open {
     transform: translateX(0);
-  }
-
-  /* Adjust header font size */
-  header h1 {
-    font-size: 1.5em; /* Adjust as necessary */
   }
 }
 
