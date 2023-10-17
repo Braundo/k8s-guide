@@ -1,54 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>PAGE TITLE</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link rel="stylesheet" href="../../css/styles.css">
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-</head>
-<body class="dark-mode">
-  <header><center>
-    <h1><img src="../../assets/logo.png" alt="Kubernetes Logo" id="k8s-logo">
-        K8s Guide
-    </h1>
-    <h6><i>TLDR for official Kubernetes documentation</i></h6>
-    <br>
-<div style="text-align: center;">
-    <input type="text" id="searchBar" placeholder="Search...">
-</div>
-</center>
-  </header>
-  <br>
-  <h3>PAGE TITLE</h3>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="../../assets/logo.png" type="image/png">
+    <title>Multi-tenancy</title>
+    <link rel="stylesheet" href="../../styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism-dracula.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-yaml.min.js"></script>
+  </head>
+  <body class="dark-mode" onload="loadSidebar()">
+    <!--Header -->
+    <header>
+      <div class="header-content">
+        <div class="title-and-subheader">
+            <div class="title-container">
+                <a href="/index.html">
+                    <img src="../../assets/logo.png" alt="Logo" id="logo" />
+                </a>
+                <h1>K8s Guide</h1>
+            </div>
+            <h3 class="sub-header">Your TLDR guide to Kubernetes documentation</h3>
+        </div>
+    </header>
+    <div id="hamburger-container">
+      <button id="hamburger-menu">☰</button>
+    </div>
 
-  
-  <div id="sidebar-placeholder"></div>  
+    <!--Sidebar -->
+    <nav id="sidebar"></nav>
+    <!--Main Content -->
+    <main>
+      <h1>Multi-tenancy</h1>
+      
+<br><br><b>Introduction:</b> Multi-tenancy in Kubernetes refers to the ability to divide a single Kubernetes cluster into isolated partitions, allowing multiple teams or customers to share the cluster's resources without interfering with each other.
+<br><br><b>Challenges in Multi-tenancy:</b> The main challenges include ensuring resource isolation, data security, and equitable resource allocation among tenants. The document outlines that these challenges require both architectural and policy-based solutions.
+<br><br><b>Namespace Tenancy:</b> Namespaces act as a primary isolation mechanism. Each tenant can be allocated a namespace, within which they can create and manage resources. This provides a level of isolation and helps in resource tracking.
+<br><br><b>Hierarchical Namespaces:</b> This is an advanced feature that allows namespaces to be organized in a hierarchical fashion, inheriting policies and roles from parent namespaces. This is useful for large organizations where multiple departments or teams share a cluster but have different sub-teams requiring varying levels of access.
+<br><br><b>Policy-based Resource Isolation:</b> Policies like Role-Based Access Control (RBAC), Network Policies, and PodSecurityPolicies can be applied at the namespace level to provide additional layers of security and isolation. For example, Network Policies can restrict communication between pods in different namespaces.
+<br><br><b>Control Plane Isolation:</b> The control plane is the set of components that manage the overall state of the cluster. Isolating the control plane ensures that tenants cannot interfere with these critical components, thereby maintaining cluster stability.
+<br><br><b>Soft Multi-tenancy vs Hard Multi-tenancy:</b>
+    <li>Soft Multi-tenancy: Assumes that all users are trusted but still provides certain levels of isolation and security. Suitable for scenarios where all users belong to the same organization.</li>
+    <li>Hard Multi-tenancy: Assumes that not all users are trusted and provides strict isolation measures. Suitable for public or shared clusters where users are from different organizations.</li>
+    <br><br><br></main>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <!--Dark/Light Mode Toggle -->
+    <button id="mode-toggle" onclick="toggleMode()">
+      <span class="material-icons">brightness_7</span>
+    </button>
+    <!--Scroll-to-Top Button -->
+    <button id="scroll-top" onclick="scrollToTop()">
+      <span class="material-icons">arrow_upward</span>
+    </button>
 
-  <main><br>
-    Placeholder content
-  </main>
+    <!-- Next Page Button -->
+    <button id="next-page" onclick="navigateNext()">
+        <span class="material-icons">arrow_forward</span>
+    </button>
 
-  <button id="darkModeToggle" class="circular-button bottom-right">
-    ☀
-  </button>
+    <!-- Random Page Button -->
+    <button id="randomizer">
+    <span class="material-icons">shuffle</span>
+    </button>
 
-  <button id="scrollTop" class="circular-button bottom-left">
-    &#9650;
-  </button>
-<script>
-  $(document).ready(function() {
-    $("#sidebar-placeholder").load("/path/to/sidebar.html");
-  });
-</script>
-
-  <script src="../../js/script.js"></script>
-  <script>
-    $(document).ready(function() {
-      $("#sidebar-placeholder").load("/sidebar.html");
-    });
-  </script>
-  
-</body>
+    <!--Mobile Menu -->
+    <div id="mobile-menu"></div>
+    <script src="../../script.js"></script>
+  </body>
 </html>

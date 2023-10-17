@@ -1,54 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>PAGE TITLE</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link rel="stylesheet" href="../../css/styles.css">
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-</head>
-<body class="dark-mode">
-  <header><center>
-    <h1><img src="../../assets/logo.png" alt="Kubernetes Logo" id="k8s-logo">
-        K8s Guide
-    </h1>
-    <h6><i>TLDR for official Kubernetes documentation</i></h6>
-    <br>
-<div style="text-align: center;">
-    <input type="text" id="searchBar" placeholder="Search...">
-</div>
-</center>
-  </header>
-  <br>
-  <h3>PAGE TITLE</h3>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="../../assets/logo.png" type="image/png">
+    <title>Pod Security Standards</title>
+    <link rel="stylesheet" href="../../styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism-dracula.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-yaml.min.js"></script>
+  </head>
+  <body class="dark-mode" onload="loadSidebar()">
+    <!--Header -->
+    <header>
+      <div class="header-content">
+        <div class="title-and-subheader">
+            <div class="title-container">
+                <a href="/index.html">
+                    <img src="../../assets/logo.png" alt="Logo" id="logo" />
+                </a>
+                <h1>K8s Guide</h1>
+            </div>
+            <h3 class="sub-header">Your TLDR guide to Kubernetes documentation</h3>
+        </div>
+    </header>
+    <div id="hamburger-container">
+      <button id="hamburger-menu">☰</button>
+    </div>
 
-  
-  <div id="sidebar-placeholder"></div>  
+    <!--Sidebar -->
+    <nav id="sidebar"></nav>
+    <!--Main Content -->
+    <main>
+      <h1>Pod Security Standards</h1>
+      
+<br><br>
+<h3>Privileged Policy</h3>
 
-  <main><br>
-    Placeholder content
-  </main>
+<li>Purpose: For system and infrastructure-level workloads managed by privileged, trusted users.</li>
+<li>Characteristics: No restrictions, allows for known privilege escalations.</li>
 
-  <button id="darkModeToggle" class="circular-button bottom-right">
-    ☀
-  </button>
+<br><br>
+<h3>Baseline Policy</h3>
 
-  <button id="scrollTop" class="circular-button bottom-left">
-    &#9650;
-  </button>
-<script>
-  $(document).ready(function() {
-    $("#sidebar-placeholder").load("/path/to/sidebar.html");
-  });
-</script>
+<b>Purpose:</b> For common containerized workloads, prevents known privilege escalations.
+<br>
+<b>Characteristics:</b>
+    <li>Disallows privileged access to the Windows node.</li>
+    <li>Sharing host namespaces is not allowed.</li>
+    <li>Privileged Pods are disallowed.</li>
+    <li>Adding additional capabilities beyond a specified list is disallowed.</li>
+    <li>HostPath volumes are forbidden.</li>
+    <li>HostPorts are disallowed or restricted to a known list.</li>
+    <li>Overrides to the default AppArmor profile are restricted.</li>
+    <li>Setting custom SELinux user or role options is forbidden.</li>
+    <li>The default /proc masks are required.</li>
+    <li>Seccomp profile must not be set to Unconfined.</li>
+    <li>Only a "safe" subset of sysctls is allowed.</li>
 
-  <script src="../../js/script.js"></script>
-  <script>
-    $(document).ready(function() {
-      $("#sidebar-placeholder").load("/sidebar.html");
-    });
-  </script>
-  
-</body>
+<br><br>
+<h3>Restricted Policy</h3>
+
+<b>Purpose:</b> For security-critical applications and lower-trust users.
+<br>
+<b>Characteristics:</b>
+    <li>Enforces everything from the baseline profile.</li>
+    <li>Only permits specific volume types.</li>
+    <li>Privilege escalation is not allowed.</li>
+    <li>Containers must run as non-root users.</li>
+    <li>Seccomp profile must be explicitly set to one of the allowed values.</li>
+    <li>Containers must drop ALL capabilities except NET_BIND_SERVICE.</li>
+    <br><br><br></main>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <!--Dark/Light Mode Toggle -->
+    <button id="mode-toggle" onclick="toggleMode()">
+      <span class="material-icons">brightness_7</span>
+    </button>
+    <!--Scroll-to-Top Button -->
+    <button id="scroll-top" onclick="scrollToTop()">
+      <span class="material-icons">arrow_upward</span>
+    </button>
+
+    <!-- Next Page Button -->
+    <button id="next-page" onclick="navigateNext()">
+        <span class="material-icons">arrow_forward</span>
+    </button>
+
+    <!-- Random Page Button -->
+    <button id="randomizer">
+    <span class="material-icons">shuffle</span>
+    </button>
+
+    <!--Mobile Menu -->
+    <div id="mobile-menu"></div>
+    <script src="../../script.js"></script>
+  </body>
 </html>
