@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="../../assets/logo.png" type="image/png">
-    <title>SECTION TITLE</title>
+    <title>Traces for K8s System Components</title>
     <link rel="stylesheet" href="../../styles.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
@@ -41,82 +41,67 @@
     <nav id="sidebar"></nav>
     <!--Main Content -->
     <main>
-      <h1>SECTION TITLE</h1>
-      
-<br><br><h3>section1</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+      <h1>Traces for K8s System Components</h1>
 
-<br><br><h3>section2</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>Configuration Example</h3>
 
-<br><br><h3>section3</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+Here's an example configuration for collecting spans and logging them to standard output:
+<div class="code-block">
+  <button class="copy-button" data-clipboard-target=".code">
+    <span class="material-icons">content_copy</span>
+  </button>
+  <pre><code class="code language-yaml">
+receivers:
+  otlp:
+    protocols:
+      grpc:
+exporters:
+  logging:
+    logLevel: debug
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      exporters: [logging]
+  </code></pre>
+</div>
 
-<br><br><h3>section4</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
 
-<br><br><h3>section5</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>Component Traces</h3>
 
-<br><br><h3>section6</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<li>kube-apiserver traces: The kube-apiserver generates spans for incoming HTTP requests and for outgoing requests to webhooks, etcd, and re-entrant requests. It propagates the W3C Trace Context with outgoing requests but does not make use of the trace context attached to incoming requests.</li>
+<li>kubelet traces: The kubelet's CRI interface and authenticated HTTP servers are instrumented to generate trace spans. The endpoint and sampling rate are configurable. Trace context propagation is also configured.</li>
 
-<br><br><h3>section7</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>Enabling Tracing in kube-apiserver</h3>
 
-<br><br><h3>section8</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+To enable tracing in the kube-apiserver, you can provide a tracing configuration file using the `--tracing-config-file=<path-to-config>` flag.
 
-<br><br><h3>section9</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>Enabling Tracing in the kubelet</h3>
 
-<br><br><h3>section10</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+To enable tracing in the kubelet, you can apply the tracing configuration. Here's an example snippet:
+<div class="code-block">
+  <button class="copy-button" data-clipboard-target=".code">
+    <span class="material-icons">content_copy</span>
+  </button>
+  <pre><code class="code language-yaml">
+apiVersion: kubelet.config.k8s.io/v1beta1
+kind: KubeletConfiguration
+featureGates:
+  KubeletTracing: true
+tracing:
+  samplingRatePerMillion: 100
+  </code></pre>
+</div>
 
-<br><br><h3>section11</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
 
-<br><br><h3>section12</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>Stability and Performance Overhead</h3>
 
-<br><br><h3>section13</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
-
-<br><br><h3>section14</h3> 
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
-
-<br><br><h3>section15</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+Tracing instrumentation is still under active development and may change in various ways. Also, exporting spans comes with a small performance overhead on the networking and CPU side.
     <br><br><br></main>
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"

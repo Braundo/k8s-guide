@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="../../assets/logo.png" type="image/png">
-    <title>SECTION TITLE</title>
+    <title>Certificates</title>
     <link rel="stylesheet" href="../../styles.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
@@ -41,82 +41,37 @@
     <nav id="sidebar"></nav>
     <!--Main Content -->
     <main>
-      <h1>SECTION TITLE</h1>
-      
-<br><br><h3>section1</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+      <h1>Certificates</h1>
+      <br><br><br>
+<h2>Manually Generating Certificates</h2>
 
-<br><br><h3>section2</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+The page on Kubernetes' official documentation provides detailed instructions on how to manually generate certificates for client certificate authentication in a Kubernetes cluster. Three methods are discussed: using `easyrsa`, `openssl`, and `cfssl`.
 
-<br><br><h3>section3</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
-
-<br><br><h3>section4</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
-
-<br><br><h3>section5</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
-
-<br><br><h3>section6</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
-
-<br><br><h3>section7</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
-
-<br><br><h3>section8</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
-
-<br><br><h3>section9</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
-
-<br><br><h3>section10</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
-
-<br><br><h3>section11</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
-
-<br><br><h3>section12</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
-
-<br><br><h3>section13</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
-
-<br><br><h3>section14</h3> 
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
-
-<br><br><h3>section15</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>easyrsa</h3>
+<ol class="indented">
+<li>Download and initialize easyrsa3.</li>
+<li>Generate a new Certificate Authority (CA).</li>
+<li>Generate the server certificate and key.</li>
+</ol>
+<br><br>
+<h3>openssl</h3>
+<ol class="indented">
+<li>Generate a `ca.key` with 2048 bits.</li>
+<li>Create a `ca.crt` based on `ca.key`.</li>
+<li>Generate a `server.key` with 2048 bits.</li>
+<li>Create a config file for generating a Certificate Signing Request (CSR).</li>
+<li>Generate the certificate signing request based on the config file.</li>
+<li>Generate the server certificate using `ca.key`, `ca.crt`, and `server.csr`.</li>
+</ol>
+<br><br>
+<h3>cfssl</h3>
+<ol class="indented">
+<li>Download and prepare the command-line tools.</li>
+<li>Create a directory to hold the artifacts and initialize cfssl.</li>
+<li>Generate CA key (`ca-key.pem`) and certificate (`ca.pem`).</li>
+<li>Generate the key and certificate for the API server.</li>
+</ol>
     <br><br><br></main>
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"

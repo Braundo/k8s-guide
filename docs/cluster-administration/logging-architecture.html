@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="../../assets/logo.png" type="image/png">
-    <title>SECTION TITLE</title>
+    <title>Logging Architecture</title>
     <link rel="stylesheet" href="../../styles.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
@@ -41,82 +41,51 @@
     <nav id="sidebar"></nav>
     <!--Main Content -->
     <main>
-      <h1>SECTION TITLE</h1>
+      <h1>Logging Architecture</h1>
       
-<br><br><h3>section1</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>Application Logs</h3>
 
-<br><br><h3>section2</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<li>Standard Output and Standard Error Streams: Applications in Kubernetes should write logs to the standard output (`stdout`) and standard error (`stderr`) streams. This allows Kubernetes to capture these logs regardless of the logging library or format used by the application.</li>
 
-<br><br><h3>section3</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>Cluster-level Logging</h3>
 
-<br><br><h3>section4</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<li>Separate Storage: Logs should be stored in a dedicated storage system separate from nodes, pods, or containers. This ensures that logs are retained even if the associated Kubernetes objects are deleted.</li>
+<li>No Native Solution: Kubernetes itself doesn't offer a built-in log storage solution, but you can integrate third-party tools like Elasticsearch, Logstash, and Kibana (ELK stack) or other logging solutions.</li>
 
-<br><br><h3>section5</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>Pod and Container Logs</h3>
 
-<br><br><h3>section6</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<li>Log Capture: Kubernetes captures logs for each container within a running Pod. These logs are available through the `kubectl logs` command.</li>
 
-<br><br><h3>section7</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>How Nodes Handle Container Logs</h3>
 
-<br><br><h3>section8</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<li>Container Runtimes: Container runtimes like Docker or containerd capture the standard output and standard error streams and redirect them to a logging driver, which is usually configured to write to a file on disk.</li>
 
-<br><br><h3>section9</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>Log Rotation</h3>
 
-<br><br><h3>section10</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<li>Kubelet Configuration: The kubelet, running on each node, can be configured to automatically rotate logs to prevent filling up storage space. This is particularly useful for long-running Pods or high-verbosity logging.</li>
 
-<br><br><h3>section11</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>System Component Logs</h3>
 
-<br><br><h3>section12</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<li>Running in Containers: Some system components may run in containers and write logs to the standard output and standard error streams.</li>
+<li>Directly Running: Some components may run directly on the node and write logs to files in specific directories.</li>
 
-<br><br><h3>section13</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>Log Locations</h3>
 
-<br><br><h3>section14</h3> 
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<li>OS Dependent: The locations where logs are stored depend on the operating system. For example, in a system using systemd, you might find logs in `/var/log`.</li>
 
-<br><br><h3>section15</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>Cluster-level Logging Architectures</h3>
+
+<li>Node-level Logging Agent: An agent running on each node can be responsible for capturing logs and sending them to a centralized logging solution.</li>
+<li>Dedicated Sidecar Container: A sidecar container within each Pod can capture and forward logs.</li>
+<li>Direct Push to Backend: Applications can be configured to push logs directly to a logging backend, bypassing the need for a separate logging agent.</li>
     <br><br><br></main>
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"

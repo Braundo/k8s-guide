@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="../../assets/logo.png" type="image/png">
-    <title>SECTION TITLE</title>
+    <title>System Logs</title>
     <link rel="stylesheet" href="../../styles.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
@@ -41,82 +41,51 @@
     <nav id="sidebar"></nav>
     <!--Main Content -->
     <main>
-      <h1>SECTION TITLE</h1>
+      <h1>System Logs</h1>
       
-<br><br><h3>section1</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>Klog Library</h3>
 
-<br><br><h3>section2</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<li>Klog is the Kubernetes logging library used to generate log messages for system components.</li>
+<li>Kubernetes is in the process of simplifying logging, and certain klog command-line flags are deprecated starting with Kubernetes v1.23 and will be removed in v1.26.</li>
 
-<br><br><h3>section3</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>Output Redirection</h3>
 
-<br><br><h3>section4</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<li>Output is generally written to stderr and is expected to be handled by the component invoking a Kubernetes component.</li>
+<li>For environments where traditional output redirection options are not available, `kube-log-runner` can be used as a wrapper to redirect output.</li>
 
-<br><br><h3>section5</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>Structured Logging</h3>
 
-<br><br><h3>section6</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<li>Introduced in Kubernetes v1.23 (beta), structured logging allows for a uniform structure in log messages, making it easier to store and process logs.</li>
+<li>The default formatting is backward-compatible with traditional klog.</li>
 
-<br><br><h3>section7</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>Contextual Logging</h3>
 
-<br><br><h3>section8</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<li>Introduced in Kubernetes v1.24 (alpha), contextual logging builds on structured logging and allows developers to add additional information to log entries.</li>
+<li>It is currently gated behind the StructuredLogging feature gate and is disabled by default.</li>
 
-<br><br><h3>section9</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>JSON Log Format</h3>
 
-<br><br><h3>section10</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<li>Available since Kubernetes v1.19 (alpha), the `-logging-format=json` flag changes the log format to JSON.</li>
 
-<br><br><h3>section11</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>Log Verbosity Level</h3>
 
-<br><br><h3>section12</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<li>Controlled by the `v` flag, increasing the value logs increasingly less severe events.</li>
 
-<br><br><h3>section13</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>Log Location</h3>
 
-<br><br><h3>section14</h3> 
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<li>Logs can be written to journald or .log files in the `/var/log` directory, depending on whether the system component runs in a container.</li>
 
-<br><br><h3>section15</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>Log Query</h3>
+
+<li>Introduced in Kubernetes v1.27 (alpha), this feature allows viewing logs of services running on the node, provided certain feature gates and configuration options are enabled.</li>
     <br><br><br></main>
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"

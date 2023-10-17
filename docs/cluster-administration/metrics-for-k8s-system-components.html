@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="../../assets/logo.png" type="image/png">
-    <title>SECTION TITLE</title>
+    <title>Metrics for K8s System Components</title>
     <link rel="stylesheet" href="../../styles.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
@@ -41,83 +41,30 @@
     <nav id="sidebar"></nav>
     <!--Main Content -->
     <main>
-      <h1>SECTION TITLE</h1>
+      <h1>Metrics for K8s System Components</h1>
       
-<br><br><h3>section1</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
-
-<br><br><h3>section2</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
-
-<br><br><h3>section3</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
-
-<br><br><h3>section4</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
-
-<br><br><h3>section5</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
-
-<br><br><h3>section6</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
-
-<br><br><h3>section7</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
-
-<br><br><h3>section8</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
-
-<br><br><h3>section9</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
-
-<br><br><h3>section10</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
-
-<br><br><h3>section11</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
-
-<br><br><h3>section12</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
-
-<br><br><h3>section13</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
-
-<br><br><h3>section14</h3> 
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
-
-<br><br><h3>section15</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
-    <br><br><br></main>
+<br><br>
+<h3>Key Points:</h3>
+<ul class="indented">
+<li><b>Prometheus Format:</b> Kubernetes components emit metrics in Prometheus format, which is structured plain text readable by both humans and machines.</li>
+<br>
+<li><b>Metrics Endpoint:</b> Metrics are generally available on the `/metrics` endpoint of the HTTP server. For components that don't expose this endpoint by default, it can be enabled using the `-bind-address` flag.</li>
+<br>
+<li><b>Components:</b> Metrics are available for various components like `kube-controller-manager`, `kube-proxy`, `kube-apiserver`, `kube-scheduler`, and `kubelet`.</li>
+<br>
+<li><b>RBAC Authorization:</b> If your cluster uses RBAC, reading metrics requires authorization via a user, group, or ServiceAccount with a ClusterRole that allows accessing `/metrics`.</li>
+<br>
+<li><b>Metric Lifecycle:</b> Metrics go through different stages Alpha, Stable, Deprecated, Hidden, and Deleted. Each stage has its own set of rules and stability guarantees.</li>
+<br>
+<li><b>Command-Line Flags:</b> Admins can enable hidden metrics through a command-line flag on a specific binary, using the flag `show-hidden-metrics-for-version`.</li>
+<br>
+<li><b>Component Metrics:</b> Specific metrics are available for the `kube-controller-manager` and `kube-scheduler`, providing insights into the performance and health of these components.</li>
+<br>
+<li><b>Disabling Metrics:</b> Metrics can be turned off via the command-line flag `-disabled-metrics` if they are causing performance issues.</li>
+<br>
+<li><b>Metric Cardinality Enforcement:</b> To limit resource use, you can use the `-allow-label-value` command-line option to dynamically configure an allow-list of label values for a metric.</li>
+</ul>
+<br><br><br></main>
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
