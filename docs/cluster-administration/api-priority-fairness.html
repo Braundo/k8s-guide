@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="../../assets/logo.png" type="image/png">
-    <title>SECTION TITLE</title>
+    <title>API Priority and Fairness</title>
     <link rel="stylesheet" href="../../styles.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
@@ -41,82 +41,86 @@
     <nav id="sidebar"></nav>
     <!--Main Content -->
     <main>
-      <h1>SECTION TITLE</h1>
+      <h1>API Priority and Fairness</h1>
       
-<br><br><h3>section1</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>Concepts</h3>
 
-<br><br><h3>section2</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<b>Priority Level:</b> This is a configuration that defines how requests that match the level are to be handled. It specifies things like the concurrency shares, the queue length, and the queuing discipline.
+<br><br>
+<b>Flow Schema:</b> This is used to classify incoming requests. It specifies conditions like the verbs (`GET`, `POST`, etc.), the resources (`Pods`, `Services`, etc.), and the namespaces that the requests are coming from. Once a request matches a Flow Schema, it is then handled according to its associated Priority Level.
 
-<br><br><h3>section3</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>Configuration</h3>
 
-<br><br><h3>section4</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<b>FlowSchema:</b>
+<ul class="indented">
+    <li>`spec.matches`: Defines what requests will match this schema. You can specify multiple criteria like HTTP verbs, API groups, resources, etc.</li>
+    <li>`spec.priorityLevelConfiguration.name`: Specifies the name of the Priority Level to use for requests that match this schema.</li>
+</ul>
+<br><br>
+<b>PriorityLevelConfiguration:</b>
+<ul class="indented">
+    <li>`spec.type`: Can be either "Exempt" (ignores all other fields and never queues) or "Limited" (respects other fields).</li>
+    <li>`spec.assuredConcurrencyShares`: For "Limited" type, this sets the weight of this priority level vs others.</li>
+    <li>`spec.queues`: For "Limited" type, this sets the number of queues for this priority level.</li>
+    <li>`spec.queueLengthLimit`: For "Limited" type, this sets the max size of each queue.</li>
+    <li>`spec.handSize`: For "Limited" type, this sets the number of less loaded queues that a given request is randomly assigned to.</li>
+</ul>
+<br><br>
+<h3>Example Configuration</h3>
+<div class="code-block">
+  <button class="copy-button" data-clipboard-target=".code">
+    <span class="material-icons">content_copy</span>
+  </button>
+  <pre><code class="code language-yaml">
+# PriorityLevelConfiguration: \
+Catch-all priority level
+apiVersion: flowcontrol.apiserver.\
+k8s.io/v1beta1
+kind: PriorityLevelConfiguration
+metadata:
+  name: catch-all
+spec:
+  type: Limited
+  assuredConcurrencyShares: 1
+  queues: 128
+  queueLengthLimit: 100
+  handSize: 6
 
-<br><br><h3>section5</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+---
+# FlowSchema: Catch-all flow schema
+apiVersion: flowcontrol.apiserver \
+.k8s.io/v1beta1
+kind: FlowSchema
+metadata:
+  name: catch-all
+spec:
+  priorityLevelConfiguration:
+    name: catch-all
+  matchingPrecedence: 1000  # a fairly \
+  low precedence
+  rules:
+    - subjects:
+        - kind: Group
+          name: system:masters
+      rule:
+        verbs:
+          - '*'
+        apiGroups:
+          - '*'
+        resources:
+          - '*'
+  </code></pre>
+</div>
 
-<br><br><h3>section6</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
 
-<br><br><h3>section7</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
-
-<br><br><h3>section8</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
-
-<br><br><h3>section9</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
-
-<br><br><h3>section10</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
-
-<br><br><h3>section11</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
-
-<br><br><h3>section12</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
-
-<br><br><h3>section13</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
-
-<br><br><h3>section14</h3> 
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
-
-<br><br><h3>section15</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>Best Practices</h3>
+<br>
+<b>Be Cautious:</b> Misconfiguration can lead to degraded API server performance. Therefore, it's crucial to test configurations under simulated conditions to understand their impact.
+<br><br>
+<b>Monitoring:</b> Keep an eye on the API server's performance metrics to ensure that the Priority and Fairness configurations are having the desired effect.
     <br><br><br></main>
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
