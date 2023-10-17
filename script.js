@@ -121,6 +121,7 @@ let urls = [
   "/docs/workloads/daemonsets.html",
   "/docs/workloads/jobs.html",
   "/docs/workloads/replicationcontroller.html",
+  "/docs/services-lb-networking/network-overview.html",
   "/docs/services-lb-networking/service.html",
   "/docs/services-lb-networking/ingress.html",
   "/docs/services-lb-networking/endpoint-slices.html",
