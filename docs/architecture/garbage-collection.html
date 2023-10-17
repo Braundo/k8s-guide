@@ -1,54 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>PAGE TITLE</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link rel="stylesheet" href="../../css/styles.css">
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-</head>
-<body class="dark-mode">
-  <header><center>
-    <h1><img src="../../assets/logo.png" alt="Kubernetes Logo" id="k8s-logo">
-        K8s Guide
-    </h1>
-    <h6><i>TLDR for official Kubernetes documentation</i></h6>
-    <br>
-<div style="text-align: center;">
-    <input type="text" id="searchBar" placeholder="Search...">
-</div>
-</center>
-  </header>
-  <br>
-  <h3>PAGE TITLE</h3>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="../../assets/logo.png" type="image/png">
+    <title>Garbage Collection</title>
+    <link rel="stylesheet" href="../../styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="dark-mode" onload="loadSidebar()">
+    <!--Header -->
+    <header>
+      <div class="header-content">
+        <div class="title-and-subheader">
+            <div class="title-container">
+                <a href="/index.html">
+                    <img src="../../assets/logo.png" alt="Logo" id="logo" />
+                </a>
+                <h1>K8s Guide</h1>
+            </div>
+            <h3 class="sub-header">Your TLDR guide to Kubernetes documentation</h3>
+        </div>
+    </header>
+    <div id="hamburger-container">
+      <button id="hamburger-menu">☰</button>
+    </div>
 
-  
-  <div id="sidebar-placeholder"></div>  
+    <!--Sidebar -->
+    <nav id="sidebar"></nav>
+    <!--Main Content -->
+    <main>
+      <h1>Garbage Collection</h1>
+      
+<br><br><h3>What is Garbage Collection?</h3>
+<li>Collective term for mechanisms that clean up cluster resources.</li>
+<li>Targets terminated pods, completed jobs, objects without owner references, unused containers and images, and more.</li>
 
-  <main><br>
-    Placeholder content
-  </main>
+<br><br><h3>Owners and Dependents</h3>
+<li>Objects in Kubernetes link to each other through owner references.</li>
+<li>Owner references help the control plane and other API clients clean up related resources before deleting an object.</li>
 
-  <button id="darkModeToggle" class="circular-button bottom-right">
-    ☀
-  </button>
+<br><br><h3>Cascading Deletion</h3>
+<li>Two types: Foreground and Background.
+<li>Foreground: Owner object first enters a "deletion in progress" state, and dependents are deleted before the owner.</li>
+<li>Background: Owner object is deleted immediately, and dependents are cleaned up in the background.</li>
 
-  <button id="scrollTop" class="circular-button bottom-left">
-    &#9650;
-  </button>
-<script>
-  $(document).ready(function() {
-    $("#sidebar-placeholder").load("/path/to/sidebar.html");
-  });
-</script>
+<br><br><h3>Orphaned Dependents</h3>
+<li>Dependents left behind when an owner object is deleted are called orphan objects.</li>
+<li>By default, Kubernetes deletes dependent objects, but this behavior can be overridden.</li>
 
-  <script src="../../js/script.js"></script>
-  <script>
-    $(document).ready(function() {
-      $("#sidebar-placeholder").load("/sidebar.html");
-    });
-  </script>
-  
-</body>
+<br><br><h3>Garbage Collection of Unused Containers and Images</h3>
+<li>Kubelet performs garbage collection on unused images every five minutes and on unused containers every minute.</li>
+<li>Configurable options include `HighThresholdPercent` and `LowThresholdPercent` for disk usage.</li>
+
+<br><br><h3>Container Garbage Collection</h3>
+<li>Variables like `MinAge`, `MaxPerPodContainer`, and `MaxContainers` can be defined to control container garbage collection.</li>
+<li>Kubelet adjusts `MaxPerPodContainer` if it conflicts with `MaxContainers`.</li>
+
+<br><br><h3>Configuring Garbage Collection</h3>
+<li>Options specific to controllers managing resources can be configured for garbage collection.</li>
+    </main>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <!--Dark/Light Mode Toggle -->
+    <button id="mode-toggle" onclick="toggleMode()">
+      <span class="material-icons">brightness_7</span>
+    </button>
+    <!--Scroll-to-Top Button -->
+    <button id="scroll-top" onclick="scrollToTop()">
+      <span class="material-icons">arrow_upward</span>
+    </button>
+
+    <!-- Next Page Button -->
+    <button id="next-page" onclick="navigateNext()">
+        <span class="material-icons">arrow_forward</span>
+    </button>
+
+    <!-- Random Page Button -->
+    <button id="randomizer">
+    <span class="material-icons">shuffle</span>
+    </button>
+
+    <!--Mobile Menu -->
+    <div id="mobile-menu"></div>
+    <script src="../../script.js"></script>
+  </body>
 </html>
