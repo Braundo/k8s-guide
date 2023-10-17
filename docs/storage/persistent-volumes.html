@@ -1,54 +1,205 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>PAGE TITLE</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link rel="stylesheet" href="../../css/styles.css">
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-</head>
-<body class="dark-mode">
-  <header><center>
-    <h1><img src="../../assets/logo.png" alt="Kubernetes Logo" id="k8s-logo">
-        K8s Guide
-    </h1>
-    <h6><i>TLDR for official Kubernetes documentation</i></h6>
-    <br>
-<div style="text-align: center;">
-    <input type="text" id="searchBar" placeholder="Search...">
-</div>
-</center>
-  </header>
-  <br>
-  <h3>PAGE TITLE</h3>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="../../assets/logo.png" type="image/png">
+    <title>Persistent Volumes</title>
+    <link rel="stylesheet" href="../../styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism-dracula.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-yaml.min.js"></script>
+  </head>
+  <body class="dark-mode" onload="loadSidebar()">
+    <!--Header -->
+    <header>
+      <div class="header-content">
+        <div class="title-and-subheader">
+            <div class="title-container">
+                <a href="/index.html">
+                    <img src="../../assets/logo.png" alt="Logo" id="logo" />
+                </a>
+                <h1>K8s Guide</h1>
+            </div>
+            <h3 class="sub-header">Your TLDR guide to Kubernetes documentation</h3>
+        </div>
+    </header>
+    <div id="hamburger-container">
+      <button id="hamburger-menu">☰</button>
+    </div>
 
-  
-  <div id="sidebar-placeholder"></div>  
+    <!--Sidebar -->
+    <nav id="sidebar"></nav>
+    <!--Main Content -->
+    <main>
+      <h1>Persistent Volumes</h1>
+      
+<br><br>
+<h3>Introduction:</h3>
 
-  <main><br>
-    Placeholder content
-  </main>
+<li>PVs are abstraction layers for storage in Kubernetes.</li>
+<li>PVCs are requests for PV resources by pods.</li>
+<li>PVs are cluster-wide and can be used by multiple pods.</li>
 
-  <button id="darkModeToggle" class="circular-button bottom-right">
-    ☀
-  </button>
+<br><br>
+<h3>Lifecycle of a Volume and Claim:</h3>
 
-  <button id="scrollTop" class="circular-button bottom-left">
-    &#9650;
-  </button>
-<script>
-  $(document).ready(function() {
-    $("#sidebar-placeholder").load("/path/to/sidebar.html");
-  });
-</script>
+<li>Provisioning:</li>
+    <li>PVs can be provisioned statically or dynamically.</li>
+    <li>Dynamic provisioning relies on StorageClasses.</li>
+    <li>StorageClasses define provisioning mechanisms (e.g., AWS EBS, GCE PD).</li>
+<li>Binding:</li>
+    <li>PVCs are bound to suitable PVs based on labels, storage capacity, and access modes.</li>
+<li>Using:</li>
+    <li>Pods specify PVCs in their volume specifications.</li>
+    <li>Multiple pods can use the same PVC, but only one pod can mount it in ReadWrite mode at a time.</li>
+<li>Reclaiming:</li>
+    <li>PVs can be retained, recycled, or deleted after PVC release.</li>
+    <li>Retain: PV data is preserved.</li>
+    <li>Recycle: Data is deleted and PV can be reused.</li>
+    <li>Delete: PV is deleted along with data.</li>
 
-  <script src="../../js/script.js"></script>
-  <script>
-    $(document).ready(function() {
-      $("#sidebar-placeholder").load("/sidebar.html");
-    });
-  </script>
-  
-</body>
+<br><br>
+<h3>Storage Object in Use Protection:</h3>
+
+<li>PVs with bound PVCs have a finalizer to prevent accidental deletion.</li>
+<li>Ensures data safety while PVCs are in use.</li>
+
+<br><br>
+<h3>Reclaiming:</h3>
+
+<li>Defines PV's behavior after PVC release.</li>
+<li>Options include Retain, Recycle, and Delete.</li>
+<li>Appropriate setting depends on use case.</li>
+
+<br><br>
+<h3>PersistentVolume Claims:</h3>
+
+<li>PVCs request storage resources.</li>
+<li>They specify access modes (ReadWriteOnce, ReadOnlyMany, ReadWriteMany), resource requests, and StorageClass.</li>
+<li>Reference a StorageClass to dynamically provision PVs.</li>
+
+<br><br>
+<h3>Access Modes:</h3>
+
+<li>ReadWriteOnce: Can be mounted as read-write by a single node.</li>
+<li>ReadOnlyMany: Can be mounted read-only by many nodes.</li>
+<li>ReadWriteMany: Can be mounted as read-write by many nodes.</li>
+
+<br><br>
+<h3>Volume Modes:</h3>
+
+<li>PVCs can specify volume modes:</li>
+    <li>Filesystem: Usual file-based volumes.</li>
+    <li>Block: Raw block devices.</li>
+
+<br><br>
+<h3>Resources:</h3>
+
+<li>PVCs request storage capacity (e.g., 1Gi) and StorageClass.</li>
+<li>Helps in selecting an appropriate PV.</li>
+
+<br><br>
+<h3>Selector:</h3>
+
+<li>PVCs can use selectors to filter PVs based on labels and annotations.</li>
+<li>Useful for matching specific criteria.</li>
+
+<br><br>
+<h3>Class:</h3>
+
+<li>StorageClass defines storage type (e.g., SSD, HDD) and provisioning.</li>
+<li>PVCs reference a StorageClass to request storage.</li>
+
+<br><br>
+<h3>Claims As Volumes:</h3>
+
+<li>Pods can consume PVCs as volumes.</li>
+<li>Allows dynamic provisioning based on pod requirements.</li>
+
+<br><br>
+<h3>Raw Block Volume Support:</h3>
+
+<li>Kubernetes supports raw block volumes for high-performance workloads.</li>
+<li>PVCs request raw block volumes.</li>
+<li>Useful for databases and applications needing low-level access.</li>
+
+<br><br>
+<h3>Volume Snapshot and Restore:</h3>
+
+<li>Kubernetes supports volume snapshots and restoration.</li>
+<li>Users can create, clone, and restore volumes from snapshots.</li>
+
+<br><br>
+<h3>Volume Cloning:</h3>
+
+<li>Enables creating PVCs from existing PV data.</li>
+<li>Useful for scaling applications or creating replicas.</li>
+
+<br><br>
+<h3>Volume Populators and Data Sources:</h3>
+
+<li>Populators enable dynamic provisioning from data sources.</li>
+<li>Data sources can be external data or other PVCs.</li>
+
+<br><br>
+<h3>Cross-Namespace Data Sources:</h3>
+
+<li>Data sources can be referenced across namespaces.</li>
+<li>Enhances flexibility in PVC usage.</li>
+
+<br><br>
+<h3>Data Source References:</h3>
+
+<li>PVCs can reference data sources to create volumes.</li>
+<li>Supports various volume types and scenarios.</li>
+
+<br><br>
+<h3>Using Volume Populators:</h3>
+
+<li>Populators facilitate on-demand provisioning based on data sources.</li>
+<li>Ideal for dynamic storage allocation.</li>
+
+<br><br>
+<h3>Using a Cross-Namespace Volume Data Source:</h3>
+
+<li>Data sources can be referenced from different namespaces.</li>
+<li>Enables sharing data sources across projects.</li>
+    <br><br><br></main>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <!--Dark/Light Mode Toggle -->
+    <button id="mode-toggle" onclick="toggleMode()">
+      <span class="material-icons">brightness_7</span>
+    </button>
+    <!--Scroll-to-Top Button -->
+    <button id="scroll-top" onclick="scrollToTop()">
+      <span class="material-icons">arrow_upward</span>
+    </button>
+
+    <!-- Next Page Button -->
+    <button id="next-page" onclick="navigateNext()">
+        <span class="material-icons">arrow_forward</span>
+    </button>
+
+    <!-- Random Page Button -->
+    <button id="randomizer">
+    <span class="material-icons">shuffle</span>
+    </button>
+
+    <!--Mobile Menu -->
+    <div id="mobile-menu"></div>
+    <script src="../../script.js"></script>
+  </body>
 </html>
