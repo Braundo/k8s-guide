@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="../../assets/logo.png" type="image/png">
-    <title>Service Networking</title>
+    <title>Containers Overview</title>
     <link rel="stylesheet" href="../../styles.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
@@ -41,68 +41,31 @@
     <nav id="sidebar"></nav>
     <!--Main Content -->
     <main>
-      <h1>Service Networking</h1>
+      <h1>Containers Overview</h1>
       
 <br><br>
-<h3>Introduction</h3>
+<h3>What are Containers?</h3>
 
-<li>Services expose applications running on a set of Pods.</li>
-<li>Services can have a cluster-scoped virtual IP address (ClusterIP).</li>
-<li>Clients connect using the virtual IP, and Kubernetes load-balances the traffic.</li>
-
-<br><br>
-<h3>How ClusterIPs are Allocated</h3>
-
-<li>Dynamically: The control plane picks a free IP address from the configured IP range.</li>
-<li>Statically: You can specify an IP address within the configured IP range.</li>
+<li>Technology for packaging an application along with its runtime dependencies.</li>
+<li>Containers are repeatable and standardized, ensuring the same behavior wherever you run them.</li>
+<li>They decouple applications from the underlying host infrastructure, making deployment easier across different cloud or OS environments.</li>
+<li>In a Kubernetes cluster, each node runs the containers that form the Pods assigned to that node.</li>
 
 <br><br>
-<h3>Uniqueness of ClusterIP</h3>
+<h3>Container Images</h3>
 
-<li>Every Service ClusterIP must be unique across the cluster.</li>
-<li>Creating a Service with an already allocated ClusterIP will result in an error.</li>
-
-<br><br>
-<h3>Why Reserve ClusterIPs</h3>
-
-<li>For well-known IP addresses that other components and users in the cluster can use.</li>
-<li>Example: DNS Service in the cluster may use a well-known IP.</li>
+<li>A container image is a ready-to-run software package.</li>
+<li>It contains everything needed to run an application: the code, runtime, application and system libraries, and default settings.</li>
+<li>Containers are intended to be stateless and immutable. Changes should be made by building a new image and recreating the container.</li>
 
 <br><br>
-<h3>Avoiding ClusterIP Conflicts</h3>
+<h3>Container Runtimes</h3>
 
-<li>Kubernetes has an allocation strategy to reduce the risk of collision.</li>
-<li>The ClusterIP range is divided based on a formula.</li>
-<li>Dynamic IP assignment uses the upper band by default.</li>
+<li>A fundamental component in Kubernetes for running containers effectively.</li>
 
-For the KCAD exam, understanding how ClusterIPs are allocated, both dynamically and statically, is crucial. Also, knowing how to avoid conflicts and the uniqueness constraint can be vital.
-
-## Service Internal Traffic Policy
-
-<br><br>
-<h3>Key Points:</h3>
-
-<li>Feature State: Available in Kubernetes v1.26 as stable.</li>
-<li>Purpose: Allows internal traffic restrictions to only route internal traffic to endpoints within the originating node. This is useful for reducing costs and improving performance.</li>
-<li>Configuration: You can enable this feature by setting `.spec.internalTrafficPolicy` to `Local` in the Service specification. This instructs kube-proxy to only use node-local endpoints for cluster-internal traffic.</li>
-    
-    ```yaml
-    apiVersion: v1
-    kind: Service
-    metadata:
-      name: my-service
-    spec:
-      selector:
-        app.kubernetes.io/name: MyApp
-      ports:
-        <li>protocol: TCP</li>
-          port: 80
-          targetPort: 9376
-      internalTrafficPolicy: Local
-    
-    ```
-    
-<li>How it Works: The kube-proxy filters the endpoints based on the `.spec.internalTrafficPolicy` setting. When set to `Local`, only node-local endpoints are considered. When set to `Cluster` (the default), or not set, all endpoints are considered.</li>
+<li>Manages the execution and lifecycle of containers within the Kubernetes environment.</li>
+<li>Kubernetes supports container runtimes like containerd, CRI-O, and any other implementation of the Kubernetes CRI (Container Runtime Interface).</li>
+<li>You can allow your cluster to pick the default container runtime for a Pod or specify the RuntimeClass for different settings.</li>
     <br><br><br></main>
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"

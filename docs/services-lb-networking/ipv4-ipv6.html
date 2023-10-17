@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="../../assets/logo.png" type="image/png">
-    <title>SECTION TITLE</title>
+    <title>IPv4/IPv6</title>
     <link rel="stylesheet" href="../../styles.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
@@ -41,82 +41,64 @@
     <nav id="sidebar"></nav>
     <!--Main Content -->
     <main>
-      <h1>SECTION TITLE</h1>
+      <h1>IPv4/IPv6</h1>
       
-<br><br><h3>section1</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>IPv4/IPv6 dual-stack networking</h3>
 
-<br><br><h3>section2</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<li>Enables the allocation of both IPv4 and IPv6 addresses to Pods and Services.</li>
+<li>Enabled by default for Kubernetes clusters starting in version 1.21.</li>
 
-<br><br><h3>section3</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>Supported Features</h3>
 
-<br><br><h3>section4</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<li>Dual-stack Pod networking</li>
+<li>IPv4 and IPv6 enabled Services</li>
+<li>Pod off-cluster egress routing via both IPv4 and IPv6 interfaces</li>
 
-<br><br><h3>section5</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>Prerequisites</h3>
 
-<br><br><h3>section6</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<li>Kubernetes 1.20 or later</li>
+<li>Provider support for dual-stack networking</li>
+<li>A network plugin that supports dual-stack networking</li>
 
-<br><br><h3>section7</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>Configure IPv4/IPv6 dual-stack</h3>
 
-<br><br><h3>section8</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<li>Various flags for `kube-apiserver`, `kube-controller-manager`, `kube-proxy`, and `kubelet` to set dual-stack cluster network assignments.</li>
 
-<br><br><h3>section9</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>Services</h3>
 
-<br><br><h3>section10</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<li>Can use IPv4, IPv6, or both.</li>
+<li>`.spec.ipFamilyPolicy` can be set to `SingleStack`, `PreferDualStack`, or `RequireDualStack`.</li>
+<li>`.spec.ipFamilies` can be set to define the order of IP families for dual-stack.</li>
 
-<br><br><h3>section11</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>Dual-stack Service configuration scenarios</h3>
 
-<br><br><h3>section12</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<li>Examples provided for various dual-stack Service configurations.</li>
 
-<br><br><h3>section13</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>Dual-stack defaults on existing Services</h3>
 
-<br><br><h3>section14</h3> 
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<li>Existing Services are configured by the control plane to set `.spec.ipFamilyPolicy` to `SingleStack`.</li>
 
-<br><br><h3>section15</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>Service type LoadBalancer</h3>
+
+<li>To provision a dual-stack load balancer, set `.spec.type` to `LoadBalancer` and `.spec.ipFamilyPolicy` to `PreferDualStack` or `RequireDualStack`.</li>
+
+<br><br>
+<h3>Egress traffic</h3>
+
+<li>Enable egress traffic for Pods using non-publicly routable IPv6 addresses through mechanisms like transparent proxying or IP masquerading.</li>
+
+<br><br>
+<h3>Windows support</h3>
+
+<li>Dual-stack IPv4/IPv6 networking is supported for pods and nodes with single-family services on Windows.</li>
     <br><br><br></main>
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"

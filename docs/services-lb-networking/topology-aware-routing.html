@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="../../assets/logo.png" type="image/png">
-    <title>SECTION TITLE</title>
+    <title>Topology Aware Routing</title>
     <link rel="stylesheet" href="../../styles.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
@@ -41,82 +41,61 @@
     <nav id="sidebar"></nav>
     <!--Main Content -->
     <main>
-      <h1>SECTION TITLE</h1>
+      <h1>Topology Aware Routing</h1>
       
-<br><br><h3>section1</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>Motivation</h3>
 
-<br><br><h3>section2</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<li>Designed for multi-zone environments.</li>
+<li>Aims to keep network traffic within the originating zone for reliability, performance, and cost.</li>
 
-<br><br><h3>section3</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>Enabling Topology Aware Routing</h3>
 
-<br><br><h3>section4</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<li>Enabled by setting the `service.kubernetes.io/topology-mode` annotation to `Auto`.</li>
+<li>EndpointSlices will have Topology Hints populated to allocate endpoints to specific zones.</li>
 
-<br><br><h3>section5</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>When it works best</h3>
 
-<br><br><h3>section6</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+1. Even distribution of incoming traffic.
+2. Service has 3 or more endpoints per zone.
 
-<br><br><h3>section7</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>How It Works</h3>
 
-<br><br><h3>section8</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<li>"Auto" heuristic proportionally allocates endpoints to each zone.</li>
+<li>EndpointSlice controller sets hints based on allocatable CPU cores in each zone.</li>
 
-<br><br><h3>section9</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>EndpointSlice controller</h3>
 
-<br><br><h3>section10</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<li>Responsible for setting hints on EndpointSlices.</li>
+<li>Allocates endpoints based on the allocatable CPU cores for nodes in each zone.</li>
 
-<br><br><h3>section11</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>kube-proxy</h3>
 
-<br><br><h3>section12</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<li>Filters endpoints based on hints set by the EndpointSlice controller.</li>
+<li>Sometimes allocates endpoints from different zones for even distribution.</li>
 
-<br><br><h3>section13</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>Safeguards</h3>
 
-<br><br><h3>section14</h3> 
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<li>Several rules to ensure safe use of Topology Aware Hints.</li>
+<li>If rules aren't met, kube-proxy selects endpoints from anywhere in the cluster.</li>
 
-<br><br><h3>section15</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>Constraints</h3>
+
+<li>Not used when `internalTrafficPolicy` is set to `Local`.</li>
+<li>Does not work well for Services with traffic originating from a subset of zones.</li>
+<li>Does not account for unready nodes or nodes with specific labels.</li>
+
+<br><br>
+<h3>Custom heuristics</h3>
+
+<li>Allows for custom heuristics if the built-in ones don't meet specific use cases.</li>
     <br><br><br></main>
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"

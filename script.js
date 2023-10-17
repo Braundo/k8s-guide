@@ -103,6 +103,7 @@ let urls = [
   "/docs/architecture/container-runtime-interface.html",
   "/docs/architecture/garbage-collection.html",
   "/docs/architecture/mixed-version-proxy.html",
+  "/docs/containers/containers-overview.html",
   "/docs/containers/images.html",
   "/docs/containers/container-environment.html",
   "/docs/containers/runtime-class.html",
