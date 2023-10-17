@@ -205,3 +205,36 @@ function goToRandomPage() {
     console.error("URLs array is empty or not defined.");
   }
 }
+
+/* turn backticks into code */
+document.addEventListener("DOMContentLoaded", function () {
+  var elements = document.body.getElementsByTagName("*");
+  for (var i = 0; i < elements.length; i++) {
+    var element = elements[i];
+    if (
+      element.childNodes.length === 1 &&
+      element.childNodes[0].nodeType === 3
+    ) {
+      // Text node
+      var textContent = element.textContent;
+      var htmlContent = textContent.replace(
+        /`([^`]+)`/g,
+        '<code class="language-shell">$1</code>'
+      );
+      if (htmlContent !== textContent) {
+        element.innerHTML = htmlContent;
+      }
+    }
+  }
+
+  // Get all code elements
+  var codeElements = document.querySelectorAll("code");
+
+  // Apply styles
+  for (var i = 0; i < codeElements.length; i++) {
+    codeElements[i].style.color = "#ff6e86";
+    codeElements[i].style.backgroundColor = "black";
+  }
+
+  Prism.highlightAll();
+});
