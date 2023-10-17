@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="../../assets/logo.png" type="image/png">
-    <title>SECTION TITLE</title>
+    <title>DaemonSets</title>
     <link rel="stylesheet" href="../../styles.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
@@ -39,82 +39,67 @@
     <nav id="sidebar"></nav>
     <!--Main Content -->
     <main>
-      <h1>SECTION TITLE</h1>
+      <h1>DaemonSets</h1>
       
-<br><br><h3>section1</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>What is a DaemonSet?</h3>
 
-<br><br><h3>section2</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<li>A DaemonSet ensures that all (or some) nodes in a Kubernetes cluster run a copy of a specific Pod.</li>
+<li>Typical uses include running a cluster storage daemon, logs collection daemon, or node monitoring daemon on every node.</li>
 
-<br><br><h3>section3</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>Writing a DaemonSet Spec</h3>
 
-<br><br><h3>section4</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<li>You can describe a DaemonSet in a YAML file.</li>
+<li>Required fields include `apiVersion`, `kind`, and `metadata`.</li>
 
-<br><br><h3>section5</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>Pod Template</h3>
 
-<br><br><h3>section6</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<li>The `.spec.template` is a Pod template with the same schema as a Pod.</li>
+<li>It must have a `RestartPolicy` equal to `Always`.</li>
 
-<br><br><h3>section7</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>Pod Selector</h3>
 
-<br><br><h3>section8</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<li>The `.spec.selector` field is a pod selector that must match the labels of the `.spec.template`.</li>
 
-<br><br><h3>section9</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>Running Pods on Select Nodes</h3>
 
-<br><br><h3>section10</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<li>You can specify node selectors or affinities to control on which nodes the Pods will run.</li>
 
-<br><br><h3>section11</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>How Daemon Pods are Scheduled</h3>
 
-<br><br><h3>section12</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<li>The DaemonSet controller adds `spec.affinity.nodeAffinity` to match the target host.</li>
+<li>Different schedulers can be specified for the Pods.</li>
 
-<br><br><h3>section13</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>Taints and Tolerations</h3>
 
-<br><br><h3>section14</h3> 
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<li>DaemonSet controller automatically adds a set of tolerations to DaemonSet Pods to ensure they can be scheduled even under various node conditions.</li>
 
-<br><br><h3>section15</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>Communicating with Daemon Pods</h3>
+
+<li>Various patterns like Push, NodeIP and Known Port, DNS, and Service can be used for communication.</li>
+
+<br><br>
+<h3>Updating a DaemonSet</h3>
+
+<li>Node labels can be changed, and the DaemonSet will update accordingly.</li>
+<li>Rolling updates and rollbacks can be performed.</li>
+
+<br><br>
+<h3>Alternatives to DaemonSet</h3>
+
+<li>Daemon processes can also be run directly on nodes using init scripts, but DaemonSets offer several advantages like monitoring, logging, and resource isolation.</li>
+
+<br><br>
+<h3>Deployments vs DaemonSets</h3>
+
+<li>Use Deployments for stateless services and DaemonSets for node-level functionalities.</li>
     <br><br><br></main>
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"

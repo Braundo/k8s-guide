@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="../../assets/logo.png" type="image/png">
-    <title>SECTION TITLE</title>
+    <title>ReplicationController</title>
     <link rel="stylesheet" href="../../styles.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
@@ -39,82 +39,72 @@
     <nav id="sidebar"></nav>
     <!--Main Content -->
     <main>
-      <h1>SECTION TITLE</h1>
+      <h1>ReplicationController</h1>
       
-<br><br><h3>section1</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>Purpose and Functionality</h3>
 
-<br><br><h3>section2</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<li>Ensures a specified number of pod replicas are running at any given time.</li>
+<li>Automatically replaces pods that fail, are deleted, or are terminated.</li>
 
-<br><br><h3>section3</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>How it Works</h3>
 
-<br><br><h3>section4</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<li>If there are too many pods, it terminates the extra ones.</li>
+<li>If there are too few, it starts more.</li>
 
-<br><br><h3>section5</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>Abbreviation</h3>
 
-<br><br><h3>section6</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<li>Often abbreviated to "rc" in discussions and `kubectl` commands.</li>
 
-<br><br><h3>section7</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>Use Cases</h3>
 
-<br><br><h3>section8</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<li>Can run one instance of a Pod indefinitely.</li>
+<li>Can run several identical replicas of a replicated service, like web servers.</li>
 
-<br><br><h3>section9</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>Configuration Example</h3>
 
-<br><br><h3>section10</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<li>YAML configuration specifies the number of replicas, selector, and pod template.</li>
 
-<br><br><h3>section11</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>Commands</h3>
 
-<br><br><h3>section12</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<li>`kubectl apply -f <config-file>` to apply the configuration.</li>
+<li>`kubectl describe replicationcontrollers/<rc-name>` to check the status.</li>
 
-<br><br><h3>section13</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>Pod Template</h3>
 
-<br><br><h3>section14</h3> 
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<li>`.spec.template` is a pod template with the same schema as a Pod.</li>
 
-<br><br><h3>section15</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>Labels and Selectors</h3>
+
+<li>`.spec.selector` is a label selector that manages pods with matching labels.</li>
+
+<br><br>
+<h3>Scaling</h3>
+
+<li>`.spec.replicas` specifies the number of pods that should run concurrently.</li>
+
+<br><br>
+<h3>Deletion</h3>
+
+<li>`kubectl delete` scales the ReplicationController to zero and waits for pod deletion.</li>
+
+<br><br>
+<h3>Alternatives</h3>
+
+<li>ReplicaSet and Deployment are the next-generation alternatives.</li>
+
+<br><br>
+<h3>DaemonSet and Job</h3>
+
+<li>For machine-level functions, use DaemonSet.</li>
+<li>For pods expected to terminate on their own, use Job.</li>
     <br><br><br></main>
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"

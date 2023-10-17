@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="../../assets/logo.png" type="image/png">
-    <title>SECTION TITLE</title>
+    <title>Jobs</title>
     <link rel="stylesheet" href="../../styles.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
@@ -39,82 +39,185 @@
     <nav id="sidebar"></nav>
     <!--Main Content -->
     <main>
-      <h1>SECTION TITLE</h1>
+      <h1>Jobs</h1>
       
-<br><br><h3>section1</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>Running an example Job</h3>
 
-<br><br><h3>section2</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<li>Use `kubectl create -f <filename.yaml>` to create a Job from a YAML file.</li>
+<li>`kubectl get jobs` to list all Jobs and their statuses.</li>
 
-<br><br><h3>section3</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>Writing a Job spec</h3>
 
-<br><br><h3>section4</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<li>`metadata.name` to specify the Job name.</li>
+<li>`spec.template.spec.containers[].image` to specify the container image.</li>
+<li>`spec.template.spec.restartPolicy` must be either `Never` or `OnFailure`.</li>
 
-<br><br><h3>section5</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>Job Labels</h3>
 
-<br><br><h3>section6</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<li>Labels are key-value pairs attached to Jobs.</li>
+<li>Useful for organizing and querying Jobs.</li>
 
-<br><br><h3>section7</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>Pod Template</h3>
 
-<br><br><h3>section8</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<li>Nested inside the Job spec under `spec.template`.</li>
+<li>Specifies the Pod's containers, volumes, and other configurations.</li>
 
-<br><br><h3>section9</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>Pod selector</h3>
 
-<br><br><h3>section10</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<li>Automatically generated based on Job's `metadata.labels`.</li>
+<li>Do not set `.spec.selector` field manually unless you know what you're doing.</li>
 
-<br><br><h3>section11</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>Parallel execution for Jobs</h3>
 
-<br><br><h3>section12</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<li>`spec.parallelism`: Number of Pods running simultaneously.</li>
+<li>`spec.completions`: Number of Pods that must complete successfully for the Job to be marked as complete.</li>
 
-<br><br><h3>section13</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>Completion mode</h3>
 
-<br><br><h3>section14</h3> 
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<li>Indexed Jobs: Each Pod gets a unique index between 0 and `spec.completions-1`.</li>
+<li>NonIndexed: No unique identifiers for Pods.</li>
 
-<br><br><h3>section15</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>Handling Pod and container failures</h3>
+
+<li>`spec.backoffLimit`: Number of allowed failures before Job is marked as failed.</li>
+<li>`spec.activeDeadlineSeconds`: Time in seconds that a Job is allowed to run.</li>
+
+<br><br>
+<h3>Pod backoff failure policy</h3>
+
+<li>Exponential backoff for restarting failed Pods.</li>
+<li>Controlled by `spec.backoffLimit` and `spec.activeDeadlineSeconds`.</li>
+
+<br><br>
+<h3>Backoff limit per index</h3>
+
+<li>In Indexed Jobs, each index has its own backoff limit and retry mechanism.</li>
+
+<br><br>
+<h3>Pod failure policy</h3>
+
+<li>No explicit failure policy, but can be managed using `spec.backoffLimit` and `spec.activeDeadlineSeconds`.</li>
+
+<br><br>
+<h3>Job termination and cleanup</h3>
+
+<li>Deleting a Job will also delete all its Pods.</li>
+<li>Use `kubectl delete job --selector=<label>` to delete multiple Jobs.</li>
+
+<br><br>
+<h3>Clean up finished jobs automatically</h3>
+
+<li>`.spec.ttlSecondsAfterFinished`: Time-to-live in seconds after Job completion, after which the Job and its Pods are deleted.</li>
+
+<br><br>
+<h3>TTL mechanism for finished Jobs</h3>
+
+<li>TTL controller in Kubernetes takes care of this.</li>
+<li>Only works if the feature gate `TTLAfterFinished` is enabled.</li>
+
+<br><br>
+<h3>Job patterns</h3>
+
+<li>One-off Jobs: Run once and terminate.</li>
+<li>CronJobs: Scheduled Jobs, defined using cron syntax.</li>
+
+<br><br><h2>TTL-After-Finished Controller</h2> 
+
+<br><br>
+<h3>Purpose</h3>
+
+<li>Provides a TTL (time to live) mechanism to limit the lifetime of Job objects that have finished execution.</li>
+
+<br><br>
+<h3>Cleanup for Finished Jobs</h3>
+
+<li>Supported only for Jobs.</li>
+<li>You can specify `.spec.ttlSecondsAfterFinished` field to clean up finished Jobs automatically.</li>
+<li>The timer starts once the Job status changes to Complete or Failed.</li>
+<li>After TTL expires, the Job becomes eligible for cascading removal, including its dependent objects.</li>
+<li>Kubernetes honors object lifecycle guarantees, such as waiting for finalizers.</li>
+
+<br><br>
+<h3>Setting TTL</h3>
+
+<li>You can set the TTL seconds at any time.</li>
+<li>Can be specified in the Job manifest.</li>
+<li>Can be manually set for existing, already finished Jobs.</li>
+<li>Can use a mutating admission webhook to set this field dynamically at Job creation time or after the Job has finished.</li>
+<li>You can write your own controller to manage the cleanup TTL for Jobs based on selectors.</li>
+
+<br><br>
+<h3>Caveats</h3>
+
+<li>Updating TTL for Finished Jobs: You can modify the TTL period even after the job is created or has finished. However, retention is not guaranteed if you extend the TTL after it has already expired.</li>
+<li>Time Skew: The feature is sensitive to time skew in your cluster, which may cause the control plane to clean up Job objects at the wrong time.</li>
+
+<br><br><h2>Cronjobs</h2><br>
+
+<br><br>
+<h3>Purpose</h3>
+
+<li>CronJobs are used for performing regular scheduled actions like backups, report generation, etc.</li>
+
+<br><br>
+<h3>Schedule Syntax</h3>
+
+<li>Uses Cron syntax for scheduling.</li>
+<li>Extended "Vixie cron" step values are supported.</li>
+<li>Macros like `@monthly`, `@weekly`, etc., can also be used.</li>
+
+<br><br>
+<h3>Job Template</h3>
+
+<li>Defines a template for the Jobs that the CronJob creates.</li>
+<li>Same schema as a Job but nested and without `apiVersion` or `kind`.</li>
+
+<br><br>
+<h3>Deadline for Delayed Job Start</h3>
+
+<li>Optional `.spec.startingDeadlineSeconds` field.</li>
+<li>Defines a deadline for starting the Job if it misses its scheduled time.</li>
+
+<br><br>
+<h3>Concurrency Policy</h3>
+
+<li>Optional `.spec.concurrencyPolicy` field.</li>
+<li>Options: Allow (default), Forbid, Replace.</li>
+
+<br><br>
+<h3>Schedule Suspension</h3>
+
+<li>Optional `.spec.suspend` field to suspend execution of Jobs.</li>
+
+<br><br>
+<h3>Jobs History Limits</h3>
+
+<li>`.spec.successfulJobsHistoryLimit` and `.spec.failedJobsHistoryLimit` fields are optional.</li>
+
+<br><br>
+<h3>Time Zones</h3>
+
+<li>Time zones can be specified using `.spec.timeZone`.</li>
+
+<br><br>
+<h3>Limitations</h3>
+
+<li>Unsupported TimeZone specification.</li>
+<li>Modifying a CronJob affects only new Jobs.</li>
+<li>Job creation is approximate; idempotency is advised.</li>
+
+<br><br>
+<h3>Job Creation</h3>
+
+<li>A CronJob creates a Job object approximately once per execution time of its schedule.</li>
     <br><br><br></main>
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
