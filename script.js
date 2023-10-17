@@ -240,3 +240,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
   Prism.highlightAll();
 });
+
+new ClipboardJS(".copy-button");
+
+document.querySelectorAll(".copy-button").forEach((button) => {
+  button.addEventListener("click", () => {
+    button.textContent = "Copied!";
+    button.style.color = "#ffffff"; // This will make the text color white
+    setTimeout(() => {
+      // This will revert the text back to the copy icon
+      button.innerHTML = '<span class="material-icons">content_copy</span>';
+      button.style.color = ""; // This will revert the text color back to its original value
+    }, 2000);
+  });
+});

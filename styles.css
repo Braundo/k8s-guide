@@ -211,6 +211,14 @@ nav section:first-of-type {
   z-index: 1;
 }
 
+ol.indented {
+  padding-left: 35px; /* Adjust value as needed */
+}
+
+ul.indented {
+  padding-left: 35px; /* Adjust value as needed */
+}
+
 /* Styles for the randomizer button */
 #randomizer {
   position: fixed;
@@ -315,6 +323,22 @@ nav section:first-of-type {
     z-index: 1;
   }
 
+  .code-block {
+    background-color: #000000;
+    padding: 1em;
+    position: relative;
+    border-radius: 8px;
+  }
+
+  .copy-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent !important;
+    border: none;
+    cursor: pointer;
+  }
+
   /* Show hamburger menu on mobile */
   #hamburger-menu {
     display: block;
@@ -343,6 +367,8 @@ nav section:first-of-type {
 .material-icons {
   font-size: 24px; /* Adjust size as necessary */
   vertical-align: middle; /* Align with text */
+  color: #ffffff;
+  background-color: transparent !important;
 }
 
 /* Mobile Menu */
@@ -399,6 +425,7 @@ nav section ul li a,
   color: inherit;
   padding: 10px;
   display: block;
+  line-height: 1.5;
 }
 
 /* Header Content */
@@ -434,5 +461,22 @@ nav section ul li a,
     right: 20px;
     padding: 10px;
     margin-top: 20px;
+  }
+  .code-block {
+    background-color: #000000;
+    padding: 0.5em;
+    border-radius: 8px;
+    font-size: 16px;
+  }
+  .copy-button {
+    position: relative;
+    margin-left: 99%;
+    top: 5px;
+    right: 30px;
+    background-color: transparent !important;
+    border: none;
+    cursor: pointer;
+    color: #ffffff;
+    text-align: center;
   }
 }
