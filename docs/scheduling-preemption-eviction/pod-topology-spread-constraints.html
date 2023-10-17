@@ -1,54 +1,241 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>PAGE TITLE</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link rel="stylesheet" href="../../css/styles.css">
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-</head>
-<body class="dark-mode">
-  <header><center>
-    <h1><img src="../../assets/logo.png" alt="Kubernetes Logo" id="k8s-logo">
-        K8s Guide
-    </h1>
-    <h6><i>TLDR for official Kubernetes documentation</i></h6>
-    <br>
-<div style="text-align: center;">
-    <input type="text" id="searchBar" placeholder="Search...">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="../../assets/logo.png" type="image/png">
+    <title>Pod Topology Spread Constraints</title>
+    <link rel="stylesheet" href="../../styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism-dracula.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-yaml.min.js"></script>
+  </head>
+  <body class="dark-mode" onload="loadSidebar()">
+    <!--Header -->
+    <header>
+      <div class="header-content">
+        <div class="title-and-subheader">
+            <div class="title-container">
+                <a href="/index.html">
+                    <img src="../../assets/logo.png" alt="Logo" id="logo" />
+                </a>
+                <h1>K8s Guide</h1>
+            </div>
+            <h3 class="sub-header">Your TLDR guide to Kubernetes documentation</h3>
+        </div>
+    </header>
+    <div id="hamburger-container">
+      <button id="hamburger-menu">☰</button>
+    </div>
+
+    <!--Sidebar -->
+    <nav id="sidebar"></nav>
+    <!--Main Content -->
+    <main>
+      <h1>Pod Topology Spread Constraints</h1>
+      
+<br><br>
+<h3>Motivation</h3>
+
+The primary motivation is to distribute Pods in a way that they are not all scheduled on the same node or same zone, which could be a single point of failure. For example, if you have a service that scales its Pods automatically, you don't want all Pods to be on the same node. As you scale up, you might also want to consider network latency and costs, aiming to distribute Pods across different data centers or zones.
+
+<br><br>
+<h3>topologySpreadConstraints Field</h3>
+
+This is the field you add to your Pod spec to define the constraints. It has several sub-fields:
+
+<li>`maxSkew`: Defines how unevenly Pods may be distributed. A lower number means a more even distribution.</li>
+<li>`topologyKey`: The key for node labels to define a topology (e.g., `zone`, `node`, etc.)</li>
+<li>`whenUnsatisfiable`: What to do if the constraint can't be satisfied (`DoNotSchedule` or `ScheduleAnyway`).</li>
+<li>`labelSelector`: Used to find Pods that these constraints apply to.</li>
+<li>`minDomains`: (Optional) Minimum number of domains (like zones or nodes) that must be eligible for Pod placement.</li>
+
+<br><br>
+<h3>Node Labels</h3>
+
+Nodes should be labeled with the topology keys you intend to use, like `zone` or `region`. These labels are used by the scheduler to make decisions.
+
+<br><br>
+<h3>Multiple Constraints</h3>
+
+You can define multiple `topologySpreadConstraints`. In such cases, all constraints must be satisfied for a Pod to be scheduled.
+
+<br><br>
+<h3>Interaction with Node Affinity</h3>
+
+If a Pod also has node affinity rules, then the scheduler will consider those rules in conjunction with the topology spread constraints.
+
+## Examples
+
+<br><br>
+<h3>Example 1: Basic Spread Constraints</h3>
+This example ensures that the Pods are spread across different zones.
+<div class="code-block">
+  <button class="copy-button" data-clipboard-target=".code">
+    <span class="material-icons">content_copy</span>
+  </button>
+  <pre><code class="code language-yaml">
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod
+spec:
+  topologySpreadConstraints:
+  - maxSkew: 1
+    topologyKey: zone
+    whenUnsatisfiable: DoNotSchedule
+    labelSelector:
+      matchLabels:
+        app: myapp
+  containers:
+  - name: nginx
+    image: nginx
+  </code></pre>
 </div>
-</center>
-  </header>
-  <br>
-  <h3>PAGE TITLE</h3>
 
-  
-  <div id="sidebar-placeholder"></div>  
 
-  <main><br>
-    Placeholder content
-  </main>
 
-  <button id="darkModeToggle" class="circular-button bottom-right">
-    ☀
+<br><br>
+<h3>Example 2: Multiple Constraints</h3>
+
+This example ensures that the Pods are spread both across zones and nodes.
+<div class="code-block">
+  <button class="copy-button" data-clipboard-target=".code">
+    <span class="material-icons">content_copy</span>
   </button>
+  <pre><code class="code language-yaml">
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod
+spec:
+  topologySpreadConstraints:
+  - maxSkew: 1
+    topologyKey: zone
+    whenUnsatisfiable: DoNotSchedule
+    labelSelector:
+      matchLabels:
+        app: myapp
+  - maxSkew: 2
+    topologyKey: node
+    whenUnsatisfiable: ScheduleAnyway
+    labelSelector:
+      matchLabels:
+        app: myapp
+  containers:
+  - name: nginx
+    image: nginx
+  </code></pre>
+</div>
 
-  <button id="scrollTop" class="circular-button bottom-left">
-    &#9650;
+
+<br><br>
+<h3>Example 3: Using minDomains</h3>
+
+This example ensures that Pods are spread across at least 2 zones.
+<div class="code-block">
+  <button class="copy-button" data-clipboard-target=".code">
+    <span class="material-icons">content_copy</span>
   </button>
-<script>
-  $(document).ready(function() {
-    $("#sidebar-placeholder").load("/path/to/sidebar.html");
-  });
-</script>
+  <pre><code class="code language-yaml">
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod
+spec:
+  topologySpreadConstraints:
+  - maxSkew: 1
+    topologyKey: zone
+    whenUnsatisfiable: DoNotSchedule
+    labelSelector:
+      matchLabels:
+        app: myapp
+    minDomains: 2
+  containers:
+  - name: nginx
+    image: nginx
+  </code></pre>
+</div>
 
-  <script src="../../js/script.js"></script>
-  <script>
-    $(document).ready(function() {
-      $("#sidebar-placeholder").load("/sidebar.html");
-    });
-  </script>
-  
-</body>
+
+<br><br>
+<h3>Example 4: Interaction with Node Affinity</h3>
+
+This example shows how node affinity can be combined with spread constraints.
+<div class="code-block">
+  <button class="copy-button" data-clipboard-target=".code">
+    <span class="material-icons">content_copy</span>
+  </button>
+  <pre><code class="code language-yaml">
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod
+spec:
+  affinity:
+    nodeAffinity:
+      requiredDuringScheduling \
+      IgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: hardware
+            operator: In
+            values:
+            - fast-ssd
+  topologySpreadConstraints:
+  - maxSkew: 1
+    topologyKey: zone
+    whenUnsatisfiable: DoNotSchedule
+    labelSelector:
+      matchLabels:
+        app: myapp
+  containers:
+  - name: nginx
+    image: nginx
+  </code></pre>
+</div>
+
+<br><br>
+<h3>Implicit Conventions</h3>
+
+Only Pods in the same namespace as the incoming Pod are considered as matching candidates. Also, any nodes that don't have the `topologyKey` specified in `topologySpreadConstraints` are bypassed.
+
+This feature is particularly useful for large, distributed, and dynamic clusters where you want to control the Pod distribution for reasons like high availability, data locality, and load balancing.
+    <br><br><br></main>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <!--Dark/Light Mode Toggle -->
+    <button id="mode-toggle" onclick="toggleMode()">
+      <span class="material-icons">brightness_7</span>
+    </button>
+    <!--Scroll-to-Top Button -->
+    <button id="scroll-top" onclick="scrollToTop()">
+      <span class="material-icons">arrow_upward</span>
+    </button>
+
+    <!-- Next Page Button -->
+    <button id="next-page" onclick="navigateNext()">
+        <span class="material-icons">arrow_forward</span>
+    </button>
+
+    <!-- Random Page Button -->
+    <button id="randomizer">
+    <span class="material-icons">shuffle</span>
+    </button>
+
+    <!--Mobile Menu -->
+    <div id="mobile-menu"></div>
+    <script src="../../script.js"></script>
+  </body>
 </html>

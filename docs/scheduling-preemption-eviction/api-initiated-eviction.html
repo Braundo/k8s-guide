@@ -1,54 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>PAGE TITLE</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link rel="stylesheet" href="../../css/styles.css">
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-</head>
-<body class="dark-mode">
-  <header><center>
-    <h1><img src="../../assets/logo.png" alt="Kubernetes Logo" id="k8s-logo">
-        K8s Guide
-    </h1>
-    <h6><i>TLDR for official Kubernetes documentation</i></h6>
-    <br>
-<div style="text-align: center;">
-    <input type="text" id="searchBar" placeholder="Search...">
-</div>
-</center>
-  </header>
-  <br>
-  <h3>PAGE TITLE</h3>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="../../assets/logo.png" type="image/png">
+    <title>API-Initiated Eviction</title>
+    <link rel="stylesheet" href="../../styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism-dracula.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-yaml.min.js"></script>
+  </head>
+  <body class="dark-mode" onload="loadSidebar()">
+    <!--Header -->
+    <header>
+      <div class="header-content">
+        <div class="title-and-subheader">
+            <div class="title-container">
+                <a href="/index.html">
+                    <img src="../../assets/logo.png" alt="Logo" id="logo" />
+                </a>
+                <h1>K8s Guide</h1>
+            </div>
+            <h3 class="sub-header">Your TLDR guide to Kubernetes documentation</h3>
+        </div>
+    </header>
+    <div id="hamburger-container">
+      <button id="hamburger-menu">☰</button>
+    </div>
 
-  
-  <div id="sidebar-placeholder"></div>  
+    <!--Sidebar -->
+    <nav id="sidebar"></nav>
+    <!--Main Content -->
+    <main>
+      <h1>API-Initiated Eviction</h1>
+      
+<br><br>
+<h3>API-Initiated Evictions vs Regular Deletion</h3>
 
-  <main><br>
-    Placeholder content
-  </main>
+<li>Regular Deletion: When you delete a pod using `kubectl delete pod <pod-name>`, the pod is terminated immediately without any checks for ongoing processes or disruption budgets.</li>
+<li>API-Initiated Evictions: When you use the Eviction API, Kubernetes respects the `PodDisruptionBudget` and `terminationGracePeriodSeconds` settings, ensuring that the pod is terminated in a way that minimizes disruption to your application.</li>
 
-  <button id="darkModeToggle" class="circular-button bottom-right">
-    ☀
-  </button>
+<br><br>
+<h3>Creating an Eviction Object</h3>
 
-  <button id="scrollTop" class="circular-button bottom-left">
-    &#9650;
-  </button>
-<script>
-  $(document).ready(function() {
-    $("#sidebar-placeholder").load("/path/to/sidebar.html");
-  });
-</script>
+<li>To initiate an eviction, you create an Eviction object. This is similar to sending a DELETE request to the API server but with more control.</li>
+<li>The Eviction object specifies the pod to be evicted and can also include additional parameters like `deleteOptions`.</li>
 
-  <script src="../../js/script.js"></script>
-  <script>
-    $(document).ready(function() {
-      $("#sidebar-placeholder").load("/sidebar.html");
-    });
-  </script>
-  
-</body>
+<br><br>
+<h3>Admission Checks</h3>
+
+<li>When you request an eviction, the API server performs several checks to ensure that the eviction can proceed safely.</li>
+    <li>PodDisruptionBudget: Checks if the eviction would violate any configured PodDisruptionBudgets.</li>
+    <li>Node Conditions: Checks if the node on which the pod is running is in a condition to handle the eviction.</li>
+- 
+<li>Based on these checks, the API server may respond with:</li>
+    <li>`200 OK`: Eviction can proceed.</li>
+    <li>`429 Too Many Requests`: Eviction cannot proceed due to PodDisruptionBudget violation.</li>
+    <li>`500 Internal Server Error`: Eviction cannot proceed due to an internal error.</li>
+- 
+
+<br><br>
+<h3>Troubleshooting</h3>
+
+<li>Stuck Evictions: Sometimes, you may find that evictions are not proceeding and are stuck returning `429` or `500` responses.</li>
+    <li>Abort or Pause: You may need to abort or pause any automated operations that are causing the API server to be overwhelmed.</li>
+    <li>Direct Deletion: As a last resort, you can directly delete the pod, but this is not recommended as it bypasses all safety checks.</li>
+    <br><br><br></main>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <!--Dark/Light Mode Toggle -->
+    <button id="mode-toggle" onclick="toggleMode()">
+      <span class="material-icons">brightness_7</span>
+    </button>
+    <!--Scroll-to-Top Button -->
+    <button id="scroll-top" onclick="scrollToTop()">
+      <span class="material-icons">arrow_upward</span>
+    </button>
+
+    <!-- Next Page Button -->
+    <button id="next-page" onclick="navigateNext()">
+        <span class="material-icons">arrow_forward</span>
+    </button>
+
+    <!-- Random Page Button -->
+    <button id="randomizer">
+    <span class="material-icons">shuffle</span>
+    </button>
+
+    <!--Mobile Menu -->
+    <div id="mobile-menu"></div>
+    <script src="../../script.js"></script>
+  </body>
 </html>

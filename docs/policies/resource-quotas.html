@@ -1,54 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>PAGE TITLE</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link rel="stylesheet" href="../../css/styles.css">
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-</head>
-<body class="dark-mode">
-  <header><center>
-    <h1><img src="../../assets/logo.png" alt="Kubernetes Logo" id="k8s-logo">
-        K8s Guide
-    </h1>
-    <h6><i>TLDR for official Kubernetes documentation</i></h6>
-    <br>
-<div style="text-align: center;">
-    <input type="text" id="searchBar" placeholder="Search...">
-</div>
-</center>
-  </header>
-  <br>
-  <h3>PAGE TITLE</h3>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="../../assets/logo.png" type="image/png">
+    <title>Resource Quotas</title>
+    <link rel="stylesheet" href="../../styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism-dracula.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-yaml.min.js"></script>
+  </head>
+  <body class="dark-mode" onload="loadSidebar()">
+    <!--Header -->
+    <header>
+      <div class="header-content">
+        <div class="title-and-subheader">
+            <div class="title-container">
+                <a href="/index.html">
+                    <img src="../../assets/logo.png" alt="Logo" id="logo" />
+                </a>
+                <h1>K8s Guide</h1>
+            </div>
+            <h3 class="sub-header">Your TLDR guide to Kubernetes documentation</h3>
+        </div>
+    </header>
+    <div id="hamburger-container">
+      <button id="hamburger-menu">☰</button>
+    </div>
 
-  
-  <div id="sidebar-placeholder"></div>  
+    <!--Sidebar -->
+    <nav id="sidebar"></nav>
+    <!--Main Content -->
+    <main>
+      <h1>Resource Quotas</h1>
+      
+<br><br>
+<h3>What is a Resource Quota?</h3>
 
-  <main><br>
-    Placeholder content
-  </main>
+A Resource Quota is an object in Kubernetes that sets limits on resource usage for each namespace. This is particularly useful when multiple teams or services share a Kubernetes cluster and you want to prevent any single team or service from consuming all the resources.
 
-  <button id="darkModeToggle" class="circular-button bottom-right">
-    ☀
-  </button>
+<br><br>
+<h3>How Does It Work?</h3>
 
-  <button id="scrollTop" class="circular-button bottom-left">
-    &#9650;
-  </button>
-<script>
-  $(document).ready(function() {
-    $("#sidebar-placeholder").load("/path/to/sidebar.html");
-  });
-</script>
+1. Namespaces: Different teams usually work in different namespaces. This isolation is often enforced using Role-Based Access Control (RBAC).
+2. ResourceQuota Object: For each namespace, an administrator creates a ResourceQuota object that defines the resource limits.
+3. Resource Tracking: As users create Kubernetes resources like pods and services in a namespace, the quota system keeps track of the usage to ensure it doesn't exceed the limits defined in the ResourceQuota object.
+4. Violation & Enforcement: If a resource request violates a quota, the request will fail with an HTTP 403 FORBIDDEN status, along with a message explaining the violated constraint.
 
-  <script src="../../js/script.js"></script>
-  <script>
-    $(document).ready(function() {
-      $("#sidebar-placeholder").load("/sidebar.html");
-    });
-  </script>
-  
-</body>
+<br><br>
+<h3>Types of Resources That Can Be Quota-ed</h3>
+
+1. Compute Resources: CPU and memory can be limited. You can set both "requests" and "limits" for these resources.
+2. Storage Resources: You can limit the storage requested in Persistent Volume Claims (PVCs).
+3. Object Count: You can also limit the number of specific types of objects, like Pods, Services, etc.
+4. Extended Resources: From Kubernetes 1.10 onwards, you can also quota extended resources like GPUs.
+5. Priority Class: You can set quotas based on the priority class of the pods.
+
+<br><br>
+<h3>Special Scopes</h3>
+
+Resource quotas can also have scopes that further restrict what is measured by the quota. For example, you can set a quota that only counts resources for Pods that are not in a terminal state (i.e., their `.status.phase` is neither `Failed` nor `Succeeded`).
+
+<br><br>
+<h3>Enabling Resource Quotas</h3>
+
+Resource quotas are usually enabled by default in many Kubernetes distributions. They are activated when the API server has `ResourceQuota` listed in its `--enable-admission-plugins` flag.
+
+<br><br>
+<h3>Practical Examples</h3>
+
+<li>Team Quotas: In a cluster with 32 GiB RAM and 16 cores, you could let Team A use 20 GiB and 10 cores, Team B use 10 GiB and 4 cores, and keep the rest in reserve.<br>
+<li>Environment Quotas: Limit the "testing" namespace to 1 core and 1 GiB RAM, while letting the "production" namespace use any amount.
+    <br><br><br></main>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <!--Dark/Light Mode Toggle -->
+    <button id="mode-toggle" onclick="toggleMode()">
+      <span class="material-icons">brightness_7</span>
+    </button>
+    <!--Scroll-to-Top Button -->
+    <button id="scroll-top" onclick="scrollToTop()">
+      <span class="material-icons">arrow_upward</span>
+    </button>
+
+    <!-- Next Page Button -->
+    <button id="next-page" onclick="navigateNext()">
+        <span class="material-icons">arrow_forward</span>
+    </button>
+
+    <!-- Random Page Button -->
+    <button id="randomizer">
+    <span class="material-icons">shuffle</span>
+    </button>
+
+    <!--Mobile Menu -->
+    <div id="mobile-menu"></div>
+    <script src="../../script.js"></script>
+  </body>
 </html>

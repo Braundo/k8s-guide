@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="../../assets/logo.png" type="image/png">
-    <title>Limit Ranges</title>
+    <title>Policies Overview</title>
     <link rel="stylesheet" href="../../styles.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
@@ -41,31 +41,39 @@
     <nav id="sidebar"></nav>
     <!--Main Content -->
     <main>
-      <h1>Limit Ranges</h1>
+      <h1>Policies Overview</h1>
       
 <br><br>
-<h3>What is a LimitRange?</h3>
-
-A LimitRange is a policy that sets constraints on the resource allocations for various object kinds like Pods or PersistentVolumeClaims within a namespace. It can enforce minimum and maximum compute resource usage per Pod or Container, set storage request limits for PersistentVolumeClaims, and even enforce a ratio between resource requests and limits.
+<h3>Types of Policies in Kubernetes</h3>
 
 <br><br>
-<h3>How Does it Work?</h3>
-
-1. Default Values: If a Pod or Container doesn't specify compute resource requirements, the LimitRange admission controller will apply default request and limit values.
-2. Tracking Usage: The LimitRange ensures that resource usage does not exceed the minimum, maximum, and ratio defined in any LimitRange present in the namespace.
-3. Validation: If you try to create or update an object that violates a LimitRange constraint, the API server will reject the request with an HTTP 403 Forbidden status.
-
-<br><br>
-<h3>Special Considerations</h3>
-
-<li>LimitRange validations occur only at the Pod admission stage, not on running Pods.</li>
-<li>If two or more LimitRange objects exist in a namespace, the default value applied is not deterministic.</li>
-<li>The LimitRange does not check the consistency of the default values it applies. For example, a default limit value could be less than the request value specified for the container, making the Pod unschedulable.</li>
+<h3>API Objects as Policies:</h3>
+    <li>NetworkPolicies: Restrict ingress and egress traffic for workloads.</li>
+    <li>LimitRanges: Manage resource allocation constraints across different object kinds.</li>
+    <li>ResourceQuotas: Limit resource consumption for a namespace.</li>
 
 <br><br>
-<h3>Examples</h3>
+<h3>Admission Controllers:</h3>
+    <li>These run in the API server and can validate or mutate API requests.</li>
+    <li>Example: The `AlwaysPullImages` admission controller modifies a new Pod to set the image pull policy to "Always".</li>
+    <li>Kubernetes has several built-in admission controllers that are configurable via the API server `-enable-admission-plugins` flag.</li>
+<br><br>
+<h3>ValidatingAdmissionPolicy:</h3>
+    <li>Allows configurable validation checks to be executed in the API server using the Common Expression Language (CEL).</li>
+    <li>Can be used to block, audit, and warn users about non-compliant configurations.</li>
+<br><br>
+<h3>Dynamic Admission Control:</h3>
+    <li>These controllers run outside the API server as separate applications.</li>
+    <li>They can perform complex checks, including those that require retrieval of other cluster resources and external data.</li>
+    <li>Example: An image verification check can look up data from OCI registries to validate container image signatures and attestations.</li>
+<br><br>
+<h3>Kubelet Configurations:</h3>
+    <li>Some Kubelet configurations act as policies, such as Process ID limits and reservations, and Node Resource Managers.</li>
 
-The document provides examples of policies that could be created using LimitRange, such as constraining Pods in a namespace to request a specific amount of CPU and memory, or defining default CPU and memory requests for Containers.
+<br><br>
+<h3>Implementations</h3>
+
+<li>Dynamic Admission Controllers that act as flexible policy engines are being developed in the Kubernetes ecosystem. Some examples are Kubewarden, Kyverno, OPA Gatekeeper, and Polaris.</li>
     <br><br><br></main>
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"

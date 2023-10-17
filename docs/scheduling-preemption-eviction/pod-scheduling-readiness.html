@@ -1,54 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>PAGE TITLE</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link rel="stylesheet" href="../../css/styles.css">
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-</head>
-<body class="dark-mode">
-  <header><center>
-    <h1><img src="../../assets/logo.png" alt="Kubernetes Logo" id="k8s-logo">
-        K8s Guide
-    </h1>
-    <h6><i>TLDR for official Kubernetes documentation</i></h6>
-    <br>
-<div style="text-align: center;">
-    <input type="text" id="searchBar" placeholder="Search...">
-</div>
-</center>
-  </header>
-  <br>
-  <h3>PAGE TITLE</h3>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="../../assets/logo.png" type="image/png">
+    <title>Pod Scheduling Readiness</title>
+    <link rel="stylesheet" href="../../styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism-dracula.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-yaml.min.js"></script>
+  </head>
+  <body class="dark-mode" onload="loadSidebar()">
+    <!--Header -->
+    <header>
+      <div class="header-content">
+        <div class="title-and-subheader">
+            <div class="title-container">
+                <a href="/index.html">
+                    <img src="../../assets/logo.png" alt="Logo" id="logo" />
+                </a>
+                <h1>K8s Guide</h1>
+            </div>
+            <h3 class="sub-header">Your TLDR guide to Kubernetes documentation</h3>
+        </div>
+    </header>
+    <div id="hamburger-container">
+      <button id="hamburger-menu">☰</button>
+    </div>
 
-  
-  <div id="sidebar-placeholder"></div>  
+    <!--Sidebar -->
+    <nav id="sidebar"></nav>
+    <!--Main Content -->
+    <main>
+      <h1>Pod Scheduling Readiness</h1>
+      
+<br><br>
+<h3>SchedulingGates</h3>
 
-  <main><br>
-    Placeholder content
-  </main>
+<br><br><b>What It Is:</b> `SchedulingGates` is a new field in the Pod specification. It's an array of strings, where each string represents a condition that the Pod must meet before it can be scheduled.
+<br><br><b>Immutability:</b> Once a Pod is created with `SchedulingGates`, you can't add new gates to it. However, you can remove existing ones to make the Pod schedulable.
+<br><br><b>Use Case:</b> Imagine you have a multi-stage deployment process where a Pod needs to pass some pre-conditions before it can be scheduled. You can use `SchedulingGates` to ensure that the Pod only gets scheduled after these conditions are met.
 
-  <button id="darkModeToggle" class="circular-button bottom-right">
-    ☀
-  </button>
+<br><br>
+<h3>Observability</h3>
 
-  <button id="scrollTop" class="circular-button bottom-left">
-    &#9650;
-  </button>
-<script>
-  $(document).ready(function() {
-    $("#sidebar-placeholder").load("/path/to/sidebar.html");
-  });
-</script>
+<br><br><b>New Metrics Label:</b> The `scheduler_pending_pods` metric now includes a "gated" label. This helps in monitoring Pods that are intentionally not being scheduled due to `SchedulingGates`.
+<br><br><b>Monitoring:</b> This feature allows for better observability into why certain Pods are not being scheduled, making it easier to debug issues related to Pod scheduling.
 
-  <script src="../../js/script.js"></script>
-  <script>
-    $(document).ready(function() {
-      $("#sidebar-placeholder").load("/sidebar.html");
-    });
-  </script>
-  
-</body>
+<br><br>
+<h3>Mutable Pod Scheduling Directives</h3>
+
+<br><br><b>What It Is:</b> Starting from Kubernetes v1.27, you can change the scheduling directives of a Pod even if it has `SchedulingGates`.
+<br><br><b>Constraints:</b> The catch is that you can only "tighten" the scheduling directives. This means you can make them more restrictive, but not more permissive. For example, if a Pod was initially set to be scheduled on nodes with a certain label, you can change it to only be scheduled on nodes with that label and an additional condition.
+<br><br><b>Use Case:</b> This is useful in scenarios where you might need to adjust the scheduling conditions of a Pod due to changes in cluster state or workload requirements, without having to delete and recreate the Pod.
+    <br><br><br></main>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <!--Dark/Light Mode Toggle -->
+    <button id="mode-toggle" onclick="toggleMode()">
+      <span class="material-icons">brightness_7</span>
+    </button>
+    <!--Scroll-to-Top Button -->
+    <button id="scroll-top" onclick="scrollToTop()">
+      <span class="material-icons">arrow_upward</span>
+    </button>
+
+    <!-- Next Page Button -->
+    <button id="next-page" onclick="navigateNext()">
+        <span class="material-icons">arrow_forward</span>
+    </button>
+
+    <!-- Random Page Button -->
+    <button id="randomizer">
+    <span class="material-icons">shuffle</span>
+    </button>
+
+    <!--Mobile Menu -->
+    <div id="mobile-menu"></div>
+    <script src="../../script.js"></script>
+  </body>
 </html>
