@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="../../assets/logo.png" type="image/png">
-    <title>Disruptions</title>
+    <title>Pod Overview</title>
     <link rel="stylesheet" href="../../styles.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
@@ -39,41 +39,34 @@
     <nav id="sidebar"></nav>
     <!--Main Content -->
     <main>
-      <h1>Disruptions</h1>
+      <h1>Pod Overview</h1>
       
-<br><br>
-<h3>Types of Disruptions</h3>
-
-<li>Involuntary Disruptions: Unavoidable cases like hardware failure, cloud provider issues, etc.</li>
-<li>Voluntary Disruptions: Actions initiated by the application owner or cluster administrator, such as draining a node for repair or upgrade.</li>
+Pods are the smallest deployable units of computing in Kubernetes. A Pod is a group of one or more containers with shared storage and network resources. They are always co-located and co-scheduled, running in a shared context. Pods model an application-specific "logical host" and can contain one or more application containers that are tightly coupled.
 
 <br><br>
-<h3>Mitigating Disruptions</h3>
+<h3>Key Concepts:</h3>
 
-<li>Request the resources your pod needs.</li>
-<li>Replicate your application for higher availability.</li>
-<li>Use anti-affinity to spread applications across racks or zones.</li>
+<li><b>What is a Pod?:</b> A Pod is similar to a set of containers with shared namespaces and shared filesystem volumes.</li><br>
 
-<br><br>
-<h3>Pod Disruption Budgets (PDB)</h3>
+<li><b>Using Pods:</b> Pods are generally not created directly but are created using workload resources like Deployment or Job.</li><br>
 
-<li>Allows you to specify how many pods of a replicated application can be down simultaneously.</li>
-<li>Cluster managers should respect PDBs by calling the Eviction API.</li>
+<li><b>Workload Resources:</b> These are resources that manage one or more Pods for you. Examples include Deployment, StatefulSet, and DaemonSet.</li><br>
 
-<br><br>
-<h3>Pod Disruption Conditions</h3>
+<li><b>Pod Templates:</b> These are specifications for creating Pods and are included in workload resources.</li><br>
 
-<li>A beta feature that adds a dedicated condition to indicate that the Pod is about to be deleted due to a disruption.</li>
+<li><b>Pod Update and Replacement:</b> When the Pod template for a workload resource is changed, new Pods are created based on the updated template.</li><br>
 
-<br><br>
-<h3>Separation of Roles</h3>
+<li><b>Resource Sharing and Communication:</b> Pods enable data sharing and communication among their constituent containers.</li><br>
 
-<li>Discusses the benefits of separating the roles of Cluster Manager and Application Owner.</li>
+<li><b>Storage in Pods:</b> A Pod can specify a set of shared storage volumes that all containers in the Pod can access.</li><br>
 
-<br><br>
-<h3>Options for Cluster Administrators</h3>
+<li><b>Pod Networking:</b> Each Pod is assigned a unique IP address. Containers in a Pod share the network namespace, including the IP address and network ports.</li><br>
 
-<li>Accept downtime, failover to another cluster, or write disruption-tolerant applications and use PDBs.</li>
+<li><b>Privileged Mode for Containers:</b> Any container in a Pod can run in privileged mode to use operating system administrative capabilities.</li><br>
+
+<li><b>Static Pods:</b> These are managed directly by the `kubelet` daemon on a specific node, without the API server observing them.</li><br>
+
+<li><b>Container Probes:</b> These are diagnostics performed periodically by the `kubelet` on a container.</li><br>
     <br><br><br></main>
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"

@@ -107,6 +107,7 @@ let urls = [
   "/docs/containers/container-environment.html",
   "/docs/containers/runtime-class.html",
   "/docs/containers/container-lifecycle-hooks.html",
+  "/docs/pods/pod-overview.html",
   "/docs/pods/pod-lifecycle.html",
   "/docs/pods/init-containers.html",
   "/docs/pods/disruptions.html",
@@ -234,6 +235,7 @@ document.addEventListener("DOMContentLoaded", function () {
   for (var i = 0; i < codeElements.length; i++) {
     codeElements[i].style.color = "#ff6e86";
     codeElements[i].style.backgroundColor = "black";
+    codeElements[i].style.fontWeight = "bold";
   }
 
   Prism.highlightAll();
