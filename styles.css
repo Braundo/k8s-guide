@@ -299,7 +299,7 @@ nav section:first-of-type {
 }
 
 #scroll-top {
-  left: 50%; /* Centers the left edge of the button to the middle of the page */
+  left: 10%; /* Centers the left edge of the button to the middle of the page */
   transform: translateX(
     -50%
   ); /* Shifts the button back to center it completely */
@@ -390,5 +390,14 @@ nav section ul li a,
 
   nav li {
     font-size: 16px; /* Adjust this value to your preference */
+  }
+
+  /* Dark/Light Mode Toggle */
+  #mode-toggle {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px;
+    margin-top: 20px;
   }
 }
