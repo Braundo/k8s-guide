@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="../../assets/logo.png" type="image/png">
-    <title>SECTION TITLE</title>
+    <title>Network Policies</title>
     <link rel="stylesheet" href="../../styles.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
@@ -41,82 +41,81 @@
     <nav id="sidebar"></nav>
     <!--Main Content -->
     <main>
-      <h1>SECTION TITLE</h1>
+      <h1>Network Policies</h1>
       
-<br><br><h3>section1</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>The Two Sorts of Pod Isolation</h3>
 
-<br><br><h3>section2</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<li>Namespace isolation: Isolating whole namespaces from one another.</li>
+<li>Pod isolation: More granular control, isolating individual pods.</li>
 
-<br><br><h3>section3</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>The NetworkPolicy Resource</h3>
 
-<br><br><h3>section4</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<li>Defines how pods are allowed to communicate with each other and other network endpoints.</li>
+<li>`PodSelector` targets Pods to apply the policy.</li>
+<li>`PolicyTypes` specifies what types of traffic are affected.</li>
 
-<br><br><h3>section5</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>Behavior of to and from Selectors</h3>
 
-<br><br><h3>section6</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<li>`ingress` and `egress` rules can be set.</li>
+<li>Rules can be as specific as "allow traffic from these IPs" or "allow traffic from Pods with these labels."</li>
 
-<br><br><h3>section7</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>Default Policies</h3>
 
-<br><br><h3>section8</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<li>Policies that apply when no other policies do.</li>
 
-<br><br><h3>section9</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>Default Deny All Ingress Traffic</h3>
 
-<br><br><h3>section10</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<li>Blocks all incoming traffic to Pods unless it matches a NetworkPolicy.</li>
 
-<br><br><h3>section11</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>Allow All Ingress Traffic</h3>
 
-<br><br><h3>section12</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<li>Allows all incoming traffic to Pods.</li>
 
-<br><br><h3>section13</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>Default Deny All Egress Traffic</h3>
 
-<br><br><h3>section14</h3> 
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<li>Blocks all outgoing traffic from Pods unless it matches a NetworkPolicy.</li>
 
-<br><br><h3>section15</h3>
-<li>XXXXX</li>
-<li>XXXXX</li>
-<li>XXXXX</li>
+<br><br>
+<h3>Allow All Egress Traffic</h3>
+
+<li>Allows all outgoing traffic from Pods.</li>
+
+<br><br>
+<h3>Default Deny All Ingress and All Egress Traffic</h3>
+
+<li>Blocks both incoming and outgoing traffic unless they match a NetworkPolicy.</li>
+
+<br><br>
+<h3>SCTP Support</h3>
+
+<li>SCTP (Stream Control Transmission Protocol) is supported as a protocol alongside TCP and UDP.</li>
+
+<br><br>
+<h3>Targeting a Range of Ports</h3>
+
+<li>NetworkPolicy can target a range of ports instead of a single port.</li>
+
+<br><br>
+<h3>Targeting Multiple Namespaces by Label</h3>
+
+<li>NetworkPolicy can target multiple namespaces using namespace labels.</li>
+
+<br><br>
+<h3>Targeting a Namespace by its Name</h3>
+
+<li>Specific namespaces can be targeted by their name.</li>
+
+<br><br>
+<h3>What You Can't Do with Network Policies (at least, not yet)</h3>
+
+<li>Limitations like not being able to enforce egress based on DNS names, or not being able to limit access based on the protocol's fields.</li>
     <br><br><br></main>
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
