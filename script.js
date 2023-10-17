@@ -192,3 +192,16 @@ function navigateNext() {
     window.location.href = nextUrl;
   }
 }
+
+// Inside script.js
+document.getElementById("randomizer").addEventListener("click", goToRandomPage);
+
+function goToRandomPage() {
+  if (urls && urls.length > 0) {
+    const randomIndex = Math.floor(Math.random() * urls.length);
+    const randomUrl = urls[randomIndex];
+    window.location.href = randomUrl;
+  } else {
+    console.error("URLs array is empty or not defined.");
+  }
+}

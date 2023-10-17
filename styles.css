@@ -211,6 +211,24 @@ nav section:first-of-type {
   z-index: 1;
 }
 
+/* Styles for the randomizer button */
+#randomizer {
+  position: fixed;
+  bottom: 70px; /* Adjust position as needed */
+  right: 20px;
+  background-color: #326de6;
+  color: #ffffff;
+  border-radius: 50%;
+  border: none;
+  padding: 10px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  width: 50px; /* Set width */
+  height: 50px; /* Set height */
+  font-size: 24px; /* Adjust icon size */
+  z-index: 1;
+}
+
 /* Hamburger Menu Button */
 #hamburger-menu {
   position: relative;
