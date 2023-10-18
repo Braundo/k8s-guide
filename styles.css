@@ -562,4 +562,8 @@ nav section ul li a,
     text-align: center;
     z-index: 1;
   }
+
+  #scroll-top {
+    margin-left: 253px;
+  }
 }
