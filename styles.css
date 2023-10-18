@@ -223,6 +223,10 @@ ul.indented {
   padding-left: 35px; /* Adjust value as needed */
 }
 
+body li {
+  padding-left: 35px;
+}
+
 /* Styles for the randomizer button */
 #randomizer {
   position: fixed;
@@ -455,6 +459,10 @@ nav section ul li a,
 
   nav li {
     font-size: 16px; /* Adjust this value to your preference */
+  }
+
+  h3 {
+    font-size: 28px;
   }
 
   /* Body */
