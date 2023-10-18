@@ -369,14 +369,11 @@ function generateBreadcrumbs() {
 
   let url = "";
   pathSegments.forEach((segment, index) => {
-    // Skip the first segment (Home)
+    // Skip the first two segments (Home and Docs)
     if (index < 1) return;
 
-    // Check if the segment is not the last segment in the path
-    const notLastSegment = index < pathSegments.length - 1;
-
-    // Append ".html" to the URL if it's not the last segment
-    url += `/${segment}${notLastSegment ? ".html" : ""}`;
+    // Append .html to the URL if it's not the last segment
+    url += `/${segment}` + (index < pathSegments.length - 1 ? ".html" : "");
 
     // Check if an alias exists for this segment
     const displayName = breadcrumbAliases[segment]
@@ -384,12 +381,13 @@ function generateBreadcrumbs() {
       : segment.charAt(0).toUpperCase() + segment.slice(1); // Else, capitalize first letter
 
     breadcrumbHtml +=
-      (index > 1 ? " > " : "") + `<a href="${url}">${displayName}</a>`; // Don't add '>' before the first breadcrumb
+      (index > 1
+        ? '<i class="material-icons breadcrumb-chevron">chevron_right</i>'
+        : "") + `<a href="${url}">${displayName}</a>`;
   });
 
   breadcrumbContainer.innerHTML = breadcrumbHtml;
 }
-
 
 // Call the function on page load
 document.addEventListener("DOMContentLoaded", generateBreadcrumbs);
