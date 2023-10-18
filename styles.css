@@ -470,11 +470,16 @@ nav section ul li a,
   /* Body */
   body {
     font-size: 20px !important;
-    padding-right: 70px;
+    margin-left: 20px;
   }
 
   li {
     font-size: 20px;
+  }
+
+  ul li {
+    text-indent: -3em;
+    padding-left: 3em;
   }
 
   body li {
