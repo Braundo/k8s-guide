@@ -227,6 +227,13 @@ h2.expanded:hover .toggle-icon {
   z-index: 1;
 }
 
+#scroll-top:hover,
+#next-page:hover,
+#randomizer:hover,
+#mode-toggle:hover {
+  background-color: #ac75f8;
+}
+
 #mode-toggle {
   bottom: auto;
   top: 150px; /* Adjust this value to position the toggle under the header */
@@ -367,6 +374,7 @@ ul.indented {
     padding: 1em;
     position: relative;
     border-radius: 8px;
+    width: 70% !important;
   }
 
   .copy-button {
@@ -501,6 +509,7 @@ nav section ul li a,
   body {
     font-size: 20px !important;
     margin-left: 20px;
+    margin-right: 5%;
   }
 
   li {
@@ -533,6 +542,10 @@ nav section ul li a,
     padding: 0.5em;
     border-radius: 8px;
     font-size: 16px;
+    width: 95%;
+    display: block;
+    margin: left;
+    position: relative;
   }
   .copy-button {
     position: relative;
