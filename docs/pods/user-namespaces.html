@@ -41,21 +41,37 @@
     <main>
       <h1>User Namespaces</h1><br><br><br>
       
-<li>Feature State: This is an alpha feature in Kubernetes v1.25.</li>
+<h3>Feature State</h3>
+This is an alpha feature in Kubernetes v1.25.
+<br><br><br>
 
-<li>Purpose: User namespaces isolate the user running inside the container from the one in the host. This enhances security by limiting the damage a compromised container can do to the host or other pods.</li>
+<h3>Purpose</h3>
+User namespaces isolate the user running inside the container from the one in the host. This enhances security by limiting the damage a compromised container can do to the host or other pods.
+<br><br><br>
 
-<li>Linux-only Feature: This feature is specific to Linux and requires support for `idmap` mounts on the filesystems used.</li>
+<h3>Linux-only Feature</h3>
+This feature is specific to Linux and requires support for `idmap` mounts on the filesystems used.
+<br><br><br>
 
-<li>Container Runtime Support: CRI-O version 1.25 and later support this feature. `Containerd` v1.7 is not compatible with certain Kubernetes versions in terms of user namespace support.</li>
+<h3>Container Runtime Support</h3>
+CRI-O version 1.25 and later support this feature. `Containerd` v1.7 is not compatible with certain Kubernetes versions in terms of user namespace support.
+<br><br><br>
 
-<li>UID/GID Mapping: The `kubelet` will assign unique host UIDs/GIDs to each pod to ensure no overlap.</li>
+<h3>UID/GID Mapping</h3>
+The `kubelet` will assign unique host UIDs/GIDs to each pod to ensure no overlap.
+<br><br><br>
 
-<li>Capabilities: Capabilities granted to a pod are limited to the pod's user namespace and are mostly invalid outside of it.</li>
+<h3>Capabilities</h3>
+Capabilities granted to a pod are limited to the pod's user namespace and are mostly invalid outside of it.
+<br><br><br>
 
-<li>Limitations: When using a user namespace, you cannot use other host namespaces like network, IPC, or PID.</li>
+<h3>Limitations</h3>
+When using a user namespace, you cannot use other host namespaces like network, IPC, or PID.
+<br><br><br>
 
-<li>Security: The feature mitigates the impact of certain CVEs by ensuring that UIDs/GIDs used by the host's files and host's processes are in a specific range.</li>
+<h3>Security</h3>
+The feature mitigates the impact of certain CVEs by ensuring that UIDs/GIDs used by the host's files and host's processes are in a specific range.
+<br><br><br>
     <br><br><br></main>
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"

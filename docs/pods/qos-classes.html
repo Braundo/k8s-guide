@@ -41,19 +41,26 @@
     <main>
       <h1>QoS Classes</h1><br><br><br>
       
-<li>Scheduler Behavior: The `kube-scheduler` does not consider QoS class when selecting which Pods to preempt.</li>
-<li>Resource Management: The resource request of a Pod is the sum of the resource requests of its containers, and similarly for the resource limit.</li>
+<h3>Scheduler Behavior</h3>
+The `kube-scheduler` does not consider QoS class when selecting which Pods to preempt.
+<br><br><br>
+<h3>Resource Management</h3>
+The resource request of a Pod is the sum of the resource requests of its containers, and similarly for the resource limit.
+<br><br><br>
 
-<li>Behavior Independent of QoS Class: Any container exceeding a resource limit will be killed and restarted, and Pods exceeding resource requests become candidates for eviction.</li>
+<h3>Behavior Independent of QoS Class</h3>
+Any container exceeding a resource limit will be killed and restarted, and Pods exceeding resource requests become candidates for eviction.
+<br><br><br>
 
-<li>Memory QoS with cgroup v2: This feature, in alpha stage as of Kubernetes v1.22, uses the memory controller of cgroup v2 to guarantee memory resources.</li>
+<h3>Memory QoS with cgroup v2</h3>
+This feature, in alpha stage as of Kubernetes v1.22, uses the memory controller of cgroup v2 to guarantee memory resources.
+<br><br><br>
 
-<li>Types of QoS Classes:</li>
-    <li>Guaranteed: These Pods have strict resource limits and are least likely to be evicted.</li>
-    <li>Burstable: These Pods have some lower-bound resource guarantees but do not require a specific limit.</li>
-    <li>BestEffort: These Pods can use any available node resources and are the first to be evicted under resource pressure.</li>
-
-<li>Quality of Service Classes: Kubernetes assigns a QoS class to each Pod based on the resourc
+<h3>Types of QoS Classes</h3>
+    <li><b>Guaranteed:</b> These Pods have strict resource limits and are least likely to be evicted.</li>
+    <li><b>Burstable:</b> These Pods have some lower-bound resource guarantees but do not require a specific limit.</li>
+    <li><b>BestEffort:</b> These Pods can use any available node resources and are the first to be evicted under resource pressure.</li>
+    <li><b>Quality of Service Classes:</b> Kubernetes assigns a QoS class to each Pod based on the resourc
     <br><br><br></main>
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"

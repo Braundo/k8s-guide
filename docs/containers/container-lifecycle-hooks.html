@@ -40,24 +40,23 @@
     <nav id="sidebar"></nav>
     <!--Main Content -->
     <main>
-      <h1>Container Lifecycle Hooks</h1><br><br><br>
+      <h1>Container Lifecycle Hooks</h1><br>
       
 
 Container lifecycle hooks allow containers to be aware of events in their management lifecycle and run specific code when these events occur.
 
-<br><br>
+<br><br><br><br>
 <h3>Container Hooks</h3>
 
-<li>PostStart: This hook is executed immediately after a container is created. However, there's no guarantee that it will execute before the container's ENTRYPOINT. No parameters are passed to the handler.</li>
-<li>PreStop: This hook is called right before a container is terminated due to various reasons like API request, liveness/startup probe failure, etc. The hook must complete before the TERM signal to stop the container is sent.</li>
+<li><b>PostStart:</b> This hook is executed immediately after a container is created. However, there's no guarantee that it will execute before the container's ENTRYPOINT. No parameters are passed to the handler.</li>
+<li><b>PreStop:</b> This hook is called right before a container is terminated due to various reasons like API request, liveness/startup probe failure, etc. The hook must complete before the TERM signal to stop the container is sent.</li>
 
 <br><br>
 <h3>Hook Handler Implementations</h3>
-
 Containers can implement two types of hook handlers:
-
-<li>Exec: Executes a specific command inside the container's cgroups and namespaces.</li>
-<li>HTTP: Executes an HTTP request against a specific endpoint on the container.</li>
+<br><br>
+<li><b>Exec:</b> Executes a specific command inside the container's cgroups and namespaces.</li>
+<li><b>HTTP:</b> Executes an HTTP request against a specific endpoint on the container.</li>
 
 <br><br>
 <h3>Hook Handler Execution</h3>

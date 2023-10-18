@@ -40,25 +40,23 @@
     <!--Main Content -->
     <main>
       <h1>Init Containers</h1><br><br><br>
-<ul>
-<br><li>What are Init Containers: Specialized containers that run before the application containers in a Pod. They can contain utilities or setup scripts not present in the application image.</li>
-<br><li>How They Work: Init containers always run to completion, and each must complete successfully before the next one starts. If an init container fails, it is restarted until it succeeds, depending on the Pod's `restartPolicy`.</li>
-<br><li>Configuration: Init containers are specified in the Pod specification under the `initContainers` field, similar to how application containers are defined.</li>
-<br><li>Differences from Regular Containers: Init containers support all the features of application containers but do not support lifecycle hooks or probes like `livenessProbe`, `readinessProbe`, and `startupProbe`.</li>
-<br><li>Resource Handling: Resource requests and limits for init containers are managed differently than for application containers.</li>
-<br><li>Sequential Execution: If multiple init containers are specified, they are run sequentially, and each must succeed before the next can run.</li>
-<br><b>Use Cases:</b>
-<ul>
-    <li>Running utilities or custom code for setup that are not present in the application image.</li>
-    <li>Blocking or delaying application container startup until certain preconditions are met.</li>
-    <li>Limiting the attack surface by keeping unnecessary tools separate.</li>
-</ul>
+
+<br><h3>What are Init Containers</h3> Specialized containers that run before the application containers in a Pod. They can contain utilities or setup scripts not present in the application image.</li>
+<br><li>Init containers always run to completion, and each must complete successfully before the next one starts. If an init container fails, it is restarted until it succeeds, depending on the Pod's `restartPolicy`.</li>
+<br><br><br><h3>Configuration</h3> Init containers are specified in the Pod specification under the `initContainers` field, similar to how application containers are defined.</li>
+<br><br><br><h3>Differences from Regular Containers</h3> Init containers support all the features of application containers but do not support lifecycle hooks or probes like `livenessProbe`, `readinessProbe`, and `startupProbe`.</li>
+<br><br><br><h3>Resource Handling</h3> Resource requests and limits for init containers are managed differently than for application containers.</li>
+<br><br><br><h3>Sequential Execution</h3> If multiple init containers are specified, they are run sequentially, and each must succeed before the next can run.</li>
+<br><br><br><h3>Use Cases:</h3>
+<li>Running utilities or custom code for setup that are not present in the application image.</li>
+<br><li>Blocking or delaying application container startup until certain preconditions are met.</li>
+<br><li>Limiting the attack surface by keeping unnecessary tools separate.</li>
 <br><li><b>Examples:</b> The documentation provides YAML examples to demonstrate how to define a Pod with init containers.</li>
 <br><li>Advanced Features like `activeDeadlineSeconds` can be used to prevent init containers from failing forever.</li>
 <br><li>Starting from Kubernetes v1.28, a feature gate named `SidecarContainers` allows specifying a `restartPolicy` for init containers independent of the Pod and other init containers.</li>
-<br></li><li>Resource Sharing: The highest of any particular resource request or limit defined on all init containers is the effective init request/limit for the Pod.</li>
+<br><li>Resource Sharing: The highest of any particular resource request or limit defined on all init containers is the effective init request/limit for the Pod.</li>
 <br><li>Pod Restart Reasons: A Pod can restart, causing re-execution of init containers, for various reasons like Pod infrastructure container restart or all containers in a Pod being terminated.</li>
-    </ul>
+
 <br><br><br></main>
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"

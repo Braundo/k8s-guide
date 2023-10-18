@@ -41,13 +41,21 @@
     <main>
       <h1>Downward API</h1><br><br><br>
       
-<li>Two Methods of Exposure: Pod and container fields can be exposed to a running container in two ways: as environment variables and as files in a special volume type called the "downward API."</li>
+<h3>Two Methods of Exposure</h3>
+Pod and container fields can be exposed to a running container in two ways: as environment variables and as files in a special volume type called the "downward API."</li>
+<br><br><br>
 
-<li>Low Coupling: The downward API allows containers to have information about themselves or the cluster without being tightly coupled to Kubernetes. This is useful for legacy applications that rely on specific environment variables.</li>
+<h3>Low Coupling</h3>
+The downward API allows containers to have information about themselves or the cluster without being tightly coupled to Kubernetes. This is useful for legacy applications that rely on specific environment variables.</li>
+<br><br><br>
 
-<li>Available Fields: Only certain Kubernetes API fields are available through the downward API. These include metadata like the pod's name, namespace, and unique ID, as well as resource requests and limits like CPU and memory.</li>
+<h3>Available Fields</h3>
+Only certain Kubernetes API fields are available through the downward API. These include metadata like the pod's name, namespace, and unique ID, as well as resource requests and limits like CPU and memory.</li>
+<br><br><br>
 
-<li>Fallback for Resource Limits: If CPU and memory limits are not specified, the `kubelet` defaults to exposing the maximum allocatable value for these resources based on node allocatable calculations.</li>
+<h3>Fallback for Resource Limits</h3>
+If CPU and memory limits are not specified, the `kubelet` defaults to exposing the maximum allocatable value for these resources based on node allocatable calculations.</li>
+<br><br><br>
     <br><br><br></main>
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
