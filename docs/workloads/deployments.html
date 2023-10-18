@@ -42,27 +42,25 @@
     <!--Main Content -->
     <main>
       <h1>Deployments</h1><br><br><br>
-      
+
 A Kubernetes Deployment is a higher-level abstraction designed to manage the desired state of a set of replicated Pods. It allows you to describe an intended state in a Deployment object, and the Deployment controller changes the actual state to the desired state at a controlled rate. Here are some key features and functionalities:
 
 <br><br>
 <h3>Key Features</h3>
 <ol class="indented">
-<li>Replica Management: You can specify the number of Pod replicas you want to run.</li>
-<li>Updates: Allows for rolling updates to Pods, ensuring zero downtime.</li>
-<li>Rollbacks: If something goes wrong, you can roll back to a previous stable version.</li>
-<li>Scaling: You can easily scale your application up or down.</li>
-<li>Self-healing: Automatically replaces failed or unhealthy Pods.</li>
+<li><b>Replica Management:</b> You can specify the number of Pod replicas you want to run.</li>
+<li><b>Updates:</b> Allows for rolling updates to Pods, ensuring zero downtime.</li>
+<li><b>Rollbacks:</b> If something goes wrong, you can roll back to a previous stable version.</li>
+<li><b>Scaling:</b> You can easily scale your application up or down.</li>
+<li><b>Self-healing:</b> Automatically replaces failed or unhealthy Pods.</li>
 </ol>
 <br><br>
 <h3>Common Operations</h3>
-<ul class="indented">
 <li>Create a Deployment: Usually done through a YAML file that describes the Deployment.</li>
 <li>Inspect a Deployment: Using commands like `kubectl get deployments` or `kubectl describe deployment deployment-name`.</li>
 <li>Update a Deployment: You can update the image or other fields in the YAML and apply it.</li>
 <li>Rollback a Deployment: Using `kubectl rollout undo deployment deployment-name`.</li>
 <li>Scale a Deployment: Using `kubectl scale deployment deployment-name --replicas=number`.</li>
-</ul>
 <br><br>
 <h3>YAML Example</h3>
 
