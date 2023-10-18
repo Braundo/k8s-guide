@@ -235,8 +235,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Apply styles
   for (var i = 0; i < codeElements.length; i++) {
-    codeElements[i].style.color = "#ff6e86";
-    codeElements[i].style.backgroundColor = "black";
+    codeElements[i].style.color = "#50FA7B";
+    codeElements[i].style.backgroundColor = "#282A36";
     codeElements[i].style.fontWeight = "bold";
   }
 
@@ -248,7 +248,7 @@ new ClipboardJS(".copy-button");
 document.querySelectorAll(".copy-button").forEach((button) => {
   button.addEventListener("click", () => {
     button.textContent = "Copied!";
-    button.style.color = "#ffffff"; // This will make the text color white
+    button.style.color = "#F8F8F2"; // This will make the text color white
     setTimeout(() => {
       // This will revert the text back to the copy icon
       button.innerHTML = '<span class="material-icons">content_copy</span>';

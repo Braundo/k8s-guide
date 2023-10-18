@@ -30,7 +30,7 @@ main {
 
 /* Dark Mode */
 body.dark-mode {
-  background-color: #424242;
+  background-color: #44475a;
   color: #ffffff;
 }
 
@@ -50,7 +50,7 @@ header {
   position: fixed;
   width: 100%;
   top: 0;
-  background-color: #363636;
+  background-color: #282a36;
   color: #ffffff;
   z-index: 1000;
 }
@@ -67,6 +67,11 @@ header h3 {
   margin-left: 0px;
   font-style: italic;
   font-weight: 350;
+  color: #ffffff;
+}
+
+h3 {
+  color: #bd93f9;
 }
 
 .header-content {
@@ -99,7 +104,7 @@ nav {
   left: 0;
   width: 300px;
   height: 100%;
-  background-color: #363636;
+  background-color: #282a36;
   color: #ffffff;
   overflow-y: auto;
   transition: transform 0.3s;
@@ -120,7 +125,7 @@ nav section h2 {
 }
 
 nav section h2:hover {
-  color: #326de6;
+  color: #bd93f9;
 }
 
 nav section h2:hover:before {
@@ -146,7 +151,7 @@ nav section ul li a {
 }
 
 nav section ul li a:hover {
-  color: #326de6;
+  color: #bd93f9;
 }
 
 /* Add margin to the first section to push it down below the header */
@@ -159,7 +164,7 @@ nav section:first-of-type {
   position: absolute;
   bottom: 20px;
   right: 20px;
-  background-color: #326de6;
+  background-color: #bd93f9;
   color: #ffffff;
   border-radius: 50%;
   border: none;
@@ -176,7 +181,7 @@ nav section:first-of-type {
   position: fixed;
   bottom: 20px;
   left: 20px;
-  background-color: #326de6;
+  background-color: #bd93f9;
   color: #ffffff;
   border-radius: 50%;
   border: none;
@@ -199,8 +204,7 @@ nav section:first-of-type {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background-color: #326de6;
-  color: #ffffff;
+  background-color: #bd93f9;
   border-radius: 50%;
   border: none;
   padding: 10px;
@@ -224,8 +228,7 @@ ul.indented {
   position: fixed;
   bottom: 70px; /* Adjust position as needed */
   right: 20px;
-  background-color: #326de6;
-  color: #ffffff;
+  background-color: #bd93f9;
   border-radius: 50%;
   border: none;
   padding: 10px;
@@ -242,8 +245,8 @@ ul.indented {
   position: relative;
   top: 20px;
   left: 20px;
-  background-color: #326de6;
-  color: #ffffff;
+  background-color: #bd93f9;
+  color: #282a36;
   border-radius: 50%;
   border: none;
   padding: 0px;
@@ -324,7 +327,7 @@ ul.indented {
   }
 
   .code-block {
-    background-color: #000000;
+    background-color: #282a36;
     padding: 1em;
     position: relative;
     border-radius: 8px;
@@ -367,7 +370,7 @@ ul.indented {
 .material-icons {
   font-size: 24px; /* Adjust size as necessary */
   vertical-align: middle; /* Align with text */
-  color: #ffffff;
+  color: #282a36;
   background-color: transparent !important;
 }
 
@@ -378,7 +381,7 @@ ul.indented {
   top: 60px; /* Adjusted to accommodate fixed header */
   left: 0;
   width: 100%;
-  background-color: #363636;
+  background-color: #282a36;
   color: #ffffff;
   display: none; /* Hidden by default */
   max-height: 70vh;
@@ -408,7 +411,7 @@ nav section h2,
 
 nav section h2:hover,
 #mobile-menu section h2:hover {
-  color: #326de6;
+  color: #bd93f9;
 }
 
 nav section ul,
@@ -454,16 +457,30 @@ nav section ul li a,
     font-size: 16px; /* Adjust this value to your preference */
   }
 
+  /* Body */
+  body {
+    font-size: 20px !important;
+    padding-right: 70px;
+  }
+
+  li {
+    font-size: 20px;
+  }
+
+  nav section:first-of-type {
+    margin-top: 90px; /* Adjust this value as necessary */
+  }
+
   /* Dark/Light Mode Toggle */
   #mode-toggle {
     position: absolute;
     bottom: 20px;
     right: 20px;
     padding: 10px;
-    margin-top: 20px;
+    margin-top: 50px;
   }
   .code-block {
-    background-color: #000000;
+    background-color: #282a36;
     padding: 0.5em;
     border-radius: 8px;
     font-size: 16px;
@@ -476,7 +493,8 @@ nav section ul li a,
     background-color: transparent !important;
     border: none;
     cursor: pointer;
-    color: #ffffff;
+    color: #f8f8f2;
     text-align: center;
+    z-index: 1;
   }
 }
