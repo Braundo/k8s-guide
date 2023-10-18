@@ -1,0 +1,11 @@
+{
+  "routes": [
+    {
+      "path": "/*",
+      "to": "/:path.html",
+      "action": "rewrite",
+      "force": true
+    }
+  ]
+}
+
