@@ -163,6 +163,36 @@ nav section:first-of-type {
   margin-top: 50px; /* Adjust this value as necessary */
 }
 
+.toggle-icon {
+  font-size: 24px;
+  vertical-align: middle;
+  color: #ffffff;
+  background-color: transparent !important;
+  transition: transform 0.3s ease; /* Adjust the transition duration and easing function as needed */
+}
+
+/* Initial state (rightward arrow) */
+h2:not(.expanded) .toggle-icon {
+  transform: rotate(0deg);
+}
+
+/* Expanded state (downward arrow) */
+h2.expanded .toggle-icon {
+  transform: rotate(90deg);
+}
+
+/* Hover effect indicating expandability */
+h2:not(.expanded):hover .toggle-icon {
+  transform: rotate(45deg);
+  color: #bd93f9;
+}
+
+/* Hover effect indicating collapsibility */
+h2.expanded:hover .toggle-icon {
+  transform: rotate(45deg);
+  color: #bd93f9;
+}
+
 /* Dark/Light Mode Toggle */
 #mode-toggle {
   position: absolute;

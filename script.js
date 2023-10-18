@@ -4,11 +4,7 @@ function toggleSection(header) {
   const list = section.querySelector("ul");
   const isExpanded = list.style.display === "block";
   list.style.display = isExpanded ? "none" : "block";
-  if (isExpanded) {
-    header.querySelector(".material-icons").textContent = "chevron_right";
-  } else {
-    header.querySelector(".material-icons").textContent = "expand_more";
-  }
+  header.classList.toggle("expanded");
 }
 
 // Function to toggle dark/light mode
