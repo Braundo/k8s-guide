@@ -1,64 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" href="../../assets/logo.png" type="image/png">
-    <title>Node-Specific Volume Limits</title>
-    <link rel="stylesheet" href="../../styles.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism-dracula.min.css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-yaml.min.js"></script>
-  </head>
-  <body class="dark-mode" onload="loadSidebar()">
-    <!--Header -->
-    <header>
-      <div class="header-content">
-        <div class="title-and-subheader">
-            <div class="title-container">
-                <a href="/index.html">
-                    <img src="../../assets/logo.png" alt="Logo" id="logo" />
-                </a>
-                <h1>K8s Guide</h1><br><br><br>
-            </div>
-            <h3 class="sub-header">Your TLDR guide to Kubernetes documentation</h3>
-        </div>
-    </header>
-    <div id="hamburger-container">
-      <button id="hamburger-menu">☰</button>
-    </div>
 
-    <!--Sidebar -->
-    <nav id="sidebar"></nav>
-    <!--Main Content -->
-    <main>
-      <h1>Node-Specific Volume Limits</h1><br><br><br>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="../../assets/logo.png" rel="icon" type="image/png"/>
+<title>Node-Specific Volume Limits</title>
+<link href="../../styles.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism-dracula.min.css" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-yaml.min.js"></script>
+</link></head>
+<body class="dark-mode" onload="loadSidebar()">
+<!--Header -->
+<header>
+<div class="header-content">
+<div class="title-and-subheader">
+<div class="title-container">
+<a href="/index.html">
+<img alt="Logo" id="logo" src="../../assets/logo.png"/>
+</a>
+<h1>K8s Guide</h1><br/><br/><br/>
+</div>
+<h3 class="sub-header">Your TLDR guide to Kubernetes documentation</h3>
+</div>
+</div></header>
+<div id="hamburger-container">
+<button id="hamburger-menu">☰</button>
+</div>
+<!--Sidebar -->
+<nav id="sidebar"></nav>
+<!--Main Content -->
+<main>
+<div id="breadcrumbs"></div><br/><h1>Node-Specific Volume Limits</h1><br/><br/><br/>
       
 The page discusses the maximum number of volumes that can be attached to a Node for various cloud providers like Google, Amazon, and Microsoft. It emphasizes the importance of Kubernetes respecting these limits to prevent Pods from getting stuck while waiting for volumes to attach.
 
 
-<br><br><br>
+<br/><br/><br/>
 <h3>Kubernetes Default Limits</h3>
-
 <li><b>Amazon Elastic Block Store (EBS):</b> 39 volumes per Node</li>
 <li><b>Google Persistent Disk:</b> 16 volumes per Node</li>
 <li><b>Microsoft Azure Disk Storage:</b> 16 volumes per Node</li>
-
-<br><br><br>
+<br/><br/><br/>
 <h3>Custom Limits</h3>
 
 You can customize these limits by setting the value of the `KUBE_MAX_PD_VOLS` environment variable and then restarting the scheduler. For CSI drivers, you may need to consult their specific documentation for customization procedures.
 
-<br><br><br>
+<br/><br/><br/>
 <h3>Dynamic Volume Limits</h3>
 
 As of Kubernetes v1.17, dynamic volume limits are supported for Amazon EBS, Google Persistent Disk, Azure Disk, and CSI. Kubernetes automatically determines the Node type and enforces the appropriate maximum number of volumes for that node. For example:
@@ -66,37 +58,30 @@ As of Kubernetes v1.17, dynamic volume limits are supported for Amazon EBS, Goog
 <li>On Google Compute Engine, up to 127 volumes can be attached, depending on the node type.</li>
 <li>For Amazon EBS disks on M5, C5, R5, T3, and Z1D instance types, only 25 volumes can be attached.</li>
 <li>On Azure, up to 64 disks can be attached, depending on the node type.</li>
-
-<br><br><br>
+<br/><br/><br/>
 <h3>CSI Driver Limits</h3>
 
 If a CSI storage driver advertises a maximum number of volumes for a Node, the kube-scheduler will honor that limit.
-    <br><br><br></main>
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <!--Dark/Light Mode Toggle -->
-    <button id="mode-toggle" onclick="toggleMode()">
-      <span class="material-icons">brightness_7</span>
-    </button>
-    <!--Scroll-to-Top Button -->
-    <button id="scroll-top" onclick="scrollToTop()">
-      <span class="material-icons">arrow_upward</span>
-    </button>
-
-    <!-- Next Page Button -->
-    <button id="next-page" onclick="navigateNext()">
-        <span class="material-icons">arrow_forward</span>
-    </button>
-
-    <!-- Random Page Button -->
-    <button id="randomizer">
-    <span class="material-icons">shuffle</span>
-    </button>
-
-    <!--Mobile Menu -->
-    <div id="mobile-menu"></div>
-    <script src="../../script.js"></script>
-  </body>
+    <br/><br/><br/></main>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<!--Dark/Light Mode Toggle -->
+<button id="mode-toggle" onclick="toggleMode()">
+<span class="material-icons">brightness_7</span>
+</button>
+<!--Scroll-to-Top Button -->
+<button id="scroll-top" onclick="scrollToTop()">
+<span class="material-icons">arrow_upward</span>
+</button>
+<!-- Next Page Button -->
+<button id="next-page" onclick="navigateNext()">
+<span class="material-icons">arrow_forward</span>
+</button>
+<!-- Random Page Button -->
+<button id="randomizer">
+<span class="material-icons">shuffle</span>
+</button>
+<!--Mobile Menu -->
+<div id="mobile-menu"></div>
+<script src="../../script.js"></script>
+</body>
 </html>

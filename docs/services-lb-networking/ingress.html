@@ -1,192 +1,140 @@
 <!DOCTYPE html>
+
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" href="../../assets/logo.png" type="image/png">
-    <title>Ingress</title>
-    <link rel="stylesheet" href="../../styles.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism-dracula.min.css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-yaml.min.js"></script>
-  </head>
-  <body class="dark-mode" onload="loadSidebar()">
-    <!--Header -->
-    <header>
-      <div class="header-content">
-        <div class="title-and-subheader">
-            <div class="title-container">
-                <a href="/index.html">
-                    <img src="../../assets/logo.png" alt="Logo" id="logo" />
-                </a>
-                <h1>K8s Guide</h1><br><br><br>
-            </div>
-            <h3 class="sub-header">Your TLDR guide to Kubernetes documentation</h3>
-        </div>
-    </header>
-    <div id="hamburger-container">
-      <button id="hamburger-menu">☰</button>
-    </div>
-
-    <!--Sidebar -->
-    <nav id="sidebar"></nav>
-    <!--Main Content -->
-    <main>
-      <h1>Ingress</h1><br><br><br>
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="../../assets/logo.png" rel="icon" type="image/png"/>
+<title>Ingress</title>
+<link href="../../styles.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism-dracula.min.css" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-yaml.min.js"></script>
+</link></head>
+<body class="dark-mode" onload="loadSidebar()">
+<!--Header -->
+<header>
+<div class="header-content">
+<div class="title-and-subheader">
+<div class="title-container">
+<a href="/index.html">
+<img alt="Logo" id="logo" src="../../assets/logo.png"/>
+</a>
+<h1>K8s Guide</h1><br/><br/><br/>
+</div>
+<h3 class="sub-header">Your TLDR guide to Kubernetes documentation</h3>
+</div>
+</div></header>
+<div id="hamburger-container">
+<button id="hamburger-menu">☰</button>
+</div>
+<!--Sidebar -->
+<nav id="sidebar"></nav>
+<!--Main Content -->
+<main>
+<div id="breadcrumbs"></div><br/><h1>Ingress</h1><br/><br/><br/>
 <h3>Terminology</h3>
-
 <li><b>Edge Router:</b> A router that enforces the firewall policy for your cluster.</li>
 <li><b>Cluster Network:</b> A set of links, logical or physical, that facilitate communication within a cluster.</li>
-
-<br><br>
+<br/><br/>
 <h3>What is Ingress?</h3>
-
 <li>Manages external access to services within a cluster.</li>
 <li>Typically provides HTTP and HTTPS routes.</li>
 <li>Can provide load balancing, SSL termination, and name-based virtual hosting.</li>
-
-<br><br>
+<br/><br/>
 <h3>Prerequisites</h3>
-
 <li>Must have an Ingress controller to satisfy an Ingress.</li>
-<li>Basic workflow: Create an Ingress object -> Ingress controller configures the load balancer.</li>
-
-<br><br>
+<li>Basic workflow: Create an Ingress object -&gt; Ingress controller configures the load balancer.</li>
+<br/><br/>
 <h3>The Ingress Resource</h3>
-
 <li>Mainly composed of a set of rules based on hostnames and paths.</li>
 <li>API object that manages external access to services.</li>
-
-<br><br>
+<br/><br/>
 <h3>Ingress Rules</h3>
-
 <li>Define how to route traffic by hostnames and paths.</li>
 <li>Each rule has one or more HTTP paths, each forwarding to a defined backend.</li>
-
-<br><br>
+<br/><br/>
 <h3>DefaultBackend</h3>
-
 <li>An addressable Kubernetes Service to handle all requests not matching any path in the Ingress rules.</li>
 <li>Serves as a catch-all for undefined routes.</li>
-
-<br><br>
+<br/><br/>
 <h3>Resource Backends</h3>
-
 <li>A feature to forward traffic to resources other than Kubernetes Services.</li>
 <li>Can be used to route traffic to a custom resource.</li>
-
-<br><br>
+<br/><br/>
 <h3>Path Types</h3>
-
 <li>Defines how to match requests based on their paths.</li>
 <li>Types: Exact, Prefix, and ImplementationSpecific.</li>
-
-<br><br>
+<br/><br/>
 <h3>Hostname Wildcards</h3>
-
 <li>Allows for the routing of HTTP traffic based on wildcards in hostnames.</li>
 <li>E.g., `.foo.com` routes to a specific service.</li>
-
-<br><br>
+<br/><br/>
 <h3>Ingress Class</h3>
-
 <li>Allows you to configure multiple Ingress controllers.</li>
 <li>Each controller is identified by a unique class.</li>
-
-<br><br>
+<br/><br/>
 <h3>IngressClass Scope</h3>
-
 <li>Defines the scope of a particular Ingress class.</li>
 <li>Can be either cluster-wide or namespaced.</li>
-
-<br><br>
+<br/><br/>
 <h3>Deprecated Annotation</h3>
-
 <li>Annotations for specifying ingress class are deprecated.</li>
 <li>Replaced by the `ingressClassName` field in the Ingress spec.</li>
-
-<br><br>
+<br/><br/>
 <h3>Default IngressClass</h3>
-
 <li>Specifies the ingress class to use when none is defined.</li>
 <li>Configured through a cluster-wide setting.</li>
-
-<br><br>
+<br/><br/>
 <h3>Types of Ingress</h3>
-
 <li>Single Service Ingress: Simplest kind, routes everything to one Service.</li>
 <li>Simple fanout: Routes traffic from a single IP address to more than one Service.</li>
 <li>Name-based virtual hosting: Routes traffic on multiple hostnames to different services.</li>
-
-<br><br><h2>Ingress Controllers</h2>
-
-<br><br>
+<br/><br/><h2>Ingress Controllers</h2>
+<br/><br/>
 <h3>Introduction</h3>
-
 <li>Ingress controllers are essential for the functioning of an Ingress resource in a Kubernetes cluster.</li>
 <li>Unlike other controllers, Ingress controllers are not started automatically and must be set up manually.</li>
-
-<br><br>
+<br/><br/>
 <h3>Supported Controllers</h3>
-
 <li>Kubernetes officially supports and maintains AWS, GCE, and nginx ingress controllers.</li>
-
-<br><br>
+<br/><br/>
 <h3>Additional Controllers</h3>
-
 <li>Various third-party ingress controllers like AKS Application Gateway, Apache APISIX, Avi Kubernetes Operator, and many others are available.</li>
-
-<br><br>
+<br/><br/>
 <h3>Using Multiple Ingress Controllers</h3>
-
 <li>You can deploy multiple ingress controllers in a cluster using ingress class.</li>
 <li>The `.metadata.name` of the ingress class resource is important when creating an Ingress object.</li>
-
-<br><br>
+<br/><br/>
 <h3>Default IngressClass</h3>
-
 <li>If an Ingress object doesn't specify an IngressClass and there's exactly one IngressClass marked as default, Kubernetes applies the default IngressClass.</li>
 <li>An IngressClass is marked as default by setting the `ingressclass.kubernetes.io/is-default-class` annotation to "true".</li>
-
-<br><br>
+<br/><br/>
 <h3>Controller Specifications</h3>
-
 <li>While all ingress controllers should ideally fulfill the Kubernetes specification, they may operate differently.</li>
-    <br><br><br></main>
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <!--Dark/Light Mode Toggle -->
-    <button id="mode-toggle" onclick="toggleMode()">
-      <span class="material-icons">brightness_7</span>
-    </button>
-    <!--Scroll-to-Top Button -->
-    <button id="scroll-top" onclick="scrollToTop()">
-      <span class="material-icons">arrow_upward</span>
-    </button>
-
-    <!-- Next Page Button -->
-    <button id="next-page" onclick="navigateNext()">
-        <span class="material-icons">arrow_forward</span>
-    </button>
-
-    <!-- Random Page Button -->
-    <button id="randomizer">
-    <span class="material-icons">shuffle</span>
-    </button>
-
-    <!--Mobile Menu -->
-    <div id="mobile-menu"></div>
-    <script src="../../script.js"></script>
-  </body>
+<br/><br/><br/></main>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<!--Dark/Light Mode Toggle -->
+<button id="mode-toggle" onclick="toggleMode()">
+<span class="material-icons">brightness_7</span>
+</button>
+<!--Scroll-to-Top Button -->
+<button id="scroll-top" onclick="scrollToTop()">
+<span class="material-icons">arrow_upward</span>
+</button>
+<!-- Next Page Button -->
+<button id="next-page" onclick="navigateNext()">
+<span class="material-icons">arrow_forward</span>
+</button>
+<!-- Random Page Button -->
+<button id="randomizer">
+<span class="material-icons">shuffle</span>
+</button>
+<!--Mobile Menu -->
+<div id="mobile-menu"></div>
+<script src="../../script.js"></script>
+</body>
 </html>

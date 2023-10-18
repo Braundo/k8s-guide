@@ -5,12 +5,14 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <link href="../../assets/logo.png" rel="icon" type="image/png"/>
-<title>Downward API</title>
+<title>Storage</title>
 <link href="../../styles.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism-dracula.min.css" rel="stylesheet"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-yaml.min.js"></script>
 </link></head>
 <body class="dark-mode" onload="loadSidebar()">
 <!--Header -->
@@ -33,19 +35,10 @@
 <nav id="sidebar"></nav>
 <!--Main Content -->
 <main>
-<div id="breadcrumbs"></div><br/><h1>Downward API</h1><br/><br/><br/>
-<h3>Two Methods of Exposure</h3>
-Pod and container fields can be exposed to a running container in two ways: as environment variables and as files in a special volume type called the "downward API."
-<br/><br/><br/>
-<h3>Low Coupling</h3>
-The downward API allows containers to have information about themselves or the cluster without being tightly coupled to Kubernetes. This is useful for legacy applications that rely on specific environment variables.
-<br/><br/><br/>
-<h3>Available Fields</h3>
-Only certain Kubernetes API fields are available through the downward API. These include metadata like the pod's name, namespace, and unique ID, as well as resource requests and limits like CPU and memory.
-<br/><br/><br/>
-<h3>Fallback for Resource Limits</h3>
-If CPU and memory limits are not specified, the `kubelet` defaults to exposing the maximum allocatable value for these resources based on node allocatable calculations.
-<br/><br/><br/>
+<div id="breadcrumbs"></div><br/><h1>Storage</h1><br/><br/><br/><h3>section1</h3>
+
+PLACEHOLDER
+
 <br/><br/><br/></main>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
 <!--Dark/Light Mode Toggle -->

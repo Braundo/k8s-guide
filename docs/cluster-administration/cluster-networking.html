@@ -1,89 +1,76 @@
 <!DOCTYPE html>
+
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" href="../../assets/logo.png" type="image/png">
-    <title>Cluster Networking</title>
-    <link rel="stylesheet" href="../../styles.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism-dracula.min.css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-yaml.min.js"></script>
-  </head>
-  <body class="dark-mode" onload="loadSidebar()">
-    <!--Header -->
-    <header>
-      <div class="header-content">
-        <div class="title-and-subheader">
-            <div class="title-container">
-                <a href="/index.html">
-                    <img src="../../assets/logo.png" alt="Logo" id="logo" />
-                </a>
-                <h1>K8s Guide</h1><br><br><br>
-            </div>
-            <h3 class="sub-header">Your TLDR guide to Kubernetes documentation</h3>
-
-        </div>
-    </header>
-    <div id="hamburger-container">
-      <button id="hamburger-menu">☰</button>
-    </div>
-
-    <!--Sidebar -->
-    <nav id="sidebar"></nav>
-    <!--Main Content -->
-    <main>
-      <h1>Cluster Networking</h1><br><br><br>
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="../../assets/logo.png" rel="icon" type="image/png"/>
+<title>Cluster Networking</title>
+<link href="../../styles.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism-dracula.min.css" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-yaml.min.js"></script>
+</link></head>
+<body class="dark-mode" onload="loadSidebar()">
+<!--Header -->
+<header>
+<div class="header-content">
+<div class="title-and-subheader">
+<div class="title-container">
+<a href="/index.html">
+<img alt="Logo" id="logo" src="../../assets/logo.png"/>
+</a>
+<h1>K8s Guide</h1><br/><br/><br/>
+</div>
+<h3 class="sub-header">Your TLDR guide to Kubernetes documentation</h3>
+</div>
+</div></header>
+<div id="hamburger-container">
+<button id="hamburger-menu">☰</button>
+</div>
+<!--Sidebar -->
+<nav id="sidebar"></nav>
+<!--Main Content -->
+<main>
+<div id="breadcrumbs"></div><br/><h1>Cluster Networking</h1><br/><br/><br/>
 <h3>Highly-coupled container-to-container communications:</h3>
 In Kubernetes, tightly coupled application components can be packed into a Pod. Containers in the same Pod share the same network namespace, which means they can communicate with each other via localhost. This makes inter-container communication seamless.
-<br><br><br>
+<br/><br/><br/>
 <h3>Pod-to-Pod communications:</h3>
 This is the core focus of the document. In Kubernetes, every Pod gets its own IP address, and there's no need for explicit links between Pods or mapping container ports to host ports. This makes it easier to run services that bind to specific ports without conflicts. The Pod-to-Pod communication is made possible through a networking model that may be implemented differently depending on the network plugin used.
-<br><br><br>
+<br/><br/><br/>
 <h3>Pod-to-Service communications:</h3>
 Kubernetes Services are an abstraction that defines a logical set of Pods and enables external traffic exposure, load balancing, and service discovery for those Pods. Services allow Pods to reliably communicate with each other without needing to know the IP address of the Pod they are talking to.
-<br><br><br>
+<br/><br/><br/>
 <h3>External-to-Service communications:</h3>
 Kubernetes Services also allow for external traffic to enter the cluster. This is usually done through various types of Service types like ClusterIP, NodePort, and LoadBalancer, each serving a different use-case and environment.
-<br><br><br>
+<br/><br/><br/>
 Container Network Interface (CNI) plugins  are responsible for attaching Pods to the host network, and they come in various flavors. Some offer basic Pod networking, while others offer extended features like network policy enforcement, encryption, and more.
-<br><br><br>
+<br/><br/><br/>
 There are ongoing efforts to improve networking, led by the Special Interest Group for Networking (SIG-Network). They are actively working on Kubernetes Enhancement Proposals (KEPs) to introduce new features and improvements in networking.
-    <br><br><br></main>
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <!--Dark/Light Mode Toggle -->
-    <button id="mode-toggle" onclick="toggleMode()">
-      <span class="material-icons">brightness_7</span>
-    </button>
-    <!--Scroll-to-Top Button -->
-    <button id="scroll-top" onclick="scrollToTop()">
-      <span class="material-icons">arrow_upward</span>
-    </button>
-
-    <!-- Next Page Button -->
-    <button id="next-page" onclick="navigateNext()">
-        <span class="material-icons">arrow_forward</span>
-    </button>
-
-    <!-- Random Page Button -->
-    <button id="randomizer">
-    <span class="material-icons">shuffle</span>
-    </button>
-
-    <!--Mobile Menu -->
-    <div id="mobile-menu"></div>
-    <script src="../../script.js"></script>
-  </body>
+    <br/><br/><br/></main>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<!--Dark/Light Mode Toggle -->
+<button id="mode-toggle" onclick="toggleMode()">
+<span class="material-icons">brightness_7</span>
+</button>
+<!--Scroll-to-Top Button -->
+<button id="scroll-top" onclick="scrollToTop()">
+<span class="material-icons">arrow_upward</span>
+</button>
+<!-- Next Page Button -->
+<button id="next-page" onclick="navigateNext()">
+<span class="material-icons">arrow_forward</span>
+</button>
+<!-- Random Page Button -->
+<button id="randomizer">
+<span class="material-icons">shuffle</span>
+</button>
+<!--Mobile Menu -->
+<div id="mobile-menu"></div>
+<script src="../../script.js"></script>
+</body>
 </html>

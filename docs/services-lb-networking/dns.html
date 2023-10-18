@@ -1,129 +1,100 @@
 <!DOCTYPE html>
+
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" href="../../assets/logo.png" type="image/png">
-    <title>DNS</title>
-    <link rel="stylesheet" href="../../styles.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism-dracula.min.css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-yaml.min.js"></script>
-  </head>
-  <body class="dark-mode" onload="loadSidebar()">
-    <!--Header -->
-    <header>
-      <div class="header-content">
-        <div class="title-and-subheader">
-            <div class="title-container">
-                <a href="/index.html">
-                    <img src="../../assets/logo.png" alt="Logo" id="logo" />
-                </a>
-                <h1>K8s Guide</h1><br><br><br>
-            </div>
-            <h3 class="sub-header">Your TLDR guide to Kubernetes documentation</h3>
-        </div>
-    </header>
-    <div id="hamburger-container">
-      <button id="hamburger-menu">☰</button>
-    </div>
-
-    <!--Sidebar -->
-    <nav id="sidebar"></nav>
-    <!--Main Content -->
-    <main>
-      <h1>DNS</h1><br><br><br>
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="../../assets/logo.png" rel="icon" type="image/png"/>
+<title>DNS</title>
+<link href="../../styles.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism-dracula.min.css" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-yaml.min.js"></script>
+</link></head>
+<body class="dark-mode" onload="loadSidebar()">
+<!--Header -->
+<header>
+<div class="header-content">
+<div class="title-and-subheader">
+<div class="title-container">
+<a href="/index.html">
+<img alt="Logo" id="logo" src="../../assets/logo.png"/>
+</a>
+<h1>K8s Guide</h1><br/><br/><br/>
+</div>
+<h3 class="sub-header">Your TLDR guide to Kubernetes documentation</h3>
+</div>
+</div></header>
+<div id="hamburger-container">
+<button id="hamburger-menu">☰</button>
+</div>
+<!--Sidebar -->
+<nav id="sidebar"></nav>
+<!--Main Content -->
+<main>
+<div id="breadcrumbs"></div><br/><h1>DNS</h1><br/><br/><br/>
 <h3>Terminology</h3>
-
 <li><b>DNS:</b> Domain Name System</li>
 <li><b>FQDN:</b> Fully Qualified Domain Name</li>
 <li><b>SRV Records:</b> Service records in DNS</li>
-
-<br><br>
+<br/><br/>
 <h3>What is DNS for Services and Pods?</h3>
-
 <li>Kubernetes creates DNS records for Services and Pods.</li>
 <li>Allows for name-based service discovery within the cluster.</li>
-
-<br><br>
+<br/><br/>
 <h3>DNS Records</h3>
-
 <li>Services and Pods get DNS records.</li>
 <li>"Normal" Services get A/AAAA records.</li>
 <li>Headless Services also get A/AAAA records but resolve to the set of IPs of all Pods selected by the Service.</li>
 <li>SRV Records are created for named ports.</li>
-
-<br><br>
+<br/><br/>
 <h3>Pods</h3>
-
 <li>Pods have A/AAAA records.</li>
 <li>The DNS resolution is `pod-ip-address.my-namespace.pod.cluster-domain.example`.</li>
 <li>Pods exposed by a Service have additional DNS resolution.</li>
-
-<br><br>
+<br/><br/>
 <h3>Pod's hostname and subdomain fields</h3>
-
 <li>The hostname is by default the Pod's `metadata.name`.</li>
 <li>The hostname can be overridden by `spec.hostname`.</li>
 <li>The fully qualified domain name (FQDN) can be set using `spec.subdomain`.</li>
-
-<br><br>
+<br/><br/>
 <h3>Pod's DNS Policy</h3>
-
 <li>DNS policies can be set per-Pod.</li>
 <li>Options include "Default", "ClusterFirst", "ClusterFirstWithHostNet", and "None".</li>
-
-<br><br>
+<br/><br/>
 <h3>Pod's DNS Config</h3>
-
 <li>Allows more control over DNS settings for a Pod.</li>
 <li>Can specify nameservers, searches, and options.</li>
-
-<br><br>
+<br/><br/>
 <h3>DNS search domain list limits</h3>
-
 <li>Kubernetes does not limit the DNS Config until the length of the search domain list exceeds 32 or the total length of all search domains exceeds 2048.</li>
-
-<br><br>
+<br/><br/>
 <h3>DNS resolution on Windows nodes</h3>
-
 <li>"ClusterFirstWithHostNet" is not supported on Windows nodes.</li>
 <li>Windows treats all names with a '.' as a FQDN and skips FQDN resolution.</li>
-    <br><br><br></main>
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <!--Dark/Light Mode Toggle -->
-    <button id="mode-toggle" onclick="toggleMode()">
-      <span class="material-icons">brightness_7</span>
-    </button>
-    <!--Scroll-to-Top Button -->
-    <button id="scroll-top" onclick="scrollToTop()">
-      <span class="material-icons">arrow_upward</span>
-    </button>
-
-    <!-- Next Page Button -->
-    <button id="next-page" onclick="navigateNext()">
-        <span class="material-icons">arrow_forward</span>
-    </button>
-
-    <!-- Random Page Button -->
-    <button id="randomizer">
-    <span class="material-icons">shuffle</span>
-    </button>
-
-    <!--Mobile Menu -->
-    <div id="mobile-menu"></div>
-    <script src="../../script.js"></script>
-  </body>
+<br/><br/><br/></main>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<!--Dark/Light Mode Toggle -->
+<button id="mode-toggle" onclick="toggleMode()">
+<span class="material-icons">brightness_7</span>
+</button>
+<!--Scroll-to-Top Button -->
+<button id="scroll-top" onclick="scrollToTop()">
+<span class="material-icons">arrow_upward</span>
+</button>
+<!-- Next Page Button -->
+<button id="next-page" onclick="navigateNext()">
+<span class="material-icons">arrow_forward</span>
+</button>
+<!-- Random Page Button -->
+<button id="randomizer">
+<span class="material-icons">shuffle</span>
+</button>
+<!--Mobile Menu -->
+<div id="mobile-menu"></div>
+<script src="../../script.js"></script>
+</body>
 </html>

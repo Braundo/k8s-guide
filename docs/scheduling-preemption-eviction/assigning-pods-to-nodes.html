@@ -1,119 +1,93 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" href="../../assets/logo.png" type="image/png">
-    <title>Assigning Pods to Nodes</title>
-    <link rel="stylesheet" href="../../styles.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism-dracula.min.css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-yaml.min.js"></script>
-  </head>
-  <body class="dark-mode" onload="loadSidebar()">
-    <!--Header -->
-    <header>
-      <div class="header-content">
-        <div class="title-and-subheader">
-            <div class="title-container">
-                <a href="/index.html">
-                    <img src="../../assets/logo.png" alt="Logo" id="logo" />
-                </a>
-                <h1>K8s Guide</h1><br><br><br>
-            </div>
-            <h3 class="sub-header">Your TLDR guide to Kubernetes documentation</h3>
-        </div>
-    </header>
-    <div id="hamburger-container">
-      <button id="hamburger-menu">☰</button>
-    </div>
 
-    <!--Sidebar -->
-    <nav id="sidebar"></nav>
-    <!--Main Content -->
-    <main>
-      <h1>Assigning Pods to Nodes</h1><br><br><br>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="../../assets/logo.png" rel="icon" type="image/png"/>
+<title>Assigning Pods to Nodes</title>
+<link href="../../styles.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism-dracula.min.css" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-yaml.min.js"></script>
+</link></head>
+<body class="dark-mode" onload="loadSidebar()">
+<!--Header -->
+<header>
+<div class="header-content">
+<div class="title-and-subheader">
+<div class="title-container">
+<a href="/index.html">
+<img alt="Logo" id="logo" src="../../assets/logo.png"/>
+</a>
+<h1>K8s Guide</h1><br/><br/><br/>
+</div>
+<h3 class="sub-header">Your TLDR guide to Kubernetes documentation</h3>
+</div>
+</div></header>
+<div id="hamburger-container">
+<button id="hamburger-menu">☰</button>
+</div>
+<!--Sidebar -->
+<nav id="sidebar"></nav>
+<!--Main Content -->
+<main>
+<div id="breadcrumbs"></div><br/><h1>Assigning Pods to Nodes</h1><br/><br/><br/>
 <h3>Assigning Pods to Nodes</h3>
 <b>Automatic Scheduling:</b> By default, Kubernetes automatically schedules Pods to Nodes based on available resources. However, you can override this behavior for specific use-cases.
-<br><br><br><h3>Methods for Manual Scheduling</h3>
-    <li><b>nodeSelector:</b>Simplest form, matches node labels.</li>
-    <li><b>Affinity and Anti-affinity:</b>b More expressive than nodeSelector.</li>
-    <li><b>nodeName:</b>b Directly specify the node.</li>
-    <li><b>Pod Topology Spread Constraints:</b>b Control how Pods are spread across your cluster.</li>
-
-<br><br><br>
+<br/><br/><br/><h3>Methods for Manual Scheduling</h3>
+<li><b>nodeSelector:</b>Simplest form, matches node labels.</li>
+<li><b>Affinity and Anti-affinity:</b>b More expressive than nodeSelector.</li>
+<li><b>nodeName:</b>b Directly specify the node.</li>
+<li><b>Pod Topology Spread Constraints:</b>b Control how Pods are spread across your cluster.</li>
+<br/><br/><br/>
 <h3>Node Labels</h3>
-
 <li>Nodes can have labels that you manually attach or that Kubernetes automatically populates.</li>
 <li>Labels can be used for node isolation and security.</li>
-
-<br><br><br>
+<br/><br/><br/>
 <h3>NodeSelector</h3>
-
 <li>A field in the Pod spec that specifies node labels to match.</li>
-
-<br><br><br>
+<br/><br/><br/>
 <h3>Affinity and Anti-affinity</h3>
-
 <b>Node Affinity:</b> Similar to nodeSelector but more expressive.
     <li><b>requiredDuringSchedulingIgnoredDuringExecution</b> Hard requirement.</li>
-    <li><b>preferredDuringSchedulingIgnoredDuringExecution:</b> Soft requirement.</li>
-    <li><b>Inter-pod Affinity/Anti-affinity:</b> Allows you to specify rules based on labels of other Pods, not just node labels.</li>
-
-<br><br><br>
+<li><b>preferredDuringSchedulingIgnoredDuringExecution:</b> Soft requirement.</li>
+<li><b>Inter-pod Affinity/Anti-affinity:</b> Allows you to specify rules based on labels of other Pods, not just node labels.</li>
+<br/><br/><br/>
 <h3>Node Affinity Weight</h3>
-
 <li>You can assign weights to preferred rules. The scheduler uses these to score nodes.</li>
-
-<br><br><br>
+<br/><br/><br/>
 <h3>Inter-pod Affinity and Anti-affinity</h3>
-
 <li>Allows you to specify rules based on labels of other Pods that are already running on the node.</li>
-
-<br><br><br>
+<br/><br/><br/>
 <h3>Practical Use-cases</h3>
-
 <li>Useful when used with higher-level objects like ReplicaSets, StatefulSets, and Deployments.</li>
-
-<br><br><br>
+<br/><br/><br/>
 <h3>Example: Redis Cache Deployment</h3>
-
 <li>An example is given for a Redis cache where `podAntiAffinity` is used to ensure that no two replicas with the label `app=store` are scheduled on the same node.</li>
-    <br><br><br></main>
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <!--Dark/Light Mode Toggle -->
-    <button id="mode-toggle" onclick="toggleMode()">
-      <span class="material-icons">brightness_7</span>
-    </button>
-    <!--Scroll-to-Top Button -->
-    <button id="scroll-top" onclick="scrollToTop()">
-      <span class="material-icons">arrow_upward</span>
-    </button>
-
-    <!-- Next Page Button -->
-    <button id="next-page" onclick="navigateNext()">
-        <span class="material-icons">arrow_forward</span>
-    </button>
-
-    <!-- Random Page Button -->
-    <button id="randomizer">
-    <span class="material-icons">shuffle</span>
-    </button>
-
-    <!--Mobile Menu -->
-    <div id="mobile-menu"></div>
-    <script src="../../script.js"></script>
-  </body>
+<br/><br/><br/></main>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<!--Dark/Light Mode Toggle -->
+<button id="mode-toggle" onclick="toggleMode()">
+<span class="material-icons">brightness_7</span>
+</button>
+<!--Scroll-to-Top Button -->
+<button id="scroll-top" onclick="scrollToTop()">
+<span class="material-icons">arrow_upward</span>
+</button>
+<!-- Next Page Button -->
+<button id="next-page" onclick="navigateNext()">
+<span class="material-icons">arrow_forward</span>
+</button>
+<!-- Random Page Button -->
+<button id="randomizer">
+<span class="material-icons">shuffle</span>
+</button>
+<!--Mobile Menu -->
+<div id="mobile-menu"></div>
+<script src="../../script.js"></script>
+</body>
 </html>

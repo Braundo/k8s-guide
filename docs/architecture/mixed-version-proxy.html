@@ -1,99 +1,81 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" href="../../assets/logo.png" type="image/png">
-    <title>Mixed Version Proxy</title>
-    <link rel="stylesheet" href="../../styles.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism-dracula.min.css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
-  </head>
-  <body class="dark-mode" onload="loadSidebar()">
-    <!--Header -->
-    <header>
-      <div class="header-content">
-        <div class="title-and-subheader">
-            <div class="title-container">
-                <a href="/index.html">
-                    <img src="../../assets/logo.png" alt="Logo" id="logo" />
-                </a>
-                <h1>K8s Guide</h1><br><br><br>
-            </div>
-            <h3 class="sub-header">Your TLDR guide to Kubernetes documentation</h3>
-        </div>
-    </header>
-    <div id="hamburger-container">
-      <button id="hamburger-menu">☰</button>
-    </div>
 
-    <!--Sidebar -->
-    <nav id="sidebar"></nav>
-    <!--Main Content -->
-    <main>
-      <h1>Mixed Version Proxy</h1><br><br><br><h3>Feature State</h3>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="../../assets/logo.png" rel="icon" type="image/png"/>
+<title>Mixed Version Proxy</title>
+<link href="../../styles.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism-dracula.min.css" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
+</link></head>
+<body class="dark-mode" onload="loadSidebar()">
+<!--Header -->
+<header>
+<div class="header-content">
+<div class="title-and-subheader">
+<div class="title-container">
+<a href="/index.html">
+<img alt="Logo" id="logo" src="../../assets/logo.png"/>
+</a>
+<h1>K8s Guide</h1><br/><br/><br/>
+</div>
+<h3 class="sub-header">Your TLDR guide to Kubernetes documentation</h3>
+</div>
+</div></header>
+<div id="hamburger-container">
+<button id="hamburger-menu">☰</button>
+</div>
+<!--Sidebar -->
+<nav id="sidebar"></nav>
+<!--Main Content -->
+<main>
+<div id="breadcrumbs"></div><br/><h1>Mixed Version Proxy</h1><br/><br/><br/><h3>Feature State</h3>
 <li>As of Kubernetes v1.28, the Mixed Version Proxy is an alpha feature.</li>
 <li>Allows an API Server to proxy resource requests to other peer API servers running different Kubernetes versions.</li>
-
-<br><br><h3>Use Case</h3>
+<br/><br/><h3>Use Case</h3>
 <li>Useful for clusters with multiple API servers running different versions, especially during long-lived rollouts to new Kubernetes releases.</li>
 <li>Helps in directing resource requests to the correct kube-apiserver, preventing unexpected 404 errors during upgrades.</li>
-
-<br><br><h3>Enabling Mixed Version Proxy</h3>
+<br/><br/><h3>Enabling Mixed Version Proxy</h3>
 <li>Enable the `UnknownVersionInteroperabilityProxy` feature gate when starting the API Server.</li>
 <li>Requires specific command-line arguments like `-peer-ca-file`, `-proxy-client-cert-file`, `-proxy-client-key-file`, and `-requestheader-client-ca-file`.</li>
-
-<br><br><h3>Proxy Transport and Authentication</h3>
+<br/><br/><h3>Proxy Transport and Authentication</h3>
 <li>Source kube-apiserver uses existing flags `-proxy-client-cert-file` and `-proxy-client-key-file` to present its identity.</li>
 <li>Destination kube-apiserver verifies the peer connection based on the `-requestheader-client-ca-file` argument.</li>
-
-<br><br><h3>Configuration for Peer API Server Connectivity</h3>
+<br/><br/><h3>Configuration for Peer API Server Connectivity</h3>
 <li>Use `-peer-advertise-ip` and `-peer-advertise-port` to set the network location for proxying requests.</li>
 <li>If unspecified, it defaults to the values from `-advertise-address` or `-bind-address`.</li>
-
-<br><br><h3>Mixed Version Proxying Mechanism</h3>
+<br/><br/><h3>Mixed Version Proxying Mechanism</h3>
 <li>Special filter in the aggregation layer identifies API groups/versions/resources that the local server doesn't recognize.</li>
 <li>Attempts to proxy those requests to a peer API server capable of handling them.</li>
 <li>If the peer API server fails to respond, a 503 ("Service Unavailable") error is returned.</li>
-
-<br><br><h3>How it Works Under the Hood</h3>
+<br/><br/><h3>How it Works Under the Hood</h3>
 <li>Uses the internal StorageVersion API to check which API servers can serve the requested resource.</li>
 <li>If no peer is known for that API group/version/resource, a 404 ("Not Found") response is returned.</li>
 <li>If the selected peer fails to respond, a 503 ("Service Unavailable") error is returned.</li>
-    <br><br><br></main>
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <!--Dark/Light Mode Toggle -->
-    <button id="mode-toggle" onclick="toggleMode()">
-      <span class="material-icons">brightness_7</span>
-    </button>
-    <!--Scroll-to-Top Button -->
-    <button id="scroll-top" onclick="scrollToTop()">
-      <span class="material-icons">arrow_upward</span>
-    </button>
-
-    <!-- Next Page Button -->
-    <button id="next-page" onclick="navigateNext()">
-        <span class="material-icons">arrow_forward</span>
-    </button>
-
-    <!-- Random Page Button -->
-    <button id="randomizer">
-    <span class="material-icons">shuffle</span>
-    </button>
-
-    <!--Mobile Menu -->
-    <div id="mobile-menu"></div>
-    <script src="../../script.js"></script>
-  </body>
+<br/><br/><br/></main>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<!--Dark/Light Mode Toggle -->
+<button id="mode-toggle" onclick="toggleMode()">
+<span class="material-icons">brightness_7</span>
+</button>
+<!--Scroll-to-Top Button -->
+<button id="scroll-top" onclick="scrollToTop()">
+<span class="material-icons">arrow_upward</span>
+</button>
+<!-- Next Page Button -->
+<button id="next-page" onclick="navigateNext()">
+<span class="material-icons">arrow_forward</span>
+</button>
+<!-- Random Page Button -->
+<button id="randomizer">
+<span class="material-icons">shuffle</span>
+</button>
+<!--Mobile Menu -->
+<div id="mobile-menu"></div>
+<script src="../../script.js"></script>
+</body>
 </html>

@@ -1,98 +1,81 @@
 <!DOCTYPE html>
+
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" href="/assets/logo.png" type="image/png">
-    <title>Node Communication</title>
-    <link rel="stylesheet" href="../../styles.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism-dracula.min.css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
-  </head>
-  <body class="dark-mode" onload="loadSidebar()">
-    <!--Header -->
-    <header>
-      <div class="header-content">
-        <div class="title-and-subheader">
-            <div class="title-container">
-                <a href="/index.html">
-                    <img src="../../assets/logo.png" alt="Logo" id="logo" />
-                </a>
-                <h1>K8s Guide</h1><br><br><br>
-            </div>
-            <h3 class="sub-header">Your TLDR guide to Kubernetes documentation</h3>
-        </div>
-    </header>
-    <div id="hamburger-container">
-      <button id="hamburger-menu">☰</button>
-    </div>
-
-    <!--Sidebar -->
-    <nav id="sidebar"></nav>
-    <!--Main Content -->
-    <main>
-      <h1>Node Communication<h1>
-
-<br><br><h3>Node to Control Plane</h3>
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="/assets/logo.png" rel="icon" type="image/png"/>
+<title>Node Communication</title>
+<link href="../../styles.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism-dracula.min.css" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
+</link></head>
+<body class="dark-mode" onload="loadSidebar()">
+<!--Header -->
+<header>
+<div class="header-content">
+<div class="title-and-subheader">
+<div class="title-container">
+<a href="/index.html">
+<img alt="Logo" id="logo" src="../../assets/logo.png"/>
+</a>
+<h1>K8s Guide</h1><br/><br/><br/>
+</div>
+<h3 class="sub-header">Your TLDR guide to Kubernetes documentation</h3>
+</div>
+</div></header>
+<div id="hamburger-container">
+<button id="hamburger-menu">☰</button>
+</div>
+<!--Sidebar -->
+<nav id="sidebar"></nav>
+<!--Main Content -->
+<main>
+<div id="breadcrumbs"></div><br/><h1>Node Communication<h1>
+<br/><br/><h3>Node to Control Plane</h3>
 <li>Follows a "hub-and-spoke" API pattern.</li>
 <li>All API usage from nodes or their pods terminates at the API server.</li>
 <li>API server listens on a secure HTTPS port, typically 443.</li>
 <li>Nodes should have the public root certificate and valid client credentials for secure connection.</li>
-
-<br><br><h3>API Server to Kubelet</h3>
+<br/><br/><h3>API Server to Kubelet</h3>
 <li>Used for fetching logs, attaching to running pods, and port-forwarding.</li>
 <li>Connections terminate at the kubelet's HTTPS endpoint.</li>
 <li>To secure the connection, use the `-kubelet-certificate-authority` flag for the API server.</li>
 <li>Kubelet authentication and/or authorization should be enabled.</li>
-
-<br><br><h3>API Server to Nodes, Pods, and Services</h3>
+<br/><br/><h3>API Server to Nodes, Pods, and Services</h3>
 <li>Connections default to plain HTTP and are neither authenticated nor encrypted.</li>
 <li>Can be run over HTTPS but will not validate the certificate or provide client credentials.</li>
 <li>Not safe to run over untrusted or public networks.</li>
-
-<br><br><h3>SSH Tunnels</h3>
+<br/><br/><h3>SSH Tunnels</h3>
 <li>Supports SSH tunnels to protect control plane to nodes communication.</li>
 <li>API server initiates an SSH tunnel to each node and passes all traffic through the tunnel.</li>
 <li>Ensures traffic is not exposed outside the nodes' network.</li>
-
-<br><br><h3>Konnectivity Service</h3>
+<br/><br/><h3>Konnectivity Service</h3>
 <li>Provides TCP level proxy for control plane to cluster communication.</li>
 <li>Consists of the Konnectivity server in the control plane network and agents in the nodes network.</li>
 <li>After enabling, all control plane to nodes traffic goes through these connections.</li>
-    <br><br><br></main>
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <!--Dark/Light Mode Toggle -->
-    <button id="mode-toggle" onclick="toggleMode()">
-      <span class="material-icons">brightness_7</span>
-    </button>
-    <!--Scroll-to-Top Button -->
-    <button id="scroll-top" onclick="scrollToTop()">
-      <span class="material-icons">arrow_upward</span>
-    </button>
-
-    <!-- Next Page Button -->
-    <button id="next-page" onclick="navigateNext()">
-        <span class="material-icons">arrow_forward</span>
-    </button>
-
-    <!-- Random Page Button -->
-    <button id="randomizer">
-    <span class="material-icons">shuffle</span>
-    </button>
-
-    <!--Mobile Menu -->
-    <div id="mobile-menu"></div>
-    <script src="../../script.js"></script>
-  </body>
+<br/><br/><br/></h1></h1></main>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<!--Dark/Light Mode Toggle -->
+<button id="mode-toggle" onclick="toggleMode()">
+<span class="material-icons">brightness_7</span>
+</button>
+<!--Scroll-to-Top Button -->
+<button id="scroll-top" onclick="scrollToTop()">
+<span class="material-icons">arrow_upward</span>
+</button>
+<!-- Next Page Button -->
+<button id="next-page" onclick="navigateNext()">
+<span class="material-icons">arrow_forward</span>
+</button>
+<!-- Random Page Button -->
+<button id="randomizer">
+<span class="material-icons">shuffle</span>
+</button>
+<!--Mobile Menu -->
+<div id="mobile-menu"></div>
+<script src="../../script.js"></script>
+</body>
 </html>

@@ -252,3 +252,142 @@ document.querySelectorAll(".copy-button").forEach((button) => {
     }, 2000);
   });
 });
+
+// Define an object for aliases
+const breadcrumbAliases = {
+  "nodes.html": "Nodes",
+  "node-communication.html": "Node Communication",
+  "controllers.html": "Controllers",
+  "leases.html": "Leases",
+  "cloud-controller-manager.html": "Cloud Controller Manager",
+  "cgroup-v2.html": "cgroup v2",
+  "container-runtime-interface.html": "Container Runtime Interface",
+  "garbage-collection.html": "Garbage Collection",
+  "mixed-version-proxy.html": "Mixed Version Proxy",
+  "containers-overview.html": "Containers Overview",
+  "images.html": "Images",
+  "container-environment.html": "Container Environment",
+  "runtime-class.html": "Runtime Class",
+  "container-lifecycle-hooks.html": "Container Lifecycle Hooks",
+  "pod-overview.html": "Pod Overview",
+  "pod-lifecycle.html": "Pod Lifecycle",
+  "init-containers.html": "Init Containers",
+  "disruptions.html": "Disruptions",
+  "ephemeral-containers.html": "Ephemeral Containers",
+  "qos-classes.html": "QoS Classes",
+  "user-namespaces.html": "User Namespaces",
+  "downward-api.html": "Downward API",
+  "workload-resources.html": "Workload Resources",
+  "deployments.html": "Deployments",
+  "replicaset.html": "ReplicaSet",
+  "daemonsets.html": "DaemonSets",
+  "jobs.html": "Jobs",
+  "replicationcontroller.html": "ReplicationController",
+  "network-overview.html": "Network Overview",
+  "service.html": "Service",
+  "ingress.html": "Ingress",
+  "endpoint-slices.html": "Endpoint Slices",
+  "network-policies.html": "Network Policies",
+  "dns.html": "DNS",
+  "ipv4-ipv6.html": "IPv4-IPv6",
+  "topology-aware-routing.html": "Topology Aware Routing",
+  "service-networking.html": "Service Networking",
+  "volumes.html": "Volumes",
+  "persistent-volumes.html": "Persistent Volumes",
+  "projected-volumes.html": "Projected Volumes",
+  "ephemeral-volumes.html": "Ephemeral Volumes",
+  "storage-classes.html": "Storage Classes",
+  "dynamic-volume-provisioning.html": "Dynamic Volume Provisioning",
+  "volume-snapshots.html": "Volume Snapshots",
+  "volume-snapshot-classes.html": "Volume Snapshot Classes",
+  "csi-volume-cloning.html": "CSI Volume Cloning",
+  "storage-capacity.html": "Storage Capacity",
+  "node-specific-volume-limits.html": "Node Specific Volume Limits",
+  "volume-health-monitoring.html": "Volume Health Monitoring",
+  "configuration-best-practices.html": "Configuration Best Practices",
+  "configmaps.html": "ConfigMaps",
+  "secrets.html": "Secrets",
+  "resource-management.html": "Resource Management",
+  "organizing-cluster-access.html": "Organizing Cluster Access",
+  "overview-of-cloud-native-security.html": "Cloud Native Security",
+  "pod-security-standards.html": "Pod Security Standards",
+  "service-accounts.html": "Service Accounts",
+  "pod-security-admission.html": "Pod Security Admission",
+  "controlling-access-to-kubernetes-api.html": "Controlling Access to K8s API",
+  "rbac-good-practices.html": "RBAC Good Practices",
+  "kubernetes-secrets-good-practices.html": "K8s Secrets Good Practices",
+  "multi-tenancy.html": "Multi-Tenancy",
+  "hardening-guide-auth-mechanisms.html": "Hardening Guide",
+  "kubernetes-api-server-bypass-risks.html": "K8s API Server Bypass",
+  "security-checklist.html": "Security Checklist",
+  "limit-ranges.html": "Limit Ranges",
+  "resource-quotas.html": "Resources Quotas",
+  "process-id-limits-and-reservations.html": "PID Limits and Reservations",
+  "node-resource-managers.html": "Node Resource Managers",
+  "kubernetes-scheduler.html": "Kubernetes Scheduler",
+  "assigning-pods-to-nodes.html": "Assigning Pods to Nodes",
+  "pod-overhead.html": "Pod Overhead",
+  "pod-scheduling-readiness.html": "Pod Scheduling Readiness",
+  "pod-topology-spread-constraints.html": "Pod Topology Spread Constraints",
+  "taints-and-tolerations.html": "Taints and Tolerations",
+  "scheduling-framework.html": "Scheduling Framework",
+  "dynamic-resource-allocation.html": "Dynamic Resource Allocation",
+  "scheduler-performance-tuning.html": "Scheduler Performance Tuning",
+  "resource-bin-packing.html": "Resource Bin Packing",
+  "pod-priority-and-preemption.html": "Pod Priority and Preemption",
+  "node-pressure-eviction.html": "Node Pressure Eviction",
+  "api-initiated-eviction.html": "API Initiated Eviction",
+  "certificates.html": "Certificates",
+  "managing-resources.html": "Managing Resources",
+  "cluster-networking.html": "Cluster Networking",
+  "logging-architecture.html": "Logging Architecture",
+  "metrics-for-k8s-system-components.html": "Metrics for K8s System Components",
+  "system-logs.html": "System Logs",
+  "traces-for-k8s-system-components.html": "Traces for K8s System Components",
+  "proxies-in-kubernetes.html": "Proxies in Kubernetes",
+  "api-priority-fairness.html": "API Priority and Fairness",
+  "installing-addons.html": "Installing Addons",
+  architecture: "Architecture",
+  "cluster-administration": "Administration",
+  configuration: "Configuration",
+  containers: "Containers",
+  pods: "Pods",
+  policies: "Policies",
+  "scheduling-preemption-eviction": "Scheduling Preemption Eviction",
+  security: "Security",
+  "services-lb-networking": "Services LB Networking",
+  storage: "Storage",
+  workloads: "Workloads",
+};
+
+function generateBreadcrumbs() {
+  const breadcrumbContainer = document.getElementById("breadcrumbs");
+  const currentPath = window.location.pathname;
+  const pathSegments = currentPath.split("/").filter((segment) => segment);
+
+  let breadcrumbHtml = ""; // Start with an empty string
+
+  let url = "";
+  pathSegments.forEach((segment, index) => {
+    // Skip the first two segments (Home and Docs)
+    if (index < 1) return;
+
+    // Append .html to the URL if it's not the last segment
+    url += `/${segment}` + (index < pathSegments.length - 1 ? ".html" : "");
+
+    // Check if an alias exists for this segment
+    const displayName = breadcrumbAliases[segment]
+      ? breadcrumbAliases[segment] // Use alias if exists
+      : segment.charAt(0).toUpperCase() + segment.slice(1); // Else, capitalize first letter
+
+    breadcrumbHtml +=
+      (index > 1
+        ? '<i class="material-icons breadcrumb-chevron">chevron_right</i>'
+        : "") + `<a href="${url}">${displayName}</a>`;
+  });
+
+  breadcrumbContainer.innerHTML = breadcrumbHtml;
+}
+
+// Call the function on page load
+document.addEventListener("DOMContentLoaded", generateBreadcrumbs);

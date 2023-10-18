@@ -1,97 +1,79 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" href="../../assets/logo.png" type="image/png">
-    <title>Garbage Collection</title>
-    <link rel="stylesheet" href="../../styles.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism-dracula.min.css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
-  </head>
-  <body class="dark-mode" onload="loadSidebar()">
-    <!--Header -->
-    <header>
-      <div class="header-content">
-        <div class="title-and-subheader">
-            <div class="title-container">
-                <a href="/index.html">
-                    <img src="../../assets/logo.png" alt="Logo" id="logo" />
-                </a>
-                <h1>K8s Guide</h1><br><br><br>
-            </div>
-            <h3 class="sub-header">Your TLDR guide to Kubernetes documentation</h3>
-        </div>
-    </header>
-    <div id="hamburger-container">
-      <button id="hamburger-menu">☰</button>
-    </div>
 
-    <!--Sidebar -->
-    <nav id="sidebar"></nav>
-    <!--Main Content -->
-    <main>
-      <h1>Garbage Collection</h1><br><br><br><h3>What is Garbage Collection?</h3>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="../../assets/logo.png" rel="icon" type="image/png"/>
+<title>Garbage Collection</title>
+<link href="../../styles.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism-dracula.min.css" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
+</link></head>
+<body class="dark-mode" onload="loadSidebar()">
+<!--Header -->
+<header>
+<div class="header-content">
+<div class="title-and-subheader">
+<div class="title-container">
+<a href="/index.html">
+<img alt="Logo" id="logo" src="../../assets/logo.png"/>
+</a>
+<h1>K8s Guide</h1><br/><br/><br/>
+</div>
+<h3 class="sub-header">Your TLDR guide to Kubernetes documentation</h3>
+</div>
+</div></header>
+<div id="hamburger-container">
+<button id="hamburger-menu">☰</button>
+</div>
+<!--Sidebar -->
+<nav id="sidebar"></nav>
+<!--Main Content -->
+<main>
+<div id="breadcrumbs"></div><br/><h1>Garbage Collection</h1><br/><br/><br/><h3>What is Garbage Collection?</h3>
 <li>Collective term for mechanisms that clean up cluster resources.</li>
 <li>Targets terminated pods, completed jobs, objects without owner references, unused containers and images, and more.</li>
-
-<br><br><h3>Owners and Dependents</h3>
+<br/><br/><h3>Owners and Dependents</h3>
 <li>Objects in Kubernetes link to each other through owner references.</li>
 <li>Owner references help the control plane and other API clients clean up related resources before deleting an object.</li>
-
-<br><br><h3>Cascading Deletion</h3>
+<br/><br/><h3>Cascading Deletion</h3>
 <li>Two types: Foreground and Background.
 <li>Foreground: Owner object first enters a "deletion in progress" state, and dependents are deleted before the owner.</li>
 <li>Background: Owner object is deleted immediately, and dependents are cleaned up in the background.</li>
-
-<br><br><h3>Orphaned Dependents</h3>
+<br/><br/><h3>Orphaned Dependents</h3>
 <li>Dependents left behind when an owner object is deleted are called orphan objects.</li>
 <li>By default, Kubernetes deletes dependent objects, but this behavior can be overridden.</li>
-
-<br><br><h3>Garbage Collection of Unused Containers and Images</h3>
+<br/><br/><h3>Garbage Collection of Unused Containers and Images</h3>
 <li>Kubelet performs garbage collection on unused images every five minutes and on unused containers every minute.</li>
 <li>Configurable options include `HighThresholdPercent` and `LowThresholdPercent` for disk usage.</li>
-
-<br><br><h3>Container Garbage Collection</h3>
+<br/><br/><h3>Container Garbage Collection</h3>
 <li>Variables like `MinAge`, `MaxPerPodContainer`, and `MaxContainers` can be defined to control container garbage collection.</li>
 <li>Kubelet adjusts `MaxPerPodContainer` if it conflicts with `MaxContainers`.</li>
-
-<br><br><h3>Configuring Garbage Collection</h3>
+<br/><br/><h3>Configuring Garbage Collection</h3>
 <li>Options specific to controllers managing resources can be configured for garbage collection.</li>
-    <br><br><br></main>
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <!--Dark/Light Mode Toggle -->
-    <button id="mode-toggle" onclick="toggleMode()">
-      <span class="material-icons">brightness_7</span>
-    </button>
-    <!--Scroll-to-Top Button -->
-    <button id="scroll-top" onclick="scrollToTop()">
-      <span class="material-icons">arrow_upward</span>
-    </button>
-
-    <!-- Next Page Button -->
-    <button id="next-page" onclick="navigateNext()">
-        <span class="material-icons">arrow_forward</span>
-    </button>
-
-    <!-- Random Page Button -->
-    <button id="randomizer">
-    <span class="material-icons">shuffle</span>
-    </button>
-
-    <!--Mobile Menu -->
-    <div id="mobile-menu"></div>
-    <script src="../../script.js"></script>
-  </body>
+<br/><br/><br/></li></main>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<!--Dark/Light Mode Toggle -->
+<button id="mode-toggle" onclick="toggleMode()">
+<span class="material-icons">brightness_7</span>
+</button>
+<!--Scroll-to-Top Button -->
+<button id="scroll-top" onclick="scrollToTop()">
+<span class="material-icons">arrow_upward</span>
+</button>
+<!-- Next Page Button -->
+<button id="next-page" onclick="navigateNext()">
+<span class="material-icons">arrow_forward</span>
+</button>
+<!-- Random Page Button -->
+<button id="randomizer">
+<span class="material-icons">shuffle</span>
+</button>
+<!--Mobile Menu -->
+<div id="mobile-menu"></div>
+<script src="../../script.js"></script>
+</body>
 </html>

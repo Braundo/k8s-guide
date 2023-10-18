@@ -1,118 +1,91 @@
 <!DOCTYPE html>
+
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" href="../../assets/logo.png" type="image/png">
-    <title>Managing Resources</title>
-    <link rel="stylesheet" href="../../styles.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism-dracula.min.css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-yaml.min.js"></script>
-  </head>
-  <body class="dark-mode" onload="loadSidebar()">
-    <!--Header -->
-    <header>
-      <div class="header-content">
-        <div class="title-and-subheader">
-            <div class="title-container">
-                <a href="/index.html">
-                    <img src="../../assets/logo.png" alt="Logo" id="logo" />
-                </a>
-                <h1>K8s Guide</h1><br><br><br>
-            </div>
-            <h3 class="sub-header">Your TLDR guide to Kubernetes documentation</h3>
-        </div>
-    </header>
-    <div id="hamburger-container">
-      <button id="hamburger-menu">☰</button>
-    </div>
-
-    <!--Sidebar -->
-    <nav id="sidebar"></nav>
-    <!--Main Content -->
-    <main>
-      <h1>Managing Resources</h1><br><br><br>
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="../../assets/logo.png" rel="icon" type="image/png"/>
+<title>Managing Resources</title>
+<link href="../../styles.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism-dracula.min.css" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-yaml.min.js"></script>
+</link></head>
+<body class="dark-mode" onload="loadSidebar()">
+<!--Header -->
+<header>
+<div class="header-content">
+<div class="title-and-subheader">
+<div class="title-container">
+<a href="/index.html">
+<img alt="Logo" id="logo" src="../../assets/logo.png"/>
+</a>
+<h1>K8s Guide</h1><br/><br/><br/>
+</div>
+<h3 class="sub-header">Your TLDR guide to Kubernetes documentation</h3>
+</div>
+</div></header>
+<div id="hamburger-container">
+<button id="hamburger-menu">☰</button>
+</div>
+<!--Sidebar -->
+<nav id="sidebar"></nav>
+<!--Main Content -->
+<main>
+<div id="breadcrumbs"></div><br/><h1>Managing Resources</h1><br/><br/><br/>
 <h3>Organizing Resource Configurations</h3>
-
 <li>Multiple Resources in One File: You can include configurations for different resources like Pods, Services, and Deployments in a single YAML or JSON file. Each resource is separated by `--`.</li>
 <li>Best Practices: It's recommended to group configurations for resources that are tightly coupled into the same file. This makes it easier to manage them as a unit.</li>
-
-<br><br><br>
+<br/><br/><br/>
 <h3>Bulk Operations in kubectl</h3>
-
-<li>Bulk Create: You can create multiple resources at once by specifying a directory with `kubectl apply -f <directory>/`.</li>
-<li>Bulk Delete: Similarly, you can delete all resources in a directory with `kubectl delete -f <directory>/`.</li>
+<li>Bulk Create: You can create multiple resources at once by specifying a directory with `kubectl apply -f <directory>/`.</directory></li>
+<li>Bulk Delete: Similarly, you can delete all resources in a directory with `kubectl delete -f <directory>/`.</directory></li>
 <li>Selectors: You can use label selectors to operate on a subset of resources that match the labels.</li>
-
-<br><br><br>
+<br/><br/><br/>
 <h3>Canary Deployments</h3>
-
 <li>Concept: Canary deployments allow you to roll out a new version of an application alongside the stable version to test its performance and reliability.</li>
 <li>Implementation: You can manage canary deployments using Kubernetes Deployments by controlling the number of replicas for the new and old versions.</li>
-
-<br><br><br>
+<br/><br/><br/>
 <h3>Updating Annotations</h3>
-
 <li>What Are Annotations?: Annotations are key-value pairs that you can attach to objects but are not used for filtering and selecting objects.</li>
 <li>Usage: You can use `kubectl annotate` to add or update annotations. For example, `kubectl annotate pods my-pod icon-url=http://goo.gl/XXBTWq`.</li>
-
-<br><br><br>
+<br/><br/><br/>
 <h3>Scaling Your Application</h3>
-
 <li>Manual Scaling: You can manually scale the number of pod replicas using `kubectl scale`. For example, `kubectl scale --replicas=3 rs/foo`.</li>
 <li>Auto-Scaling: Kubernetes supports automatic scaling based on CPU usage or other select metrics through the Horizontal Pod Autoscaler.</li>
-
-<br><br><br>
+<br/><br/><br/>
 <h3>In-place Updates of Resources</h3>
-
 <li>Apply: The `kubectl apply` command is used to apply changes made to a resource in a non-disruptive way.</li>
 <li>Edit and Patch: You can also use `kubectl edit` to edit resources directly or `kubectl patch` to apply partial updates.</li>
-
-<br><br><br>
+<br/><br/><br/>
 <h3>Disruptive Updates</h3>
-
 <li>Force Replace: If you need to replace a resource, you can use `kubectl replace --force`, but this will cause a service disruption.</li>
-
-<br><br><br>
+<br/><br/><br/>
 <h3>Updating Without Service Outage</h3>
-
 <li>Zero Downtime: Kubernetes Deployments enable you to update your application without any downtime by ensuring that at least a certain number of Pods are running at all times.</li>
-    <br><br><br></main>
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <!--Dark/Light Mode Toggle -->
-    <button id="mode-toggle" onclick="toggleMode()">
-      <span class="material-icons">brightness_7</span>
-    </button>
-    <!--Scroll-to-Top Button -->
-    <button id="scroll-top" onclick="scrollToTop()">
-      <span class="material-icons">arrow_upward</span>
-    </button>
-
-    <!-- Next Page Button -->
-    <button id="next-page" onclick="navigateNext()">
-        <span class="material-icons">arrow_forward</span>
-    </button>
-
-    <!-- Random Page Button -->
-    <button id="randomizer">
-    <span class="material-icons">shuffle</span>
-    </button>
-
-    <!--Mobile Menu -->
-    <div id="mobile-menu"></div>
-    <script src="../../script.js"></script>
-  </body>
+<br/><br/><br/></main>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<!--Dark/Light Mode Toggle -->
+<button id="mode-toggle" onclick="toggleMode()">
+<span class="material-icons">brightness_7</span>
+</button>
+<!--Scroll-to-Top Button -->
+<button id="scroll-top" onclick="scrollToTop()">
+<span class="material-icons">arrow_upward</span>
+</button>
+<!-- Next Page Button -->
+<button id="next-page" onclick="navigateNext()">
+<span class="material-icons">arrow_forward</span>
+</button>
+<!-- Random Page Button -->
+<button id="randomizer">
+<span class="material-icons">shuffle</span>
+</button>
+<!--Mobile Menu -->
+<div id="mobile-menu"></div>
+<script src="../../script.js"></script>
+</body>
 </html>

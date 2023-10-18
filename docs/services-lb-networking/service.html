@@ -1,151 +1,114 @@
 <!DOCTYPE html>
+
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" href="../../assets/logo.png" type="image/png">
-    <title>Service</title>
-    <link rel="stylesheet" href="../../styles.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism-dracula.min.css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-yaml.min.js"></script>
-  </head>
-  <body class="dark-mode" onload="loadSidebar()">
-    <!--Header -->
-    <header>
-      <div class="header-content">
-        <div class="title-and-subheader">
-            <div class="title-container">
-                <a href="/index.html">
-                    <img src="../../assets/logo.png" alt="Logo" id="logo" />
-                </a>
-                <h1>K8s Guide</h1><br><br><br>
-            </div>
-            <h3 class="sub-header">Your TLDR guide to Kubernetes documentation</h3>
-        </div>
-    </header>
-    <div id="hamburger-container">
-      <button id="hamburger-menu">☰</button>
-    </div>
-
-    <!--Sidebar -->
-    <nav id="sidebar"></nav>
-    <!--Main Content -->
-    <main>
-      <h1>Service</h1><br><br><br>
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="../../assets/logo.png" rel="icon" type="image/png"/>
+<title>Service</title>
+<link href="../../styles.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism-dracula.min.css" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-yaml.min.js"></script>
+</link></head>
+<body class="dark-mode" onload="loadSidebar()">
+<!--Header -->
+<header>
+<div class="header-content">
+<div class="title-and-subheader">
+<div class="title-container">
+<a href="/index.html">
+<img alt="Logo" id="logo" src="../../assets/logo.png"/>
+</a>
+<h1>K8s Guide</h1><br/><br/><br/>
+</div>
+<h3 class="sub-header">Your TLDR guide to Kubernetes documentation</h3>
+</div>
+</div></header>
+<div id="hamburger-container">
+<button id="hamburger-menu">☰</button>
+</div>
+<!--Sidebar -->
+<nav id="sidebar"></nav>
+<!--Main Content -->
+<main>
+<div id="breadcrumbs"></div><br/><h1>Service</h1><br/><br/><br/>
 <h3>What is a Service?</h3>
-
 <li>A Kubernetes Service is an abstraction layer that defines a logical set of Pods and enables external traffic exposure, load balancing, and service discovery.</li>
-
-<br><br>
+<br/><br/>
 <h3>Types of Services</h3>
-
 <b>1. ClusterIP:</b>
-    <li>Default type.</li>
-    <li>Exposes the service on an internal IP in the cluster.</li>
-    <li>Accessible only within the cluster.</li>
-    <br>
+<li>Default type.</li>
+<li>Exposes the service on an internal IP in the cluster.</li>
+<li>Accessible only within the cluster.</li>
+<br/>
 <b>2. NodePort:</b>
-    <li>Exposes the service on a static port on each Node’s IP.</li>
-    <li>External entities can access it by `<NodeIP>:<NodePort>`.</li>
-      <br>
+<li>Exposes the service on a static port on each Node’s IP.</li>
+<li>External entities can access it by `<nodeip>:<nodeport>`.</nodeport></nodeip></li>
+<br/>
 <b>3. LoadBalancer:</b>
-    <li>Provisions an external load balancer and assigns a fixed, external IP to the service.</li>
-    <li>Typically used in cloud environments.</li>
-    <br>
+<li>Provisions an external load balancer and assigns a fixed, external IP to the service.</li>
+<li>Typically used in cloud environments.</li>
+<br/>
 <b>4. ExternalName:</b>
-    <li>Maps the service to the contents of the `externalName` field (e.g., `foo.bar.example.com`).</li>
-
-<br><br>
+<li>Maps the service to the contents of the `externalName` field (e.g., `foo.bar.example.com`).</li>
+<br/><br/>
 <h3>Service Discovery</h3>
-
 <li>Services are discoverable through environment variables or DNS.</li>
 <li>The kube-dns component handles DNS-based service discovery.</li>
-
-<br><br>
+<br/><br/>
 <h3>Selector and Labels</h3>
-
 <li>Services route traffic to Pods based on label selectors.</li>
-
-<br><br>
+<br/><br/>
 <h3>Ports</h3>
-
 <li>You can specify `port` (port exposed by the service), `targetPort` (port on the Pod), and `nodePort` (port on the node).</li>
-
-<br><br>
+<br/><br/>
 <h3>Endpoints</h3>
-
 <li>Services have associated Endpoints that contain the IP addresses of the Pods the traffic should be routed to.</li>
-
-<br><br>
+<br/><br/>
 <h3>Session Affinity</h3>
-
 <li>Services support "None" and "ClientIP" session affinity to maintain session state.</li>
-
-<br><br>
+<br/><br/>
 <h3>Service Account</h3>
-
 <li>You can associate a service account to control the level of access a service has.</li>
-
-<br><br>
+<br/><br/>
 <h3>Headless Services</h3>
-
 <li>Services without a ClusterIP for direct Pod-to-Pod communication.</li>
-
-<br><br>
+<br/><br/>
 <h3>Service Topology</h3>
-
 <li>Allows routing of traffic based on Node labels.</li>
-
-<br><br>
+<br/><br/>
 <h3>Dual-Stack Services</h3>
-
 <li>Services can be IPv4/IPv6 dual-stack enabled for hybrid communication.</li>
-
-<br><br>
+<br/><br/>
 <h3>Quality of Service (QoS)</h3>
-
 <li>Services don't have QoS guarantees but the Pods backing them can have QoS classes like Guaranteed, Burstable, and BestEffort.</li>
-
-<br><br>
+<br/><br/>
 <h3>Service Mesh</h3>
-
 <li>Istio or Linkerd can be used for advanced service-to-service communication features like canary deployments, circuit breakers, etc.</li>
-    <br><br><br></main>
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <!--Dark/Light Mode Toggle -->
-    <button id="mode-toggle" onclick="toggleMode()">
-      <span class="material-icons">brightness_7</span>
-    </button>
-    <!--Scroll-to-Top Button -->
-    <button id="scroll-top" onclick="scrollToTop()">
-      <span class="material-icons">arrow_upward</span>
-    </button>
-
-    <!-- Next Page Button -->
-    <button id="next-page" onclick="navigateNext()">
-        <span class="material-icons">arrow_forward</span>
-    </button>
-
-    <!-- Random Page Button -->
-    <button id="randomizer">
-    <span class="material-icons">shuffle</span>
-    </button>
-
-    <!--Mobile Menu -->
-    <div id="mobile-menu"></div>
-    <script src="../../script.js"></script>
-  </body>
+<br/><br/><br/></main>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<!--Dark/Light Mode Toggle -->
+<button id="mode-toggle" onclick="toggleMode()">
+<span class="material-icons">brightness_7</span>
+</button>
+<!--Scroll-to-Top Button -->
+<button id="scroll-top" onclick="scrollToTop()">
+<span class="material-icons">arrow_upward</span>
+</button>
+<!-- Next Page Button -->
+<button id="next-page" onclick="navigateNext()">
+<span class="material-icons">arrow_forward</span>
+</button>
+<!-- Random Page Button -->
+<button id="randomizer">
+<span class="material-icons">shuffle</span>
+</button>
+<!--Mobile Menu -->
+<div id="mobile-menu"></div>
+<script src="../../script.js"></script>
+</body>
 </html>
