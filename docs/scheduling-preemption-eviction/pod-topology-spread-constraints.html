@@ -28,7 +28,7 @@
                 <a href="/index.html">
                     <img src="../../assets/logo.png" alt="Logo" id="logo" />
                 </a>
-                <h1>K8s Guide</h1>
+                <h1>K8s Guide</h1><br><br><br>
             </div>
             <h3 class="sub-header">Your TLDR guide to Kubernetes documentation</h3>
         </div>
@@ -41,9 +41,7 @@
     <nav id="sidebar"></nav>
     <!--Main Content -->
     <main>
-      <h1>Pod Topology Spread Constraints</h1>
-      
-<br><br>
+      <h1>Pod Topology Spread Constraints</h1><br><br><br>
 <h3>Motivation</h3>
 
 The primary motivation is to distribute Pods in a way that they are not all scheduled on the same node or same zone, which could be a single point of failure. For example, if you have a service that scales its Pods automatically, you don't want all Pods to be on the same node. As you scale up, you might also want to consider network latency and costs, aiming to distribute Pods across different data centers or zones.

@@ -74,6 +74,10 @@ h3 {
   color: #bd93f9;
 }
 
+h1 {
+  line-height: 30px;
+}
+
 .header-content {
   display: flex;
   flex-direction: column;
@@ -165,7 +169,7 @@ nav section:first-of-type {
   bottom: 20px;
   right: 20px;
   background-color: #bd93f9;
-  color: #ffffff;
+  color: #282a36 !important;
   border-radius: 50%;
   border: none;
   padding: 10px;
@@ -182,7 +186,7 @@ nav section:first-of-type {
   bottom: 20px;
   left: 20px;
   background-color: #bd93f9;
-  color: #ffffff;
+  color: #282a36 !important;
   border-radius: 50%;
   border: none;
   padding: 10px;
@@ -205,6 +209,7 @@ nav section:first-of-type {
   bottom: 20px;
   right: 20px;
   background-color: #bd93f9;
+  color: #282a36 !important;
   border-radius: 50%;
   border: none;
   padding: 10px;
@@ -223,16 +228,13 @@ ul.indented {
   padding-left: 35px; /* Adjust value as needed */
 }
 
-body li {
-  padding-left: 35px;
-}
-
 /* Styles for the randomizer button */
 #randomizer {
   position: fixed;
   bottom: 70px; /* Adjust position as needed */
   right: 20px;
   background-color: #bd93f9;
+  color: #282a36 !important;
   border-radius: 50%;
   border: none;
   padding: 10px;
@@ -473,6 +475,10 @@ nav section ul li a,
 
   li {
     font-size: 20px;
+  }
+
+  body li {
+    padding-left: 35px;
   }
 
   nav section:first-of-type {
