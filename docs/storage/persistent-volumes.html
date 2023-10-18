@@ -51,16 +51,19 @@
 <br><br>
 <h3>Lifecycle of a Volume and Claim:</h3>
 
-<li>Provisioning:</li>
+<b>Provisioning:</b>
     <li>PVs can be provisioned statically or dynamically.</li>
     <li>Dynamic provisioning relies on StorageClasses.</li>
     <li>StorageClasses define provisioning mechanisms (e.g., AWS EBS, GCE PD).</li>
-<li>Binding:</li>
+<br>
+<b>Binding:</b>
     <li>PVCs are bound to suitable PVs based on labels, storage capacity, and access modes.</li>
-<li>Using:</li>
+<br>
+<b>Using:</b>
     <li>Pods specify PVCs in their volume specifications.</li>
     <li>Multiple pods can use the same PVC, but only one pod can mount it in ReadWrite mode at a time.</li>
-<li>Reclaiming:</li>
+<br>
+<b>Reclaiming:</b>
     <li>PVs can be retained, recycled, or deleted after PVC release.</li>
     <li>Retain: PV data is preserved.</li>
     <li>Recycle: Data is deleted and PV can be reused.</li>
@@ -89,9 +92,9 @@
 <br><br>
 <h3>Access Modes:</h3>
 
-<li>ReadWriteOnce: Can be mounted as read-write by a single node.</li>
-<li>ReadOnlyMany: Can be mounted read-only by many nodes.</li>
-<li>ReadWriteMany: Can be mounted as read-write by many nodes.</li>
+<li>`ReadWriteOnce`: Can be mounted as read-write by a single node.</li>
+<li>`ReadOnlyMany`: Can be mounted read-only by many nodes.</li>
+<li>`ReadWriteMany`: Can be mounted as read-write by many nodes.</li>
 
 <br><br>
 <h3>Volume Modes:</h3>

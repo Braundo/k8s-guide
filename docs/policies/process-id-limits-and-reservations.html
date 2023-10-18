@@ -48,20 +48,20 @@
 <li>It's easy to hit the task limit without hitting other resource limits, causing instability.</li>
 <li>Cluster administrators need mechanisms to prevent PID exhaustion that could affect host daemons like kubelet or kube-proxy.</li>
 
-<br><br>
+<br><br><br>
 <h3>How to Configure PID Limiting</h3>
-
-1. Node-Level PID Limits: You can reserve a number of PIDs for system use and Kubernetes system daemons using the `-system-reserved` and `-kube-reserved` command-line options for the kubelet.
-2. Pod-Level PID Limits: The number of PIDs can be limited at the node level for each Pod. This is configured using the `-pod-max-pids` command-line parameter to the kubelet or by setting `PodPidsLimit` in the kubelet configuration file.
-
-<br><br>
+<ol class="indented">
+<li>Node-Level PID Limits: You can reserve a number of PIDs for system use and Kubernetes system daemons using the `-system-reserved` and `-kube-reserved` command-line options for the kubelet.</li>
+<li>Pod-Level PID Limits: The number of PIDs can be limited at the node level for each Pod. This is configured using the `-pod-max-pids` command-line parameter to the kubelet or by setting `PodPidsLimit` in the kubelet configuration file.</li>
+</ol>
+<br><br><br>
 <h3>PID-Based Eviction</h3>
 
 <li>Kubelet can terminate a Pod if it's consuming an abnormal number of PIDs.</li>
 <li>You can configure soft and hard eviction policies.</li>
 <li>The eviction signal value is calculated periodically and does not enforce the limit.</li>
 
-<br><br>
+<br><br><br>
 <h3>Limitations</h3>
 
 <li>Per-Pod PID limiting protects one Pod from another but doesn't protect node agents from PID exhaustion.</li>

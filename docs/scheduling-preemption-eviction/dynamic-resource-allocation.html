@@ -49,7 +49,7 @@
 <li>ResourceClaimTemplate: Defines the spec for creating ResourceClaims.</li>
 <li>PodSchedulingContext: Used internally for coordinating pod scheduling when ResourceClaims need to be allocated.</li>
 
-<br><br>
+<br><br><br>
 <h3>Example Configuration</h3>
 
 Here's an example configuration for a fictional resource driver:
@@ -112,17 +112,17 @@ spec:
   </code></pre>
 </div>
 
-<br><br>
+<br><br><br>
 <h3>Scheduling</h3>
 
 Resource drivers are responsible for marking ResourceClaims as "allocated" once resources for them are reserved. This informs the scheduler where in the cluster a ResourceClaim is available.
 
-<br><br>
+<br><br><br>
 <h3>Monitoring</h3>
 
 The kubelet provides a gRPC service for the discovery of dynamic resources of running Pods.
 
-<br><br>
+<br><br><br>
 <h3>Enabling the Feature</h3>
 
 This is an alpha feature and needs to be enabled explicitly. You also need to install a resource driver for specific resources that are meant to be managed using this API.

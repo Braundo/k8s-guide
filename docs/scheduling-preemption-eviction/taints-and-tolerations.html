@@ -63,7 +63,7 @@ tolerations:
 </div>
     
 
-<br><br>
+<br><br><br>
 <h3>Effects</h3>
 
 <br<br><b>NoExecute:</b> Affects already running pods. Pods that do not tolerate the taint are evicted immediately.
@@ -73,7 +73,7 @@ tolerations:
 <br<br><b>PreferNoSchedule:</b> A softer version of `NoSchedule`. Kubernetes will try to avoid placing a pod that does not tolerate the taint on the node, but it's not guaranteed.
 - 
 
-<br><br>
+<br><br><br>
 <h3>Use Cases</h3>
 
 <b>Dedicated Nodes:</b> For exclusive use by a particular set of users.
@@ -83,7 +83,7 @@ tolerations:
 <b>Taint-based Evictions:</b> Automatically taints a node when certain conditions are true, like `node.kubernetes.io/not-ready`.
 - 
 
-<br><br>
+<br><br><br>
 <h3>Example</h3>
 
 Here's an example of a pod that uses tolerations:

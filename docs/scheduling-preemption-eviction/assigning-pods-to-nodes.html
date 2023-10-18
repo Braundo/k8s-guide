@@ -43,51 +43,48 @@
     <main>
       <h1>Assigning Pods to Nodes</h1><br><br><br>
 <h3>Assigning Pods to Nodes</h3>
-<br><br>
 <b>Automatic Scheduling:</b> By default, Kubernetes automatically schedules Pods to Nodes based on available resources. However, you can override this behavior for specific use-cases.
-<br><br><b>Methods for Manual Scheduling:</b>
+<br><br><br><h3>Methods for Manual Scheduling</h3>
     <li><b>nodeSelector:</b>Simplest form, matches node labels.</li>
     <li><b>Affinity and Anti-affinity:</b>b More expressive than nodeSelector.</li>
     <li><b>nodeName:</b>b Directly specify the node.</li>
     <li><b>Pod Topology Spread Constraints:</b>b Control how Pods are spread across your cluster.</li>
 
-<br><br>
+<br><br><br>
 <h3>Node Labels</h3>
 
 <li>Nodes can have labels that you manually attach or that Kubernetes automatically populates.</li>
 <li>Labels can be used for node isolation and security.</li>
 
-<br><br>
+<br><br><br>
 <h3>NodeSelector</h3>
 
 <li>A field in the Pod spec that specifies node labels to match.</li>
 
-<br><br>
+<br><br><br>
 <h3>Affinity and Anti-affinity</h3>
 
 <b>Node Affinity:</b> Similar to nodeSelector but more expressive.
-<ul class="indented">
-    <li>requiredDuringSchedulingIgnoredDuringExecution: Hard requirement.</li>
-    <li>preferredDuringSchedulingIgnoredDuringExecution: Soft requirement.</li>
-</ul>
-<br><b>Inter-pod Affinity/Anti-affinity:</b> Allows you to specify rules based on labels of other Pods, not just node labels.
+    <li><b>requiredDuringSchedulingIgnoredDuringExecution</b> Hard requirement.</li>
+    <li><b>preferredDuringSchedulingIgnoredDuringExecution:</b> Soft requirement.</li>
+    <li><b>Inter-pod Affinity/Anti-affinity:</b> Allows you to specify rules based on labels of other Pods, not just node labels.</li>
 
-<br><br>
+<br><br><br>
 <h3>Node Affinity Weight</h3>
 
 <li>You can assign weights to preferred rules. The scheduler uses these to score nodes.</li>
 
-<br><br>
+<br><br><br>
 <h3>Inter-pod Affinity and Anti-affinity</h3>
 
 <li>Allows you to specify rules based on labels of other Pods that are already running on the node.</li>
 
-<br><br>
+<br><br><br>
 <h3>Practical Use-cases</h3>
 
 <li>Useful when used with higher-level objects like ReplicaSets, StatefulSets, and Deployments.</li>
 
-<br><br>
+<br><br><br>
 <h3>Example: Redis Cache Deployment</h3>
 
 <li>An example is given for a Redis cache where `podAntiAffinity` is used to ensure that no two replicas with the label `app=store` are scheduled on the same node.</li>

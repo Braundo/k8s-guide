@@ -48,33 +48,33 @@
 <li>Create Pods with `priorityClassName` set to one of the added PriorityClasses.</li>
 </ol>
 
-<br><br>
+<br><br><br>
 <h3>PriorityClass</h3>
 
 <li>Defines a mapping from a priority class name to the integer value of the priority.</li>
 <li>Optional fields: `globalDefault` and `description`.</li>
 
-<br><br>
+<br><br><br>
 <h3>Non-preempting PriorityClass</h3>
 
 <li>Pods with `preemptionPolicy: Never` cannot preempt other pods but may still be preempted by higher-priority pods.</li>
 
-<br><br>
+<br><br><br>
 <h3>Pod Priority</h3>
 
 <li>After you have one or more PriorityClasses, you can create Pods that specify one of those PriorityClass names in their specifications.</li>
 
-<br><br>
+<br><br><br>
 <h3>Effect of Pod Priority on Scheduling Order</h3>
 
 <li>The scheduler orders pending Pods by their priority.</li>
 
-<br><br>
+<br><br><br>
 <h3>Preemption</h3>
 
 <li>If no Node is found that satisfies all the specified requirements of the Pod, preemption logic is triggered.</li>
 
-<br><br>
+<br><br><br>
 <h3>Limitations of Preemption</h3>
 
 <li>Graceful termination of preemption victims.</li>

@@ -43,10 +43,9 @@
     <main>
       <h1>Pod Overhead</h1><br><br><br>
 <h3>What is Pod Overhead?</h3>
-<br><br>
 Pod Overhead is a feature in Kubernetes that accounts for the resources consumed by the Pod infrastructure on top of the container requests and limits. This is particularly useful when you're running Pods in a runtime that has additional overhead, such as Kata Containers or gVisor.
 
-<br><br>
+<br><br><br>
 <h3>How It Works</h3>
 
 <b>PodOverhead Field:</b> The `PodOverhead` field is added to the Pod specification under the `spec` section. This field specifies the additional overhead in terms of CPU and memory.
@@ -69,7 +68,7 @@ spec:
 <b>Scheduler's Role:</b> The Kubernetes scheduler takes into account this overhead when scheduling the Pod. This ensures that the Node has enough resources to accommodate not just the containers but also the Pod overhead.
 <br><br>
 <b>Resource Accounting:</b> The `kubelet` also includes the overhead when calculating the Pod's resource usage. This is reflected in metrics and used in eviction decisions.
-<br><br>
+<br><br><br>
 <h3>Admission Controller</h3>
 <br>
  <b>RuntimeClass:</b> You can define the overhead in the `RuntimeClass` if you're using multiple runtimes in your cluster. This makes it easier to manage overhead settings across different types of Pods.
@@ -92,7 +91,7 @@ overhead:
  <br><br>
 <b>Automatic Injection:</b> When you create a Pod that specifies a RuntimeClass with Pod overhead defined, the overhead settings are automatically injected into the Pod spec.
 
-<br><br>
+<br><br><br>
 <h3>Monitoring and Metrics</h3>
 <br>
 <b>Resource Metrics:</b> Metrics related to CPU and memory usage will include the overhead, providing a more accurate representation of actual resource utilization.

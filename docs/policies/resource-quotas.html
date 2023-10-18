@@ -46,38 +46,38 @@
 
 A Resource Quota is an object in Kubernetes that sets limits on resource usage for each namespace. This is particularly useful when multiple teams or services share a Kubernetes cluster and you want to prevent any single team or service from consuming all the resources.
 
-<br><br>
+<br><br><br>
 <h3>How Does It Work?</h3>
-
-1. Namespaces: Different teams usually work in different namespaces. This isolation is often enforced using Role-Based Access Control (RBAC).
-2. ResourceQuota Object: For each namespace, an administrator creates a ResourceQuota object that defines the resource limits.
-3. Resource Tracking: As users create Kubernetes resources like pods and services in a namespace, the quota system keeps track of the usage to ensure it doesn't exceed the limits defined in the ResourceQuota object.
-4. Violation & Enforcement: If a resource request violates a quota, the request will fail with an HTTP 403 FORBIDDEN status, along with a message explaining the violated constraint.
-
-<br><br>
+<ol class="indented">
+<li><b>Namespaces:</b> Different teams usually work in different namespaces. This isolation is often enforced using Role-Based Access Control (RBAC).</li>
+<li><b>ResourceQuota Object:</b> For each namespace, an administrator creates a ResourceQuota object that defines the resource limits.</li>
+<li><b>Resource Tracking:</b> As users create Kubernetes resources like pods and services in a namespace, the quota system keeps track of the usage to ensure it doesn't exceed the limits defined in the ResourceQuota object.</li>
+<li><b>Violation & Enforcement:</b> If a resource request violates a quota, the request will fail with an HTTP 403 FORBIDDEN status, along with a message explaining the violated constraint.</li>
+</ol>
+<br><br><br>
 <h3>Types of Resources That Can Be Quota-ed</h3>
-
-1. Compute Resources: CPU and memory can be limited. You can set both "requests" and "limits" for these resources.
-2. Storage Resources: You can limit the storage requested in Persistent Volume Claims (PVCs).
-3. Object Count: You can also limit the number of specific types of objects, like Pods, Services, etc.
-4. Extended Resources: From Kubernetes 1.10 onwards, you can also quota extended resources like GPUs.
-5. Priority Class: You can set quotas based on the priority class of the pods.
-
-<br><br>
+<ol class="indented">
+<li><b>Compute Resources:</b> CPU and memory can be limited. You can set both "requests" and "limits" for these resources.</li>
+<li><b>Storage Resources:</b> You can limit the storage requested in Persistent Volume Claims (PVCs).</li>
+<li><b>Object Count:</b> You can also limit the number of specific types of objects, like Pods, Services, etc.</li>
+<li><b>Extended Resources:</b> From Kubernetes 1.10 onwards, you can also quota extended resources like GPUs.</li>
+<li><b>Priority Class:</b> You can set quotas based on the priority class of the pods.</li>
+</ol>
+<br><br><br>
 <h3>Special Scopes</h3>
 
 Resource quotas can also have scopes that further restrict what is measured by the quota. For example, you can set a quota that only counts resources for Pods that are not in a terminal state (i.e., their `.status.phase` is neither `Failed` nor `Succeeded`).
 
-<br><br>
+<br><br><br>
 <h3>Enabling Resource Quotas</h3>
 
 Resource quotas are usually enabled by default in many Kubernetes distributions. They are activated when the API server has `ResourceQuota` listed in its `--enable-admission-plugins` flag.
 
-<br><br>
+<br><br><br>
 <h3>Practical Examples</h3>
 
-<li>Team Quotas: In a cluster with 32 GiB RAM and 16 cores, you could let Team A use 20 GiB and 10 cores, Team B use 10 GiB and 4 cores, and keep the rest in reserve.<br>
-<li>Environment Quotas: Limit the "testing" namespace to 1 core and 1 GiB RAM, while letting the "production" namespace use any amount.
+<li><b>Team Quotas:</b> In a cluster with 32 GiB RAM and 16 cores, you could let Team A use 20 GiB and 10 cores, Team B use 10 GiB and 4 cores, and keep the rest in reserve.<br>
+<li><b>Environment Quotas:</b> Limit the "testing" namespace to 1 core and 1 GiB RAM, while letting the "production" namespace use any amount.
     <br><br><br></main>
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"

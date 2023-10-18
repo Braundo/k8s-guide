@@ -44,20 +44,20 @@
       <h1>Pod Scheduling Readiness</h1><br><br><br>
 <h3>SchedulingGates</h3>
 
-<br><br><b>What It Is:</b> `SchedulingGates` is a new field in the Pod specification. It's an array of strings, where each string represents a condition that the Pod must meet before it can be scheduled.
+<br><b>What It Is:</b> `SchedulingGates` is a new field in the Pod specification. It's an array of strings, where each string represents a condition that the Pod must meet before it can be scheduled.
 <br><br><b>Immutability:</b> Once a Pod is created with `SchedulingGates`, you can't add new gates to it. However, you can remove existing ones to make the Pod schedulable.
 <br><br><b>Use Case:</b> Imagine you have a multi-stage deployment process where a Pod needs to pass some pre-conditions before it can be scheduled. You can use `SchedulingGates` to ensure that the Pod only gets scheduled after these conditions are met.
 
-<br><br>
+<br><br><br>
 <h3>Observability</h3>
 
-<br><br><b>New Metrics Label:</b> The `scheduler_pending_pods` metric now includes a "gated" label. This helps in monitoring Pods that are intentionally not being scheduled due to `SchedulingGates`.
+<br><b>New Metrics Label:</b> The `scheduler_pending_pods` metric now includes a "gated" label. This helps in monitoring Pods that are intentionally not being scheduled due to `SchedulingGates`.
 <br><br><b>Monitoring:</b> This feature allows for better observability into why certain Pods are not being scheduled, making it easier to debug issues related to Pod scheduling.
 
-<br><br>
+<br><br><br>
 <h3>Mutable Pod Scheduling Directives</h3>
 
-<br><br><b>What It Is:</b> Starting from Kubernetes v1.27, you can change the scheduling directives of a Pod even if it has `SchedulingGates`.
+<br><b>What It Is:</b> Starting from Kubernetes v1.27, you can change the scheduling directives of a Pod even if it has `SchedulingGates`.
 <br><br><b>Constraints:</b> The catch is that you can only "tighten" the scheduling directives. This means you can make them more restrictive, but not more permissive. For example, if a Pod was initially set to be scheduled on nodes with a certain label, you can change it to only be scheduled on nodes with that label and an additional condition.
 <br><br><b>Use Case:</b> This is useful in scenarios where you might need to adjust the scheduling conditions of a Pod due to changes in cluster state or workload requirements, without having to delete and recreate the Pod.
     <br><br><br></main>

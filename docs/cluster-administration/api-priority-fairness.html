@@ -48,7 +48,7 @@
 <br><br>
 <b>Flow Schema:</b> This is used to classify incoming requests. It specifies conditions like the verbs (`GET`, `POST`, etc.), the resources (`Pods`, `Services`, etc.), and the namespaces that the requests are coming from. Once a request matches a Flow Schema, it is then handled according to its associated Priority Level.
 
-<br><br>
+<br><br><br>
 <h3>Configuration</h3>
 
 <b>FlowSchema:</b>
@@ -65,7 +65,7 @@
     <li>`spec.queueLengthLimit`: For "Limited" type, this sets the max size of each queue.</li>
     <li>`spec.handSize`: For "Limited" type, this sets the number of less loaded queues that a given request is randomly assigned to.</li>
 </ul>
-<br><br>
+<br><br><br>
 <h3>Example Configuration</h3>
 <div class="code-block">
   <button class="copy-button" data-clipboard-target=".code">

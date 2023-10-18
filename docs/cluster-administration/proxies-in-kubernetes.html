@@ -45,15 +45,15 @@
 <h3>Types of Proxies</h3>
 
 <br><br><b>kubectl proxy</b>
-<ul class="indented">
+
     <li>Runs on a user's desktop or in a pod.</li>
     <li>Proxies from a localhost address to the Kubernetes API server.</li>
     <li>Uses HTTP for client-to-proxy communication.</li>
     <li>Uses HTTPS for proxy-to-API server communication.</li>
     <li>Locates the API server and adds authentication headers.</li>
-</ul>
+
 <br><br><b>apiserver proxy</b>
-<ul class="indented">
+
     <li>Acts as a bastion built into the API server.</li>
     <li>Connects a user outside of the cluster to cluster IPs that might otherwise be unreachable.</li>
     <li>Runs in the API server processes.</li>
@@ -61,30 +61,29 @@
     <li>Proxy-to-target may use HTTP or HTTPS, depending on available information.</li>
     <li>Can be used to reach a Node, Pod, or Service.</li>
     <li>Performs load balancing when used to reach a Service.</li>
-</ul>
+
 <br><br><b>kube proxy</b>
-<ul class="indented">
+
     <li>Runs on each node.</li>
     <li>Proxies UDP, TCP, and SCTP.</li>
     <li>Does not understand HTTP.</li>
     <li>Provides load balancing.</li>
     <li>Used only to reach services.</li>
 <br><br><b>Proxy/Load-balancer in front of API server(s)</b>
-</ul>
-<ul class="indented">
+
+
     <li>Existence and implementation vary from cluster to cluster (e.g., nginx).</li>
     <li>Sits between all clients and one or more API servers.</li>
     <li>Acts as a load balancer if there are multiple API servers.</li>
 <br><br><b>Cloud Load Balancers on external services</b>
-</ul>
-<ul class="indented">
+
     <li>Provided by some cloud providers (e.g., AWS ELB, Google Cloud Load Balancer).</li>
     <li>Created automatically when the Kubernetes service has type `LoadBalancer`.</li>
     <li>Usually supports UDP/TCP only.</li>
     <li>SCTP support depends on the cloud provider's implementation.</li>
-</ul>
 
-<br><br>
+
+<br><br><br>
 <h3>Requesting Redirects</h3>
 
 Proxies have replaced redirect capabilities, which have been deprecated.

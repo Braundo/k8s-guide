@@ -66,18 +66,18 @@ service:
 </div>
 
 
-<br><br>
+<br><br><br>
 <h3>Component Traces</h3>
 
 <li>kube-apiserver traces: The kube-apiserver generates spans for incoming HTTP requests and for outgoing requests to webhooks, etcd, and re-entrant requests. It propagates the W3C Trace Context with outgoing requests but does not make use of the trace context attached to incoming requests.</li>
 <li>kubelet traces: The kubelet's CRI interface and authenticated HTTP servers are instrumented to generate trace spans. The endpoint and sampling rate are configurable. Trace context propagation is also configured.</li>
 
-<br><br>
+<br><br><br>
 <h3>Enabling Tracing in kube-apiserver</h3>
 
 To enable tracing in the kube-apiserver, you can provide a tracing configuration file using the `--tracing-config-file=<path-to-config>` flag.
 
-<br><br>
+<br><br><br>
 <h3>Enabling Tracing in the kubelet</h3>
 
 To enable tracing in the kubelet, you can apply the tracing configuration. Here's an example snippet:
@@ -96,7 +96,7 @@ tracing:
 </div>
 
 
-<br><br>
+<br><br><br>
 <h3>Stability and Performance Overhead</h3>
 
 Tracing instrumentation is still under active development and may change in various ways. Also, exporting spans comes with a small performance overhead on the networking and CPU side.

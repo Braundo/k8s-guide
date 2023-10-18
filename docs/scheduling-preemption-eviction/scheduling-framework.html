@@ -45,8 +45,10 @@
 <h3>Framework Workflow</h3>
 
 <b>Scheduling Cycle & Binding Cycle:</b> The scheduling cycle selects a node for the Pod, and the binding cycle applies that decision to the cluster. These cycles can run serially or concurrently.
-<br><br>
-<b>Extension Points:</b> The framework offers various extension points where scheduler plugins can register. These include:
+<br><br><br>
+<h3>Extension Points:</h3>
+The framework offers various extension points where scheduler plugins can register. These include:
+<br>
     <li><b>PreEnqueue:</b> Called before adding Pods to the internal active queue.</li>
     <br>
     <li><b>QueueSort:</b> Used to sort Pods in the scheduling queue.</li>
@@ -79,7 +81,7 @@
 <li>Plugins must first register and get configured.</li>
 <li>They then use the extension point interfaces, which have a specific form.</li>
 
-<br><br>
+<br><br><br>
 <h3>Plugin Configuration</h3>
 
 <li>You can enable or disable plugins in the scheduler configuration.</li>

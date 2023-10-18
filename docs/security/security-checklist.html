@@ -43,21 +43,29 @@
     <main>
       <h1>Security Checklist</h1><br><br><br>
       
-<li>System Authentication and Authorization: Recommendations include not using the `system:masters` group for user or component authentication after bootstrapping and following Role-Based Access Control (RBAC) good practices.</li>
-<br><br>
-<li>Network Security: Suggestions include using CNI plugins that support network policies, applying ingress and egress network policies to all workloads, and not exposing the Kubernetes API, kubelet API, and etcd publicly on the Internet.</li>
-<br><br>
-<li>Pod Security: The document advises setting RBAC rights only when necessary, applying appropriate Pod Security Standards policies, and setting memory and CPU limits for workloads.</li>
-<br><br>
-<li>Logs and Auditing: It recommends protecting audit logs from general access and disabling the `/logs` API.</li>
-<br><br>
-<li>Pod Placement: Suggestions include isolating sensitive applications on specific nodes or using sandboxed runtimes.</li>
-<br><br>
-<li>Secrets: The checklist advises against using ConfigMaps for confidential data and recommends using encryption at rest for the Secret API.</li>
-<br><br>
-<li>Images: Recommendations include minimizing unnecessary content in container images, running images as an unprivileged user, and regularly scanning images for vulnerabilities.</li>
-<br><br>
-<li>Admission Controllers: The document suggests enabling an appropriate selection of admission controllers and securely configuring the admission chain plugins and webhooks.</li>
+<h3>System Authentication and Authorization</h3>
+Recommendations include not using the `system:masters` group for user or component authentication after bootstrapping and following Role-Based Access Control (RBAC) good practices.
+<br><br><br>
+<h3>Network Security</h3>
+Suggestions include using CNI plugins that support network policies, applying ingress and egress network policies to all workloads, and not exposing the Kubernetes API, kubelet API, and etcd publicly on the Internet.
+<br><br><br>
+<h3>Pod Security</h3>
+The document advises setting RBAC rights only when necessary, applying appropriate Pod Security Standards policies, and setting memory and CPU limits for workloads.
+<br><br><br>
+<h3>Logs and Auditing</h3>
+It recommends protecting audit logs from general access and disabling the `/logs` API.
+<br><br><br>
+<h3>Pod Placement</h3>
+Suggestions include isolating sensitive applications on specific nodes or using sandboxed runtimes.
+<br><br><br>
+<h3>Secrets</h3>
+The checklist advises against using ConfigMaps for confidential data and recommends using encryption at rest for the Secret API.
+<br><br><br>
+<h3>Images</h3>
+Recommendations include minimizing unnecessary content in container images, running images as an unprivileged user, and regularly scanning images for vulnerabilities.
+<br><br><br>
+<h3>Admission Controllers</h3>
+The document suggests enabling an appropriate selection of admission controllers and securely configuring the admission chain plugins and webhooks.
     <br><br><br></main>
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"

@@ -72,19 +72,24 @@
 <li>Kubernetes has an allocation strategy to reduce the risk of collision.</li>
 <li>The ClusterIP range is divided based on a formula.</li>
 <li>Dynamic IP assignment uses the upper band by default.</li>
-
+<br>
 For the KCAD exam, understanding how ClusterIPs are allocated, both dynamically and statically, is crucial. Also, knowing how to avoid conflicts and the uniqueness constraint can be vital.
 
-## Service Internal Traffic Policy
+<br><br><br><h2>Service Internal Traffic Policy</h2>
 
 <br><br>
 <h3>Key Points:</h3>
 
 <li>Feature State: Available in Kubernetes v1.26 as stable.</li>
 <li>Purpose: Allows internal traffic restrictions to only route internal traffic to endpoints within the originating node. This is useful for reducing costs and improving performance.</li>
-<li>Configuration: You can enable this feature by setting `.spec.internalTrafficPolicy` to `Local` in the Service specification. This instructs kube-proxy to only use node-local endpoints for cluster-internal traffic.</li>
-    
-    ```yaml
+<li>Configuration: You can enable this feature by setting `.spec.internalTrafficPolicy` to `Local` in the Service specification.
+<li>This instructs kube-proxy to only use node-local endpoints for cluster-internal traffic.</li>
+<br>
+<div class="code-block">
+  <button class="copy-button" data-clipboard-target=".code">
+    <span class="material-icons">content_copy</span>
+  </button>
+  <pre><code class="code language-yaml">
     apiVersion: v1
     kind: Service
     metadata:
@@ -97,10 +102,11 @@ For the KCAD exam, understanding how ClusterIPs are allocated, both dynamically 
           port: 80
           targetPort: 9376
       internalTrafficPolicy: Local
+  </code></pre>
+</div>
     
-    ```
-    
-<li>How it Works: The kube-proxy filters the endpoints based on the `.spec.internalTrafficPolicy` setting. When set to `Local`, only node-local endpoints are considered. When set to `Cluster` (the default), or not set, all endpoints are considered.</li>
+<br><br><h3>How it Works</h3>
+<li>The kube-proxy filters the endpoints based on the `.spec.internalTrafficPolicy` setting. When set to `Local`, only node-local endpoints are considered. When set to `Cluster` (the default), or not set, all endpoints are considered.</li>
     <br><br><br></main>
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"

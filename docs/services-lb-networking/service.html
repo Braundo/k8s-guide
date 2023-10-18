@@ -49,17 +49,20 @@
 <br><br>
 <h3>Types of Services</h3>
 
-1. ClusterIP:
+<b>1. ClusterIP:</b>
     <li>Default type.</li>
     <li>Exposes the service on an internal IP in the cluster.</li>
     <li>Accessible only within the cluster.</li>
-2. NodePort:
+    <br>
+<b>2. NodePort:</b>
     <li>Exposes the service on a static port on each Node’s IP.</li>
     <li>External entities can access it by `<NodeIP>:<NodePort>`.</li>
-3. LoadBalancer:
+      <br>
+<b>3. LoadBalancer:</b>
     <li>Provisions an external load balancer and assigns a fixed, external IP to the service.</li>
     <li>Typically used in cloud environments.</li>
-4. ExternalName:
+    <br>
+<b>4. ExternalName:</b>
     <li>Maps the service to the contents of the `externalName` field (e.g., `foo.bar.example.com`).</li>
 
 <br><br>

@@ -68,14 +68,14 @@
     <li>`audience`: Intended audience of the token (optional).</li>
     <li>`expirationSeconds`: Token validity duration, at least 10 minutes.</li>
     <li>`path`: Relative path to the mount point.</li>
-- 
 
 <br><br>
 <h3>SecurityContext Interactions</h3>
 
-<li>Linux:</li>
+<b>Linux:</b>
     <li>Projected files have correct ownership, including container user ownership.</li>
-<li>Windows:</li>
+<br>
+<b>Windows:</b>
     <li>Ownership is not enforced due to virtual SAM database in each container.</li>
     <li>Recommended to place shared files in their own volume mount outside of `C:\\`.</li>
     <br><br><br></main>

@@ -41,31 +41,29 @@
     <nav id="sidebar"></nav>
     <!--Main Content -->
     <main>
-      <h1>Cloud Native Security</h1><br><br><br>
+      <h1>Cloud Native Security</h1><br>
       
 A layered security model known as the "4C's of Cloud Native Security," which consists of Cloud, Clusters, Containers, and Code.
 
-<br><br>
+<br><br><br><br>
 <h3>Cloud</h3>
 
 The cloud layer serves as the trusted computing base for a Kubernetes cluster. If this layer is vulnerable, the components built on top of it are also at risk. The document provides links to security documentation for popular cloud providers like AWS, Google Cloud, and Azure. It also offers suggestions for securing your infrastructure, such as limiting network access to the API Server and nodes, and encrypting etcd storage.
 
-<br><br>
+<br><br><br>
 <h3>Clusters</h3>
 
 This section focuses on securing both the cluster components and the applications running within the cluster. It emphasizes the importance of Role-Based Access Control (RBAC) for API access, and recommends encrypting application secrets in etcd. It also discusses Pod Security Standards and Network Policies for additional layers of security.
 
-<br><br>
+<br><br><br>
 <h3>Containers</h3>
 
 While container security is considered outside the scope of this guide, it does offer general recommendations. These include scanning containers for vulnerabilities, signing container images, and using container runtimes that offer strong isolation.
 
-<br><br>
+<br><br><br>
 <h3>Code</h3>
 
 The code layer is where you have the most control over security. Recommendations here include using TLS for all TCP communications, limiting exposed port ranges, and regularly scanning third-party libraries for vulnerabilities. It also suggests using static code analysis tools to identify unsafe coding practices.
-
-The document concludes with links to related Kubernetes security topics like Pod security standards, network policies, and data encryption.
     <br><br><br></main>
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"

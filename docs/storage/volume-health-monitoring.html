@@ -43,33 +43,32 @@
     <main>
       <h1>Volume Health Monitoring</h1><br><br><br>
 <h3>Feature State</h3>
-<br><br>
 The feature is in alpha state as of Kubernetes v1.21.
 
-<br><br>
+<br><br><br>
 <h3>Overview</h3>
 
 Volume Health Monitoring in Kubernetes is part of the Container Storage Interface (CSI). It allows CSI Drivers to detect abnormal conditions in the underlying storage systems and report them as events on Persistent Volume Claims (PVCs) or Pods.
 
-<br><br>
+<br><br><br>
 <h3>Components</h3>
 
 The feature is implemented in two main components:
-
-1. External Health Monitor Controller: This controller watches for abnormal volume conditions and reports them on the related PVC.
-2. Kubelet: It also plays a role in volume health monitoring.
-
-<br><br>
+<ol class="indented">
+<li>External Health Monitor Controller: This controller watches for abnormal volume conditions and reports them on the related PVC.</li>
+<li>Kubelet: It also plays a role in volume health monitoring.</li>
+</ol>
+<br><br><br>
 <h3>Controller-Side Monitoring</h3>
 
 If a CSI Driver supports this feature from the controller side, an event will be reported on the related PVC when an abnormal volume condition is detected. The External Health Monitor controller also watches for node failure events. You can enable node failure monitoring by setting the `enable-node-watcher` flag to true. When a node failure is detected, an event is reported on the PVC to indicate that pods using this PVC are on a failed node.
 
-<br><br>
+<br><br><br>
 <h3>Node-Side Monitoring</h3>
 
 If a CSI Driver supports this feature from the node side, an event will be reported on every Pod using the PVC when an abnormal volume condition is detected.
 
-<br><br>
+<br><br><br>
 <h3>Metrics</h3>
 
 Volume Health information is also exposed as Kubelet VolumeStats metrics. A new metric `kubelet_volume_stats_health_status_abnormal` is added, which includes two labels: `namespace` and `persistentvolumeclaim`. The count is either 1 or 0, where 1 indicates the volume is unhealthy and 0 indicates the volume is healthy.

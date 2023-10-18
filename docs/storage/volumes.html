@@ -41,60 +41,60 @@
     <nav id="sidebar"></nav>
     <!--Main Content -->
     <main>
-      <h1>Volumes</h1><br><br><br><h2>Background:</h2>
+      <h1>Volumes</h1><br><br><br><h2>Background</h2>
 
 <li>Kubernetes volumes are essential for managing data within pods.</li>
 <li>They are abstracted from the underlying storage, making it easier to handle storage in a containerized environment.</li>
 <li>Volumes allow data sharing between containers within a pod and enable persistence of data.</li>
-<br><br><h2>Types of Volumes:</h2>
-<br><b>awsElasticBlockStore (Removed):</b>
+<br><br><br><h2>Types of Volumes</h2>
+<br><h3>awsElasticBlockStore (Removed):</h3>
     <li>This volume type was used for managing AWS Elastic Block Store (EBS) volumes.</li>
     <li>EBS volumes provide block-level storage for AWS instances.</li>
     <li>Deprecated in favor of using the Container Storage Interface (CSI) or other storage options supported by AWS.</li>
-<br><b>azureDisk (Removed):</b>
+<br><h3>azureDisk (Removed):</h3>
     <li>Used for attaching Azure Disk storage to pods.</li>
     <li>Azure Disks are durable and scalable storage options in Azure.</li>
     <li>Deprecated, and users are encouraged to use CSI drivers for Azure or other suitable options.</li>
-<br><b>azureFile (Deprecated):</b>
+<br><h3>azureFile (Deprecated):</h3>
     <li>Previously used for mounting Azure File Shares in pods.</li>
     <li>Azure Files provide managed file shares in Azure.</li>
     <li>Deprecated; consider using CSI drivers for Azure or other alternatives.</li>
-<br><b>cephfs:</b>
+<br><h3>cephfs:</h3>
     <li>Allows pods to mount the Ceph File System.</li>
     <li>Ceph is a distributed storage system that provides scalability and data redundancy.</li>
     <li>Useful for applications requiring shared file storage.</li>
-<br><b>cinder (Removed):</b>
+<br><h3>cinder (Removed):</h3>
     <li>Cinder volumes were used for OpenStack Cinder block storage.</li>
     <li>Cinder provides block storage management for OpenStack.</li>
     <li>Deprecated; recommended to use CSI drivers or other OpenStack volume solutions.</li>
-<br><b>configMap:</b>
+<br><h3>configMap:</h3>
     <li>ConfigMap volumes enable pods to access configuration data.</li>
     <li>Ideal for injecting configuration settings, environment variables, or configuration files into pods.</li>
     <li>Enhances pod flexibility by separating configuration from container images.</li>
-<br><b>downwardAPI:</b>
+<br><h3>downwardAPI:</h3>
     <li>Downward API volumes expose pod and container metadata as files.</li>
     <li>Pods can consume metadata like pod name, namespace, labels, and annotations.</li>
     <li>Allows for dynamic configuration based on pod context.</li>
-<br><b>emptyDir:</b>
+<br><h3>emptyDir:</h3>
     <li>An ephemeral volume created when a pod is assigned to a node.</li>
     <li>Useful for temporary storage needs within a pod.</li>
     <li>Data in emptyDir volumes is lost when the pod is removed.</li>
-<br><b>fc (Fibre Channel):</b>
+<br><h3>fc (Fibre Channel):</h3>
     <li>Connects pods to Fibre Channel storage devices.</li>
     <li>Requires specialized hardware and drivers for Fibre Channel connectivity.</li>
     <li>Typically used in enterprise environments with Fibre Channel storage infrastructure.</li>
-<br><b>gcePersistentDisk (Deprecated):</b>
+<br><h3>gcePersistentDisk (Deprecated):</h3>
     <li>Previously used for attaching Google Compute Engine (GCE) Persistent Disks.</li>
     <li>GCE Persistent Disks offer durable block storage in Google Cloud.</li>
     <li>Deprecated; consider using CSI drivers for GCE or other suitable GCE storage options.</li>
-<br><b>gitRepo (Deprecated):</b>
+<br><h3>gitRepo (Deprecated):</h3>
     <li>Deprecated volume type that clones a Git repository into a volume.</li>
     <li>Rarely used in practice due to better alternatives like init containers or Git-based CI/CD workflows.</li>
-<br><b>glusterfs (Removed):</b>
+<br><h3>glusterfs (Removed):</h3>
     <li>Previously used for mounting GlusterFS distributed file systems.</li>
     <li>GlusterFS provides scalable and distributed storage.</li>
     <li>Deprecated; use CSI drivers or alternative GlusterFS options.</li>
-<br><b>hostPath:</b>
+<br><h3>hostPath:</h3>
     <li>Mounts files or directories from the node's file system into pods.</li>
     <li>Useful for accessing node-specific resources.</li>
     <li>Note that this can pose security and portability concerns.</li>
