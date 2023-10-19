@@ -33,7 +33,7 @@
 <nav id="sidebar"></nav>
 <!--Main Content -->
 <main>
-<div id="breadcrumbs"></div><br/><h1>Init Containers</h1><br/><br/><br/>
+<h1>Init Containers</h1><br/><br/><br/>
 <br/><h3>What are Init Containers</h3> Specialized containers that run before the application containers in a Pod. They can contain utilities or setup scripts not present in the application image.
 <br/><li>Init containers always run to completion, and each must complete successfully before the next one starts. If an init container fails, it is restarted until it succeeds, depending on the Pod's `restartPolicy`.</li>
 <br/><br/><br/><h3>Configuration</h3> Init containers are specified in the Pod specification under the `initContainers` field, similar to how application containers are defined.

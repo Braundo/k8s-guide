@@ -35,7 +35,7 @@
 <nav id="sidebar"></nav>
 <!--Main Content -->
 <main>
-<div id="breadcrumbs"></div><br/><h1>Storage Classes</h1><br/><br/><br/><h3>Introduction</h3>
+<h1>Storage Classes</h1><br/><br/><br/><h3>Introduction</h3>
 <li>StorageClass in Kubernetes allows administrators to define different "classes" of storage. These classes can represent various quality-of-service levels, backup policies, or any arbitrary policies set by the administrators. Kubernetes doesn't enforce what these classes should represent.</li>
 <br/><br/><h3>The StorageClass Resource</h3>
 <li>A StorageClass contains fields like `provisioner`, `parameters`, and `reclaimPolicy`. These are used when dynamically provisioning a PersistentVolume (PV) that belongs to the class. The name of the StorageClass is significant and is used by users to request a specific class. Administrators can also set a default StorageClass for PVCs that don't specify any class.</li>

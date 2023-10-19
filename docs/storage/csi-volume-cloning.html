@@ -35,7 +35,7 @@
 <nav id="sidebar"></nav>
 <!--Main Content -->
 <main>
-<div id="breadcrumbs"></div><br/><h1>CSI Volume Cloning</h1><br/><br/><br/>
+<h1>CSI Volume Cloning</h1><br/><br/><br/>
 <h3>Introduction</h3>
 
 The document introduces the concept of cloning existing Container Storage Interface (CSI) Volumes in Kubernetes. The feature allows you to specify existing Persistent Volume Claims (PVCs) in the `dataSource` field to indicate that you want to clone a volume. A clone is essentially a duplicate of an existing Kubernetes volume that behaves like any standard volume. The key difference is that upon provisioning, the backend device creates an exact duplicate of the specified volume instead of a new empty one.

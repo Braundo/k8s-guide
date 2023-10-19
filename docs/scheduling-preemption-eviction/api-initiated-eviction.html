@@ -35,7 +35,7 @@
 <nav id="sidebar"></nav>
 <!--Main Content -->
 <main>
-<div id="breadcrumbs"></div><br/><h1>API-Initiated Eviction</h1><br/><br/><br/>
+<h1>API-Initiated Eviction</h1><br/><br/><br/>
 <h3>API-Initiated Evictions vs Regular Deletion</h3>
 <li>Regular Deletion: When you delete a pod using `kubectl delete pod <pod-name>`, the pod is terminated immediately without any checks for ongoing processes or disruption budgets.</pod-name></li>
 <li>API-Initiated Evictions: When you use the Eviction API, Kubernetes respects the `PodDisruptionBudget` and `terminationGracePeriodSeconds` settings, ensuring that the pod is terminated in a way that minimizes disruption to your application.</li>
