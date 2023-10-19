@@ -106,6 +106,7 @@ h1 {
 
 .title-and-subheader {
   text-align: center;
+  align-items: center;
   width: 100%;
 }
 
@@ -580,6 +581,6 @@ nav section ul li a,
   }
 
   #scroll-top {
-    margin-left: 253px;
+    margin-left: 300px;
   }
 }
