@@ -90,6 +90,7 @@ window.addEventListener("scroll", () => {
 
 // Assume urls is an array of URLs defined in the order they should be navigated
 let urls = [
+  "/index.html",
   "/docs/architecture/nodes.html",
   "/docs/architecture/node-communication.html",
   "/docs/architecture/controllers.html",
