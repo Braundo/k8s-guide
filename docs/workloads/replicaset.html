@@ -29,11 +29,7 @@
 </div>
 <h3 class="sub-header">Your TLDR guide to Kubernetes documentation</h3>
 </div>
-</div></header>
-<div id="hamburger-container">
-<button id="hamburger-menu">☰</button>
-</div>
-<!--Sidebar -->
+</div></header><!--Sidebar -->
 <nav id="sidebar"></nav>
 <!--Main Content -->
 <main>
@@ -79,24 +75,30 @@ A ReplicaSet's purpose is to maintain a stable set of replica Pods running at an
 <li>It's generally better to use Deployments, which use ReplicaSets under the hood but offer more features like rolling updates.</li>
 <br/><br/><br/></main>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-<!--Dark/Light Mode Toggle -->
-<button id="mode-toggle" onclick="toggleMode()">
-<span class="material-icons">brightness_7</span>
-</button>
-<!--Scroll-to-Top Button -->
-<button id="scroll-top" onclick="scrollToTop()">
-<span class="material-icons">arrow_upward</span>
-</button>
-<!-- Next Page Button -->
-<button id="next-page" onclick="navigateNext()">
-<span class="material-icons">arrow_forward</span>
-</button>
-<!-- Random Page Button -->
-<button id="randomizer">
-<span class="material-icons">shuffle</span>
-</button>
-<!--Mobile Menu -->
-<div id="mobile-menu"></div>
+<div id="bottom-navbar">
+  <!--Dark/Light Mode Toggle -->
+  <button id="mode-toggle" onclick="toggleMode()">
+  <span class="material-icons">brightness_7</span>
+  </button>
+  <!--Scroll-to-Top Button -->
+  <button id="scroll-top" onclick="scrollToTop()">
+  <span class="material-icons">arrow_upward</span>
+  </button>
+  <!-- Next Page Button -->
+  <button id="next-page" onclick="navigateNext()">
+  <span class="material-icons">arrow_forward</span>
+  </button>
+  <!-- Random Page Button -->
+  <button id="randomizer">
+  <span class="material-icons">shuffle</span>
+  </button>
+  <!--Mobile Menu -->
+  <div id="mobile-menu"></div>
+  <!--Hamburger menu-->
+  <div id="hamburger-container">
+  <button id="hamburger-menu">☰</button>
+  </div>
+</div>
 <script src="../../script.js"></script>
 </body>
 </html>
