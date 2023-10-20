@@ -259,9 +259,8 @@ h2.expanded:hover .toggle-icon {
 }
 
 #mode-toggle {
-  bottom: auto;
-  top: 150px; /* Adjust this value to position the toggle under the header */
-  right: 20px;
+  bottom: 20px;
+  left: 105px;
 }
 
 /* Move to next page button */
@@ -292,8 +291,8 @@ ul.indented {
 /* Styles for the randomizer button */
 #randomizer {
   position: fixed;
-  bottom: 70px; /* Adjust position as needed */
-  right: 20px;
+  bottom: 0px; /* Adjust position as needed */
+  right: 100px;
   background-color: #bd93f9;
   color: #282a36 !important;
   border-radius: 50%;
@@ -310,8 +309,8 @@ ul.indented {
 /* Hamburger Menu Button */
 #hamburger-menu {
   position: relative;
-  top: 20px;
-  left: 20px;
+  top: 0px;
+  right: 0px;
   background-color: #bd93f9;
   color: #ffffff;
   border-radius: 50%;
@@ -346,7 +345,7 @@ ul.indented {
 
 /* Hamburger Menu Container */
 #hamburger-container {
-  display: none; /* Hide by default */
+  display: block; /* Hide by default */
 }
 
 /* Mobile Styles */
@@ -412,13 +411,33 @@ ul.indented {
   /* Show hamburger menu on mobile */
   #hamburger-menu {
     display: block;
+    bottom: 20px;
   }
 
-  /* Show hamburger menu container on mobile */
-  #hamburger-container {
-    display: block;
-    text-align: center; /* Center the hamburger menu */
-    padding-top: 130px; /* Space below the header */
+  #bottom-navbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #282a36; /* Temporary color for visibility */
+    display: flex;
+    justify-content: space-around; /* This will evenly space your buttons */
+    align-items: center; /* This will vertically center your buttons */
+    padding: 20px 0; /* Adjust padding to reduce navbar height */
+    box-shadow: 0 -2px 10px rgba(203, 203, 203, 0.472); /* Optional: Adds a subtle shadow for a lifted effect */
+    z-index: 1001;
+  }
+
+  /* Containers for existing buttons */
+  #hamburger-menu-container,
+  #scroll-top-container,
+  #mode-toggle-container,
+  #randomizer-container,
+  #next-page-container {
+    flex: 1; /* This will ensure each container takes up equal width */
+    display: flex; /* Enable flexbox for centering */
+    justify-content: center; /* Horizontally center the button within the container */
+    align-items: center; /* Vertically center the button within the container */
   }
 
   /* Sidebar visible state on mobile */
@@ -437,14 +456,14 @@ ul.indented {
 /* Mobile Menu */
 #mobile-menu {
   position: fixed;
-  padding-top: 140px;
-  top: 60px; /* Adjusted to accommodate fixed header */
+  padding-top: 0px;
+  top: 0px; /* Adjusted to accommodate fixed header */
   left: 0;
   width: 100%;
   background-color: #282a36;
   color: #ffffff;
   display: none; /* Hidden by default */
-  max-height: 70vh;
+  height: 100%;
   overflow-y: scroll;
   z-index: 998; /* Ensure it's on top of other elements but below the hamburger menu */
 }
