@@ -359,6 +359,7 @@ ul.indented {
   /* Header */
   header {
     justify-content: left;
+    position: relative;
     padding-left: 0px;
     z-index: 1000;
   }
@@ -387,7 +388,7 @@ ul.indented {
     padding: 25px;
     margin-left: 0px;
     margin-top: 10px;
-    padding-top: 150px;
+    padding-top: 10px;
     padding-bottom: 50px;
     position: relative;
     z-index: 1;
