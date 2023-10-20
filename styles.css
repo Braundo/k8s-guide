@@ -572,10 +572,12 @@ nav section ul li a,
   /* Dark/Light Mode Toggle */
   #mode-toggle {
     position: fixed;
-    bottom: 20px;
-    left: 20px;
+    bottom: 75%;
+    left: 95%;
     padding: 10px;
-    margin-top: 50px;
+    margin-top: 70px;
+    top: 10%;
+    z-index: 99999;
   }
   .code-block {
     background-color: #282a36;
@@ -601,6 +603,6 @@ nav section ul li a,
   }
 
   #scroll-top {
-    margin-left: 200px;
+    margin-left: 255px;
   }
 }
