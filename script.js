@@ -45,9 +45,13 @@ function toggleSidebar() {
     mobileMenu.classList.toggle("open");
     if (hamburgerMenu.classList.contains("x")) {
       hamburgerMenu.classList.remove("x");
+      hamburgerMenu.classList.remove("slid-right"); // Add this line
+      hamburgerMenu.classList.add("slid-left"); // Add this line
       hamburgerMenu.innerHTML = "☰"; // Set content to hamburger icon
     } else {
       hamburgerMenu.classList.add("x");
+      hamburgerMenu.classList.remove("slid-left"); // Add this line
+      hamburgerMenu.classList.add("slid-right"); // Add this line
       hamburgerMenu.innerHTML = "✕"; // Set content to X icon
     }
   } else {
