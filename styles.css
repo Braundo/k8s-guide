@@ -219,7 +219,7 @@ h2.expanded:hover .toggle-icon {
 
 /* Dark/Light Mode Toggle */
 #mode-toggle {
-  position: absolute;
+  position: fixed;
   bottom: 20px;
   right: 20px;
   background-color: #bd93f9;
@@ -308,7 +308,7 @@ ul.indented {
 
 /* Hamburger Menu Button */
 #hamburger-menu {
-  position: relative;
+  position: fixed;
   top: 0px;
   right: 0px;
   background-color: #bd93f9;
@@ -345,7 +345,7 @@ ul.indented {
 
 /* Hamburger Menu Container */
 #hamburger-container {
-  display: block; /* Hide by default */
+  display: fixed;
 }
 
 /* Mobile Styles */
@@ -388,6 +388,8 @@ ul.indented {
     padding: 25px;
     margin-left: 0px;
     margin-top: 10px;
+    padding-top: 150px;
+    padding-bottom: 50px;
     position: relative;
     z-index: 1;
   }
@@ -411,7 +413,15 @@ ul.indented {
   /* Show hamburger menu on mobile */
   #hamburger-menu {
     display: block;
+    position: fixed;
     bottom: 20px;
+    z-index: 1002;
+    left: 0;
+    right: 0;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0px;
   }
 
   #bottom-navbar {
@@ -569,9 +579,9 @@ nav section ul li a,
 
   /* Dark/Light Mode Toggle */
   #mode-toggle {
-    position: absolute;
+    position: fixed;
     bottom: 20px;
-    right: 20px;
+    left: 20px;
     padding: 10px;
     margin-top: 50px;
   }
@@ -599,6 +609,6 @@ nav section ul li a,
   }
 
   #scroll-top {
-    margin-left: 300px;
+    margin-left: 200px;
   }
 }
