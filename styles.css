@@ -47,15 +47,6 @@ body.light-mode a {
   color: #326ce5;
 }
 
-/* Assuming your body has a class of light-mode or dark-mode to change themes */
-body.light-mode .breadcrumb-chevron {
-  color: #282a36;
-}
-
-body.dark-mode .breadcrumb-chevron {
-  color: white;
-}
-
 /* Header */
 header {
   text-align: center;

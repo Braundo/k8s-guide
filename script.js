@@ -253,6 +253,3 @@ document.querySelectorAll(".copy-button").forEach((button) => {
     }, 2000);
   });
 });
-
-// Call the function on page load
-document.addEventListener("DOMContentLoaded", generateBreadcrumbs);
